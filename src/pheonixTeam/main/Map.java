@@ -1,5 +1,7 @@
 package pheonixTeam.main;
 
+import pheonixTeam.main.entity.Entity;
+
 import java.io.File;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;

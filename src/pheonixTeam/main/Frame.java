@@ -1,5 +1,7 @@
 package pheonixTeam.main;
 
+import pheonixTeam.main.entity.Entity;
+
 import java.awt.Graphics;
 import java.util.List;
 

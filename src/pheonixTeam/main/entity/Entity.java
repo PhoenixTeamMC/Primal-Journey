@@ -1,4 +1,6 @@
-package pheonixTeam.main;
+package pheonixTeam.main.entity;
+
+import pheonixTeam.main.Map;
 
 import java.awt.Graphics;
 
