@@ -7,7 +7,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class Map {
 	
 	public List<Entity> entityList = new CopyOnWriteArrayList<Entity>();
-	
 	public static Map getMap(File file){
 		return (Map) Main.xml.fromXML(file);
 	}
@@ -31,7 +30,4 @@ public class Map {
 		
 		entityList.remove(entity);
 	}
-	
-	
-
 }
