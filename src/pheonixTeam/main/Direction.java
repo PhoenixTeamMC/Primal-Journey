@@ -2,10 +2,10 @@ package pheonixTeam.main;
 
 public enum Direction
 {
-    Right,
-    Left,
-    Down,
-    Up,
-    Foward,
-    Back
+    RIGHT,
+    LEFT,
+    DOWN,
+    UP,
+    FOWARD,
+    BACK
 }

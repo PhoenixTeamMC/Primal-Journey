@@ -5,7 +5,7 @@ import pheonixTeam.main.entity.interfaces.IEnityDamageable;
 import pheonixTeam.main.entity.interfaces.IEntityMovable;
 
 /**
- * @author SatanicSanta, Strikingwolf
+ * @author Strikingwolf
  */
 public class EntityLiving extends Entity implements IEnityDamageable, IEntityMovable
 {
@@ -17,12 +17,12 @@ public class EntityLiving extends Entity implements IEnityDamageable, IEntityMov
      */
     @Override
     public void move(Direction direction) {
-        if (direction == Direction.Left) {x--;}
-        if (direction == Direction.Right) {x++;}
-        if (direction == Direction.Down) {y--;}
-        if (direction == Direction.Up) {y++;}
-        if (direction == Direction.Back) {z--;}
-        if (direction == Direction.Foward) {x++;}
+        if (direction == Direction.LEFT) {x--;}
+        if (direction == Direction.RIGHT) {x++;}
+        if (direction == Direction.DOWN) {y--;}
+        if (direction == Direction.UP) {y++;}
+        if (direction == Direction.BACK) {z--;}
+        if (direction == Direction.FOWARD) {x++;}
     }
 
     @Override
