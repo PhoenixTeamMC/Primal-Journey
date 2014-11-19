@@ -10,10 +10,10 @@ import java.awt.Graphics;
  *
  */
 public class Entity {
-	
-	int x;
-	int y; 
-	int z;
+
+	float x;
+	float y;
+	float z;
 	
 	//Api for Enttiies follows
 	/**

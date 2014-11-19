@@ -11,5 +11,5 @@ public interface IEntityMovable
      * Used to move an entity
      * @param direction
      */
-    public void move(Direction direction);
+    public void move(Direction direction, float amount);
 }
