@@ -9,5 +9,5 @@ public interface IEnityDamageable
     /**
      * Used to damage an entity
      */
-    public void damage();
+    public void damage(int amount);
 }

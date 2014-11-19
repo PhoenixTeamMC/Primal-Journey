@@ -15,6 +15,11 @@ public class Entity {
 	float y;
 	float z;
 	
+	/**
+	 * If set to true, will be removed next tick.
+	 */
+	public boolean isDead = false;
+	
 	//Api for Enttiies follows
 	/**
 	 * Called every tick, used to update graphics

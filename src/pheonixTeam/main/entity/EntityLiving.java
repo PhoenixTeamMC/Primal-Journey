@@ -26,7 +26,10 @@ public class EntityLiving extends Entity implements IEnityDamageable, IEntityMov
     }
 
     @Override
-    public void damage() {
-        health--;
+    public void damage(int amount) {
+        health -= amount;
+        if(health < 0){
+        	this.isDead = true;
+        }
     }
 }

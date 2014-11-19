@@ -16,6 +16,10 @@ public class Map {
 	public void onTick(){
 		for(Entity entity: entityList){
 			entity.update(this);
+			
+			if(entity.isDead){
+				this.killEntity(entity);
+			}
 		}
 	}
 	
