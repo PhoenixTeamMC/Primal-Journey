@@ -14,11 +14,7 @@ public class Frame {
 	Map map;
 	
 	public void paint(Graphics g){
-		List<Entity> list = map.entityList;
-		
-		for(Entity entity: list){
-			entity.display(g);
-		}
+		map.display(g);
 	}
 
 }

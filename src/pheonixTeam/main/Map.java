@@ -1,10 +1,11 @@
 package pheonixTeam.main;
 
-import pheonixTeam.main.entity.Entity;
-
+import java.awt.Graphics;
 import java.io.File;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+
+import pheonixTeam.main.entity.Entity;
 
 public class Map {
 	
@@ -35,5 +36,9 @@ public class Map {
 		entity.onDeath(this);
 		
 		entityList.remove(entity);
+	}
+	
+	public void display(Graphics g){
+		
 	}
 }

@@ -5,7 +5,7 @@ import pheonixTeam.main.entity.interfaces.IEnityDamageable;
 import pheonixTeam.main.entity.interfaces.IEntityMovable;
 
 /**
- * @author Strikingwolf
+ * @author Strikingwolf, CBachman
  */
 public class EntityLiving extends Entity implements IEnityDamageable, IEntityMovable
 {
