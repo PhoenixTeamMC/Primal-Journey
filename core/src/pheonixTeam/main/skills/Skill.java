@@ -15,6 +15,11 @@ public abstract class Skill
      */
     public abstract void doSkill(EntityLiving entity);
 
+    /**
+     * Checks if the entity has the skill
+     * @param entity
+     * @return boolean
+     */
     public boolean checkIfEntityHasSkill(EntityLiving entity){
         for (int i = 0; i < entity.skills.size() ; i++) {
             if (entity.skills.get(i).equals(this)) {
