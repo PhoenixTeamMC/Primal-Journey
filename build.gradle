@@ -31,12 +31,10 @@ allprojects {
 
 project(":desktop") {
     apply plugin: "java"
-    apply plugin: "scala"
 
 
     dependencies {
         compile project(":core")
-        compile "org.scala-lang:scala-library:2.11.1"
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
     }
@@ -44,11 +42,9 @@ project(":desktop") {
 
 project(":core") {
     apply plugin: "java"
-    apply plugin: "scala"
 
 
     dependencies {
-	compile "org.scala-lang:scala-library:2.11.1"
 	compile "com.thoughtworks.xstream:xstream:1.4.2"
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
     }
