@@ -1,6 +1,6 @@
 package pheonix.rpg.client;
 
-import pheonixTeam.main.Main2;
+import pheonixTeam.main.Main;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
@@ -15,6 +15,6 @@ public class HtmlLauncher extends GwtApplication {
 
         @Override
         public ApplicationListener getApplicationListener () {
-                return new Main2();
+                return new Main();
         }
 }
