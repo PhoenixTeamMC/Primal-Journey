@@ -13,8 +13,8 @@ public class Main extends ApplicationAdapter {
 	
 	public static final XStream xml = new XStream();
 	
-	private static final int        FRAME_COLS = 6;
-    private static final int        FRAME_ROWS = 5;
+	private static final int FRAME_COLS = 6;
+    private static final int FRAME_ROWS = 5;
 	
 	Animation animation;
 	SpriteBatch batch;
@@ -52,7 +52,7 @@ public class Main extends ApplicationAdapter {
         current = animation.getKeyFrame(stateTime, true);
         
 		batch.begin();
-		batch.draw(current, 50, 50);
+		batch.draw(current, 50, 50, 300, 300);
 		batch.end();
 	}
 }
