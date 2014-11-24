@@ -17,10 +17,10 @@ public class EntityPlayer extends EntityLiving
     public SecondaryClasses secondaryClass = SecondaryClasses.NONE;
 
     //Stats
-    int constitution;
-    int strength;
-    int dexterity;
-    int wisdom;
+    int constitution = 0;
+    int strength = 0;
+    int dexterity = 0;
+    int wisdom = 0;
 
     //Skills
     //TODO
