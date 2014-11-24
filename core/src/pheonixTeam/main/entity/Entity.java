@@ -1,8 +1,8 @@
 package pheonixTeam.main.entity;
 
-import pheonixTeam.main.Map;
-
 import java.awt.Graphics;
+
+import pheonixTeam.main.Map;
 
 /**
  * Super class for every entity.

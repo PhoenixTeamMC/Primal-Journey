@@ -1,4 +1,0 @@
-PheonixRPG
-==========
-
-PheonixTeam RPG Game
