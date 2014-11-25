@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import pheonixTeam.main.entity.Entity;
+import pheonixTeam.main.entity.EntityVoid;
 
 public class Map {
 	
@@ -47,11 +48,20 @@ public class Map {
 		
 		entityList.remove(entity);
 	}
-	
+
+	public Entity getEntityAt(float x, float y, float z) {
+		for (Entity entity : entityList) {
+			if (entity.x == x && entity.y == y && entity.z == z) {
+				return entity;
+			}
+		}
+		return new EntityVoid();
+	}
+
 	public void display(){
-		for(int i = 0; i < tiles.length; i++){
-			for(int g = 0; g < tiles[i].length; g++){
-				tiles[i][g].display();
+		for (Tile[] tile : tiles) {
+			for (Tile aTile : tile) {
+				aTile.display();
 			}
 		}
 	}
