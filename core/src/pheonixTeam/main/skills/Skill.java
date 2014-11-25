@@ -7,6 +7,9 @@ import pheonixTeam.main.entity.EntityLiving;
  */
 public abstract class Skill
 {
+    /**
+     * Implement this in your skill class
+     */
     public String name;
 
     /**

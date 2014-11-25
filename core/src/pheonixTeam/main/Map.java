@@ -9,7 +9,7 @@ import pheonixTeam.main.entity.Entity;
 
 public class Map {
 	
-	public List<Entity> entityList = new CopyOnWriteArrayList<Entity>();
+	public static List<Entity> entityList = new CopyOnWriteArrayList<Entity>();
 	public static Map getMap(File file){
 		return (Map) Main.xml.fromXML(file);
 	}
