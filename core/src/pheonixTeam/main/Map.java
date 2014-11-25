@@ -70,7 +70,6 @@ public class Map {
 	 * Gets the entity at the location given.
 	 * @param x
 	 * @param y
-	 * @param z
 	 * @return entity at location, or null if none is found.
 	 */
 	public Entity getEntityAt(float x, float y) {

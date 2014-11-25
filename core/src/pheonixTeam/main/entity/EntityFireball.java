@@ -11,7 +11,7 @@ public class EntityFireball extends Entity
 {
     public int damageAmount = 5;
 
-    public EntityFireball(float xPos, float yPos, float zPos, Direction direction) {
+    public EntityFireball(float xPos, float yPos, Direction direction) {
         x = xPos;
         y = yPos;
         facing = direction;
