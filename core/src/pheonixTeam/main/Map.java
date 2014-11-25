@@ -9,6 +9,16 @@ import pheonixTeam.main.entity.Entity;
 
 public class Map {
 	
+	public Tile[][] tiles;
+	
+	public Map(int width, int height){
+		for(int i = 0; i < tiles.length; i++){
+			for(int g = 0; g < tiles[i].length; g++){
+				tiles[i][g] = new Tile(width, height);
+			}
+		}
+	}
+	
 	public List<Entity> entityList = new CopyOnWriteArrayList<Entity>();
 	public static Map getMap(File file){
 		return (Map) Main.xml.fromXML(file);
@@ -38,7 +48,11 @@ public class Map {
 		entityList.remove(entity);
 	}
 	
-	public void display(Graphics g){
-		
+	public void display(){
+		for(int i = 0; i < tiles.length; i++){
+			for(int g = 0; g < tiles[i].length; g++){
+				tiles[i][g].display();
+			}
+		}
 	}
 }

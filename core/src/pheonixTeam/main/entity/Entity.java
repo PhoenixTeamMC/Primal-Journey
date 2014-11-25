@@ -1,7 +1,5 @@
 package pheonixTeam.main.entity;
 
-import java.awt.Graphics;
-
 import pheonixTeam.main.Map;
 
 /**
@@ -20,12 +18,12 @@ public class Entity {
 	 */
 	public boolean isDead = false;
 	
-	//Api for Enttiies follows
+	//Api for Entities follows
 	/**
 	 * Called every tick, used to update graphics
 	 * @param g
 	 */
-	public void display(Graphics g){}
+	public void display(){}
 	
 	/**
 	 * Called every tick, used to update logic. 
