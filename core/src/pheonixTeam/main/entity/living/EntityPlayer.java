@@ -1,5 +1,10 @@
 package pheonixTeam.main.entity.living;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import pheonixTeam.main.Direction;
 import pheonixTeam.main.Map;
 import pheonixTeam.main.entity.enums.PrimaryClasses;
 import pheonixTeam.main.entity.enums.Races;
@@ -26,10 +31,12 @@ public class EntityPlayer extends EntityLiving
         return inventory.get(heldItemIndex);
     }
 
-    @Override
-    public void update(Map map) {
-        super.update(map);
-        heldItem = inventory.get(heldItemIndex);
+    SpriteBatch batch;
+    Texture texture;
+
+    public EntityPlayer() {
+        batch = new SpriteBatch();
+        texture = new Texture("player.png");
     }
 
     //Race
@@ -44,4 +51,28 @@ public class EntityPlayer extends EntityLiving
     int strength = 0;
     int dexterity = 0;
     int wisdom = 0;
+
+    //Skills
+    //TODO
+
+    @Override
+    public void display(SpriteBatch batch) {
+        batch.draw(texture, x, y, 4, 4);
+    }
+
+    @Override
+    public void update(Map map) {
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+            this.move(Direction.RIGHT, .1F);
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+            this.move(Direction.LEFT, .1F);
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+            this.move(Direction.UP, .1F);
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+            this.move(Direction.DOWN, .1F);
+        }
+    }
 }
