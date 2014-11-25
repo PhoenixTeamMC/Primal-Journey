@@ -21,8 +21,8 @@ public class EntityLiving extends Entity implements IEnityDamageable, IEntityMov
      */
     @Override
     public void move(Direction direction, float amount) {
-        if (direction == Direction.LEFT) {x = x - amount;}
-        if (direction == Direction.RIGHT) {x = x + amount;}
+        if (direction == Direction.LEFT) {x = x - amount; facing = Direction.LEFT;}
+        if (direction == Direction.RIGHT) {x = x + amount; facing = Direction.RIGHT;}
         if (direction == Direction.DOWN) {y = y- amount;}
         if (direction == Direction.UP) {y = y + amount;}
         if (direction == Direction.BACK) {z = z - amount;}
