@@ -24,13 +24,15 @@ public class Main extends ApplicationAdapter {
 	
 	float stateTime;
 	
+	Map map;
+	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		img = new Texture("animation.png");
 		TextureRegion[][] tmp = TextureRegion.split(img, img.getWidth()/FRAME_COLS, img.getHeight()/FRAME_ROWS);
 		
-		walkFrames = new TextureRegion[FRAME_COLS * FRAME_ROWS];
+		walkFrames = new TextureRegion[FRAME_COLS * FRAME_ROWS]; 
 		
 		int index = 0;
         for (int i = 0; i < FRAME_ROWS; i++) {
@@ -42,6 +44,8 @@ public class Main extends ApplicationAdapter {
         animation = new Animation(.025f, walkFrames);
         
         stateTime = 0f;
+        
+        
 	}
 
 	@Override
