@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class EntityPlayer extends EntityLiving
 {
-    private int heldItemIndex;
+    private int heldItemIndex = 0;
     public Item heldItem;
     public List<Item> inventory;
 
