@@ -55,7 +55,7 @@ public class Map {
 				return entity;
 			}
 		}
-		return new EntityVoid();
+		return null;
 	}
 
 	public void display(){
