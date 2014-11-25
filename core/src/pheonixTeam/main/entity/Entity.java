@@ -1,5 +1,6 @@
 package pheonixTeam.main.entity;
 
+import pheonixTeam.main.Direction;
 import pheonixTeam.main.Map;
 
 /**
@@ -8,6 +9,10 @@ import pheonixTeam.main.Map;
  *
  */
 public class Entity {
+
+	public Direction facing = Direction.RIGHT;
+
+	public Map map;
 
 	public float x;
 	public float y;
