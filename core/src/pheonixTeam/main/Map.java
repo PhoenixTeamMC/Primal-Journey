@@ -73,9 +73,9 @@ public class Map {
 	 * @param z
 	 * @return entity at location, or null if none is found.
 	 */
-	public Entity getEntityAt(float x, float y, float z) {
+	public Entity getEntityAt(float x, float y) {
 		for (Entity entity : entityList) {
-			if (entity.x == x && entity.y == y && entity.z == z) {
+			if (entity.x == x && entity.y == y) {
 				return entity;
 			}
 		}

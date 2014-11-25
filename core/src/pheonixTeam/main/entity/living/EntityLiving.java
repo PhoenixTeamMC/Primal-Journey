@@ -1,6 +1,7 @@
-package pheonixTeam.main.entity;
+package pheonixTeam.main.entity.living;
 
 import pheonixTeam.main.Direction;
+import pheonixTeam.main.entity.Entity;
 import pheonixTeam.main.entity.interfaces.IEnityDamageable;
 import pheonixTeam.main.entity.interfaces.IEntityMovable;
 import pheonixTeam.main.entity.skills.Skill;
@@ -25,8 +26,6 @@ public class EntityLiving extends Entity implements IEnityDamageable, IEntityMov
         if (direction == Direction.RIGHT) {x = x + amount; facing = Direction.RIGHT;}
         if (direction == Direction.DOWN) {y = y- amount;}
         if (direction == Direction.UP) {y = y + amount;}
-        if (direction == Direction.BACK) {z = z - amount;}
-        if (direction == Direction.FOWARD) {z = z + amount;}
     }
 
     @Override

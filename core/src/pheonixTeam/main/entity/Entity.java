@@ -16,8 +16,7 @@ public class Entity {
 
 	public float x;
 	public float y;
-	public float z;
-	
+
 	/**
 	 * If set to true, will be removed next tick.
 	 */
