@@ -9,6 +9,7 @@ import pheonixTeam.main.Map;
 import pheonixTeam.main.entity.enums.PrimaryClasses;
 import pheonixTeam.main.entity.enums.Races;
 import pheonixTeam.main.entity.enums.SecondaryClasses;
+import pheonixTeam.main.entity.skills.SkillFireball;
 import pheonixTeam.main.item.Item;
 
 import java.util.List;
@@ -37,6 +38,7 @@ public class EntityPlayer extends EntityLiving
     public EntityPlayer() {
         batch = new SpriteBatch();
         texture = new Texture("player.png");
+        skills.add(new SkillFireball());
     }
 
     //Race
