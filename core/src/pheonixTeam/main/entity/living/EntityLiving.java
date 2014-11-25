@@ -1,6 +1,7 @@
-package pheonixTeam.main.entity;
+package pheonixTeam.main.entity.living;
 
 import pheonixTeam.main.Direction;
+import pheonixTeam.main.entity.Entity;
 import pheonixTeam.main.entity.interfaces.IEnityDamageable;
 import pheonixTeam.main.entity.interfaces.IEntityMovable;
 import pheonixTeam.main.entity.skills.Skill;

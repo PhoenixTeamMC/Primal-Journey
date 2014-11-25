@@ -1,4 +1,4 @@
-package pheonixTeam.main.entity;
+package pheonixTeam.main.entity.living;
 
 import pheonixTeam.main.entity.enums.PrimaryClasses;
 import pheonixTeam.main.entity.enums.Races;

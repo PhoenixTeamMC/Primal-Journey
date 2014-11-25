@@ -1,7 +1,6 @@
 package pheonixTeam.main.entity.skills;
 
-import pheonixTeam.main.entity.Entity;
-import pheonixTeam.main.entity.EntityLiving;
+import pheonixTeam.main.entity.living.EntityLiving;
 
 /**
  * @author Strikingwolf, chbachman
