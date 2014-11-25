@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class EntityLiving extends Entity implements IEnityDamageable, IEntityMovable
 {
-    public int health = 0;
+    public int health = 100;
     public List<Skill> skills;
 
     /**

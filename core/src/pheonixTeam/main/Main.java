@@ -1,28 +1,31 @@
 package pheonixTeam.main;
 
+import pheonixTeam.main.entity.EntityPlayer;
+
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.thoughtworks.xstream.XStream;
 
-public class Main extends ApplicationAdapter {
+public class Main extends ApplicationAdapter{
 	
 	public static final XStream xml = new XStream();
 	
-	Map map;
+	public Map currentMap;
 	
 	@Override
 	public void create () {
-		map = new Map(100, 100);
-        
-        
+		currentMap = new Map(100, 100);
+		currentMap.spawnEntity(new EntityPlayer());
 	}
 
 	@Override
 	public void render () {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);                        // #14
-        
-		map.display();
+		
+		currentMap.onTick();
+		currentMap.display();
+
 	}
 	
 	/*

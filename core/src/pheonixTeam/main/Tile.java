@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Tile {
 
+	private static final int TILE_SIZE = 16;
+	
 	static Texture texture;
 	static SpriteBatch batch;
 	
@@ -31,7 +33,7 @@ public class Tile {
 	public void display() {
 		batch.begin();
 		
-		batch.draw(texture, (texture.getHeight() + 1) * x, (texture.getWidth() + 1) * y);
+		batch.draw(texture, (TILE_SIZE + 1) * x, (TILE_SIZE + 1) * y, TILE_SIZE, TILE_SIZE);
 		
 		batch.end();
 	}

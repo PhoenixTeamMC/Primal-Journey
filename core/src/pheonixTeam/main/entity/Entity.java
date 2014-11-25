@@ -37,7 +37,7 @@ public class Entity {
 	public void update(Map map){}
 
 	/**
-	 * Called when a entiy is spawned in
+	 * Called when a entity is spawned in
 	 * @param map
 	 */
 	public void onSpawn(Map map) {}
