@@ -3,7 +3,7 @@ package pheonixTeam.main.entity;
 import pheonixTeam.main.Direction;
 import pheonixTeam.main.entity.interfaces.IEnityDamageable;
 import pheonixTeam.main.entity.interfaces.IEntityMovable;
-import pheonixTeam.main.skills.Skill;
+import pheonixTeam.main.entity.skills.Skill;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package pheonixTeam.main.skills;
+package pheonixTeam.main.entity.skills;
 
 import pheonixTeam.main.EntityFireball;
 import pheonixTeam.main.Map;
@@ -11,7 +11,8 @@ import pheonixTeam.main.entity.enums.PrimaryClasses;
  */
 public class SkillFireball extends Skill
 {
-    public String name = "Fireball";
+    public static String name = "Fireball";
+
     @Override
     public void doSkill(EntityLiving entity) {
         if (entity instanceof EntityPlayer) {
