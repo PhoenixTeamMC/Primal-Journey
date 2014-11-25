@@ -1,5 +1,7 @@
 package pheonixTeam.main.entity;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 import pheonixTeam.main.Direction;
 import pheonixTeam.main.Map;
 
@@ -25,9 +27,10 @@ public class Entity {
 	//Api for Entities follows
 	/**
 	 * Called every tick, used to update graphics
+	 * @param batch 
 	 * @param g
 	 */
-	public void display(){}
+	public void display(SpriteBatch batch){}
 	
 	/**
 	 * Called every tick, used to update logic. 

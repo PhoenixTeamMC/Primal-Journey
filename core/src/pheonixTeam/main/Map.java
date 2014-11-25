@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 import pheonixTeam.main.entity.Entity;
 
 /**
@@ -81,17 +83,17 @@ public class Map {
 		return null;
 	}
 
-	public void display(){
+	public void display(SpriteBatch batch){
 		
 		for (Tile[] tileArray : tiles) {
 			for (Tile tile : tileArray) {
-				tile.display();
+				tile.display(batch);
 			}
 		}
 		
 		
 		for(Entity entity: entityList){
-			entity.display();
+			entity.display(batch);
 		}
 	}
 }

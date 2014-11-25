@@ -5,6 +5,7 @@ import pheonixTeam.main.Map;
 import pheonixTeam.main.entity.enums.PrimaryClasses;
 import pheonixTeam.main.entity.enums.Races;
 import pheonixTeam.main.entity.enums.SecondaryClasses;
+import pheonixTeam.main.entity.living.EntityLiving;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -43,24 +44,23 @@ public class EntityPlayer extends EntityLiving
     //TODO
     
     @Override
-    public void display(){
-    	batch.begin();
-    	
-    	batch.draw(texture, x, y, 32, 32);
-    	
-    	batch.end();
+    public void display(SpriteBatch batch){
+    	batch.draw(texture, x, y, 4, 4);
     }
     
     @Override
     public void update(Map map){
     	if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-    		this.move(Direction.RIGHT, 5);
-    	}else if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-    		this.move(Direction.LEFT, 5);
-    	}else if(Gdx.input.isKeyPressed(Input.Keys.UP)){
-    		this.move(Direction.UP, 5);
-    	}else if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-    		this.move(Direction.DOWN, 5);
+    		this.move(Direction.RIGHT, .1F);
+    	}
+    	if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+    		this.move(Direction.LEFT, .1F);
+    	}
+    	if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+    		this.move(Direction.UP, .1F);
+    	}
+    	if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+    		this.move(Direction.DOWN, .1F);
     	}
     }
 }

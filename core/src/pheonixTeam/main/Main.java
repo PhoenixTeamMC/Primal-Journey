@@ -5,6 +5,8 @@ import pheonixTeam.main.entity.EntityPlayer;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.thoughtworks.xstream.XStream;
 
 public class Main extends ApplicationAdapter{
@@ -13,20 +15,42 @@ public class Main extends ApplicationAdapter{
 	
 	public Map currentMap;
 	
+	OrthographicCamera camera;
+	SpriteBatch batch;
+	
 	@Override
 	public void create () {
+		
+		float w = Gdx.graphics.getWidth();                                       
+        float h = Gdx.graphics.getHeight();                                      
+        camera = new OrthographicCamera(100, 100 * (h / w));                          
+        camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);    
+        camera.update(); 
+		
+        batch = new SpriteBatch();
+        
 		currentMap = new Map(100, 100);
 		currentMap.spawnEntity(new EntityPlayer());
+		
 	}
 
 	@Override
 	public void render () {
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);                        // #14
 		
+		
+		
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		batch.setProjectionMatrix(camera.combined);
 		currentMap.onTick();
-		currentMap.display();
-
+		
+		
+		batch.begin();
+		currentMap.display(batch);
+		batch.end();
+		
 	}
+	
+	
 	
 	/*
 	 * Animation Code:
