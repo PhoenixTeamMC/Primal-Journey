@@ -14,7 +14,6 @@ public class EntityFireball extends Entity
     public EntityFireball(float xPos, float yPos, float zPos, Direction direction) {
         x = xPos;
         y = yPos;
-        z = zPos;
         facing = direction;
     }
 
@@ -25,7 +24,7 @@ public class EntityFireball extends Entity
         if (facing == Direction.LEFT) {x--;}
         if (facing == Direction.UP) {y++;}
         if (facing == Direction.DOWN) {y--;}
-        Entity entity = map.getEntityAt(x, y, z);
+        Entity entity = map.getEntityAt(x, y);
         if (entity instanceof EntityLiving) {
             EntityLiving living = (EntityLiving) entity;
             living.damage(damageAmount);

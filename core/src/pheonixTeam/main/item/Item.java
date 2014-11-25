@@ -16,9 +16,8 @@ public class Item
      * @param map
      * @param x
      * @param y
-     * @param z
      */
-    public void useItem(Entity entity, Map map, float x, float y, float z) {
+    public void useItem(Entity entity, Map map, float x, float y) {
         //TODO
     }
 }

@@ -50,9 +50,9 @@ public class Map {
 		entityList.remove(entity);
 	}
 
-	public Entity getEntityAt(float x, float y, float z) {
+	public Entity getEntityAt(float x, float y) {
 		for (Entity entity : entityList) {
-			if (entity.x == x && entity.y == y && entity.z == z) {
+			if (entity.x == x && entity.y == y) {
 				return entity;
 			}
 		}
