@@ -20,6 +20,7 @@ public class EntityFireball extends Entity
 
     @Override
     public void update(Map map){
+        super.update(map);
         if (facing == Direction.RIGHT) {x++;}
         if (facing == Direction.LEFT) {x--;}
         if (facing == Direction.UP) {y++;}

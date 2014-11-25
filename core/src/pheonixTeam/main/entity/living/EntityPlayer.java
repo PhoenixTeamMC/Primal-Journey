@@ -1,5 +1,6 @@
 package pheonixTeam.main.entity.living;
 
+import pheonixTeam.main.Map;
 import pheonixTeam.main.entity.enums.PrimaryClasses;
 import pheonixTeam.main.entity.enums.Races;
 import pheonixTeam.main.entity.enums.SecondaryClasses;
@@ -23,6 +24,11 @@ public class EntityPlayer extends EntityLiving
 
     public Item getHeldItem() {
         return inventory.get(heldItemIndex);
+    }
+
+    @Override
+    public void update(Map map) {
+        heldItem = inventory.get(heldItemIndex);
     }
 
     //Race
