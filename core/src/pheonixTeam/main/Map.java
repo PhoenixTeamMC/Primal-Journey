@@ -5,16 +5,17 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import pheonixTeam.main.entity.Entity;
-import pheonixTeam.main.entity.EntityVoid;
 
 public class Map {
 	
 	public Tile[][] tiles;
 	
 	public Map(int width, int height){
-		for(int i = 0; i < tiles.length; i++){
-			for(int g = 0; g < tiles[i].length; g++){
-				tiles[i][g] = new Tile(width, height);
+		tiles = new Tile[width][height];
+		
+		for(int i = 0; i < width; i++){
+			for(int g = 0; g < height; g++){
+				tiles[i][g] = new Tile(i, g);
 			}
 		}
 	}
@@ -59,9 +60,9 @@ public class Map {
 	}
 
 	public void display(){
-		for (Tile[] tile : tiles) {
-			for (Tile aTile : tile) {
-				aTile.display();
+		for (Tile[] tileArray : tiles) {
+			for (Tile tile : tileArray) {
+				tile.display();
 			}
 		}
 	}
