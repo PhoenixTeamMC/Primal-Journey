@@ -28,6 +28,7 @@ public class EntityPlayer extends EntityLiving
 
     @Override
     public void update(Map map) {
+        super.update(map);
         heldItem = inventory.get(heldItemIndex);
     }
 
