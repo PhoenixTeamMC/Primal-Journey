@@ -2,7 +2,7 @@ package pheonixTeam.main.entity;
 
 import pheonixTeam.main.Direction;
 import pheonixTeam.main.Map;
-import pheonixTeam.main.entity.Entity;
+import pheonixTeam.main.entity.living.EntityLiving;
 
 /**
  * @author Strikingwolf, chbachman
@@ -28,6 +28,7 @@ public class EntityFireball extends Entity
         if (entity instanceof EntityLiving) {
             EntityLiving living = (EntityLiving) entity;
             living.damage(damageAmount);
+            map.killEntity(this);
         }
     }
 }
