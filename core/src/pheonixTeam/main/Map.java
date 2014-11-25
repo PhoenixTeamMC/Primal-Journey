@@ -1,6 +1,5 @@
 package pheonixTeam.main;
 
-import java.awt.Graphics;
 import java.io.File;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -19,7 +18,8 @@ public class Map {
 		}
 	}
 	
-	public List<Entity> entityList = new CopyOnWriteArrayList<Entity>();
+	public static List<Entity> entityList = new CopyOnWriteArrayList<Entity>();
+	
 	public static Map getMap(File file){
 		return (Map) Main.xml.fromXML(file);
 	}

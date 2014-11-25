@@ -9,9 +9,9 @@ import pheonixTeam.main.Map;
  */
 public class Entity {
 
-	float x;
-	float y;
-	float z;
+	public float x;
+	public float y;
+	public float z;
 	
 	/**
 	 * If set to true, will be removed next tick.

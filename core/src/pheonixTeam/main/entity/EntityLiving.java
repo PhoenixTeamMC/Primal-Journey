@@ -3,6 +3,9 @@ package pheonixTeam.main.entity;
 import pheonixTeam.main.Direction;
 import pheonixTeam.main.entity.interfaces.IEnityDamageable;
 import pheonixTeam.main.entity.interfaces.IEntityMovable;
+import pheonixTeam.main.entity.skills.Skill;
+
+import java.util.List;
 
 /**
  * @author Strikingwolf, CBachman
@@ -10,6 +13,7 @@ import pheonixTeam.main.entity.interfaces.IEntityMovable;
 public class EntityLiving extends Entity implements IEnityDamageable, IEntityMovable
 {
     public int health = 0;
+    public List<Skill> skills;
 
     /**
      * Used to move an entity
