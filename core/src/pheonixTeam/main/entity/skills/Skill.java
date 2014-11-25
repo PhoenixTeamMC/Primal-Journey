@@ -1,5 +1,6 @@
 package pheonixTeam.main.entity.skills;
 
+import pheonixTeam.main.entity.Entity;
 import pheonixTeam.main.entity.EntityLiving;
 
 /**
@@ -10,7 +11,7 @@ public abstract class Skill
     /**
      * Implement this in your skill class
      */
-    public static String name;
+    public String name;
 
     /**
      * Implement in Skill class
@@ -23,9 +24,9 @@ public abstract class Skill
      * @param entity
      * @return boolean
      */
-    public static boolean checkIfEntityHasSkill(EntityLiving entity){
-        for (int i = 0; i < entity.skills.size() ; i++) {
-            if (entity.skills.get(i).name.equals(name)) {
+    public boolean checkIfEntityHasSkill(EntityLiving entity){
+        for (Skill skill : entity.skills) {
+            if (skill.name.equals(name)) {
                 return true;
             }
         }
