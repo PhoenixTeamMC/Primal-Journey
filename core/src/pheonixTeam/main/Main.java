@@ -32,9 +32,10 @@ public class Main extends ApplicationAdapter{
         camera.update(); 
 		
         batch = new SpriteBatch();
-        
+
 		currentMap = new Map(2000, 2000);
-		currentMap.spawnEntity(new EntityPlayer(currentMap, camera));
+		player = new EntityPlayer(currentMap, camera);
+		currentMap.spawnEntity(player);
 		
 		familiar = new EntityChris(this, player);
 		familiar.x = 10;
