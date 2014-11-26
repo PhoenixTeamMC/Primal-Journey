@@ -22,6 +22,7 @@ public class Map {
 	
 	TiledMap map;
 	OrthogonalTiledMapRenderer renderer;
+	public long time = 0;
 	
 	public Map(int width, int height){
 		
@@ -51,9 +52,7 @@ public class Map {
 	 * Called each tick, from the update method
 	 */
 	public void onTick(){
-		
-		
-		
+		time++;
 		for(Entity entity: entityList){
 			entity.update(this);
 			
