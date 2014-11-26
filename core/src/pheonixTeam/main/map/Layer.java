@@ -22,14 +22,11 @@ public class Layer implements Iterable<Integer>{
 	}
 	
 	public void generate(int x, int y){
-		if(!this.isValid(x,y)){
-			return;
-		}else{
-			
+		if(this.isValid(x,y)){
 			int average = this.averageOfAllAround(x, y);
-			
+
 			int newHeight = random.variance(average, getChange());
-			
+
 			this.set(x,y,newHeight);
 		}
 	}

@@ -37,7 +37,7 @@ public class Random {
 	public int variance(int number, int variance){
 		int num = (int) (Math.floor(Math.random()*variance) + 1); // this will get a number between 1 and 99;
 		num *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
-		
+
 		System.out.println(String.format("Original: %s. Final: %s", number, num + number));
 		
 		return num + number;
