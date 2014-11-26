@@ -3,6 +3,7 @@ package pheonixTeam.main.entity.living;
 import java.util.List;
 
 import pheonixTeam.main.Direction;
+import pheonixTeam.main.Main;
 import pheonixTeam.main.entity.enums.PrimaryClasses;
 import pheonixTeam.main.entity.enums.Races;
 import pheonixTeam.main.entity.enums.SecondaryClasses;
@@ -37,7 +38,9 @@ public class EntityPlayer extends EntityLiving
     SpriteBatch batch;
     Texture texture;
 
-    public EntityPlayer() {
+    Main main;
+    
+    public EntityPlayer(Main main) {
         batch = new SpriteBatch();
         texture = new Texture("player.png");
         skills.add(new SkillFireball());
@@ -80,5 +83,7 @@ public class EntityPlayer extends EntityLiving
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
             this.move(Direction.DOWN, moveSpeed);
         }
+        
+        //main.camera.position.set(this.x, this.y, 0);
     }
 }

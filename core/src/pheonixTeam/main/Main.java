@@ -30,8 +30,8 @@ public class Main extends ApplicationAdapter{
 		
         batch = new SpriteBatch();
         
-		currentMap = new Map(100, 100);
-		currentMap.spawnEntity(new EntityPlayer());
+		currentMap = new Map(500, 500);
+		currentMap.spawnEntity(new EntityPlayer(this));
 		
 	}
 
