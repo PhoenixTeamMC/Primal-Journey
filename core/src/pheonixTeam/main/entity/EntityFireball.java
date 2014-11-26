@@ -1,11 +1,11 @@
 package pheonixTeam.main.entity;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import pheonixTeam.main.Direction;
 import pheonixTeam.main.entity.living.EntityLiving;
 import pheonixTeam.main.map.Map;
+
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
  * @author Strikingwolf, chbachman

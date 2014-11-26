@@ -62,7 +62,11 @@ public class Map {
 	 */
 	public void onTick(){
 		time++;
-		for(Entity entity: entityList){
+		
+		for(int i = 0; i < entityList.size(); i++){
+			
+			Entity entity = entityList.get(i);
+			
 			entity.update(this);
 			
 			if(entity.isDead){

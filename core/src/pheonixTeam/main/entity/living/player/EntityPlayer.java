@@ -8,7 +8,6 @@ import pheonixTeam.main.entity.enums.PrimaryClasses;
 import pheonixTeam.main.entity.enums.Races;
 import pheonixTeam.main.entity.enums.SecondaryClasses;
 import pheonixTeam.main.entity.living.EntityLiving;
-import pheonixTeam.main.entity.living.familiars.EntityFamiliar;
 import pheonixTeam.main.entity.skills.Skill;
 import pheonixTeam.main.entity.skills.SkillFireball;
 import pheonixTeam.main.item.Item;

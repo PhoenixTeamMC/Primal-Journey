@@ -1,4 +1,7 @@
-package pheonixTeam.main.entity.living;
+ package pheonixTeam.main.entity.living;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import pheonixTeam.main.Direction;
 import pheonixTeam.main.entity.Entity;
@@ -7,17 +10,14 @@ import pheonixTeam.main.entity.interfaces.IEntityMovable;
 import pheonixTeam.main.entity.living.familiars.EntityFamiliar;
 import pheonixTeam.main.entity.skills.Skill;
 
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-
 /**
  * @author Strikingwolf, CBachman
  */
 public class EntityLiving extends Entity implements IEnityDamageable, IEntityMovable
 {
-    public List<EntityFamiliar> familiars = new CopyOnWriteArrayList<EntityFamiliar>();
+    public List<EntityFamiliar> familiars = new ArrayList<EntityFamiliar>();
     public int health = 100;
-    public List<Skill> skills = new CopyOnWriteArrayList<Skill>();
+    public List<Skill> skills = new ArrayList<Skill>();
 
     /**
      * Used to move an entity
