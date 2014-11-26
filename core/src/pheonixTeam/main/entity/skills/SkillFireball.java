@@ -1,10 +1,10 @@
 package pheonixTeam.main.entity.skills;
 
-import pheonixTeam.main.Map;
 import pheonixTeam.main.entity.EntityFireball;
 import pheonixTeam.main.entity.living.EntityLiving;
 import pheonixTeam.main.entity.living.EntityPlayer;
 import pheonixTeam.main.entity.enums.PrimaryClasses;
+import pheonixTeam.main.map.Map;
 
 /**
  * @author Strikingwolf, chbachman

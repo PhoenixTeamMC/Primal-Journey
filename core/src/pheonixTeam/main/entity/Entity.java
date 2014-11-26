@@ -1,7 +1,7 @@
 package pheonixTeam.main.entity;
 
 import pheonixTeam.main.Direction;
-import pheonixTeam.main.Map;
+import pheonixTeam.main.map.Map;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 

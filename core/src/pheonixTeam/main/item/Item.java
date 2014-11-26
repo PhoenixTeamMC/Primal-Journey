@@ -1,7 +1,7 @@
 package pheonixTeam.main.item;
 
-import pheonixTeam.main.Map;
 import pheonixTeam.main.entity.Entity;
+import pheonixTeam.main.map.Map;
 
 /**
  * @author Strikingwolf, chbachman

@@ -3,12 +3,12 @@ package pheonixTeam.main.entity.living;
 import java.util.List;
 
 import pheonixTeam.main.Direction;
-import pheonixTeam.main.Map;
 import pheonixTeam.main.entity.enums.PrimaryClasses;
 import pheonixTeam.main.entity.enums.Races;
 import pheonixTeam.main.entity.enums.SecondaryClasses;
 import pheonixTeam.main.entity.skills.SkillFireball;
 import pheonixTeam.main.item.Item;
+import pheonixTeam.main.map.Map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;

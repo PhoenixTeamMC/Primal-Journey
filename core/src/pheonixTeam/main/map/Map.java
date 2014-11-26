@@ -1,9 +1,10 @@
-package pheonixTeam.main;
+package pheonixTeam.main.map;
 
 import java.io.File;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import pheonixTeam.main.Main;
 import pheonixTeam.main.entity.Entity;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
