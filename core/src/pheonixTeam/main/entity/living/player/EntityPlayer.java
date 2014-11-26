@@ -1,6 +1,7 @@
 package pheonixTeam.main.entity.living.player;
 
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import pheonixTeam.main.Direction;
 import pheonixTeam.main.entity.enums.PrimaryClasses;
@@ -27,7 +28,7 @@ public class EntityPlayer extends EntityLiving
 {
     private int heldItemIndex = 0;
     public Item heldItem;
-    public List<Item> inventory;
+    public List<Item> inventory = new CopyOnWriteArrayList<Item>();
     public int mana = 20;
 
     public void switchHeldItemRight() {

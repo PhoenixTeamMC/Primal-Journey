@@ -3,6 +3,7 @@ package pheonixTeam.main.map;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import pheonixTeam.main.Main;
 import pheonixTeam.main.entity.Entity;
@@ -50,7 +51,7 @@ public class Map {
 		*/
 	}
 	
-	public static List<Entity> entityList = new ArrayList<Entity>();
+	public static List<Entity> entityList = new CopyOnWriteArrayList<Entity>();
 	
 	public static Map getMap(File file){
 		return (Map) Main.xml.fromXML(file);
