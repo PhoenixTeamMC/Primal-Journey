@@ -1,9 +1,9 @@
 package pheonixTeam.main.entity;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 import pheonixTeam.main.Direction;
 import pheonixTeam.main.Map;
+
+import com.badlogic.gdx.graphics.g2d.Batch;
 
 /**
  * Super class for every entity.
@@ -30,7 +30,7 @@ public class Entity {
 	 * @param batch 
 	 * @param g
 	 */
-	public void display(SpriteBatch batch){}
+	public void display(Batch batch){}
 	
 	/**
 	 * Called every tick, used to update logic. 

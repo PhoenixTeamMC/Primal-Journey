@@ -10,8 +10,8 @@ import pheonixTeam.main.entity.living.EntityLiving;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import pheonixTeam.main.entity.living.EntityLiving;
 
 /**
  * @author Strikingwolf, chbachman
@@ -44,7 +44,7 @@ public class EntityPlayer extends EntityLiving
     //TODO
     
     @Override
-    public void display(SpriteBatch batch){
+    public void display(Batch batch){
     	batch.draw(texture, x, y, 4, 4);
     }
     

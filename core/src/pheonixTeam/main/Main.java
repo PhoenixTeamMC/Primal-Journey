@@ -21,7 +21,7 @@ public class Main extends ApplicationAdapter{
 	@Override
 	public void create () {
 		
-		float w = Gdx.graphics.getWidth();                                       
+		float w = Gdx.graphics.getWidth();                                      
         float h = Gdx.graphics.getHeight();                                      
         camera = new OrthographicCamera(100, 100 * (h / w));                          
         camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);    
@@ -44,9 +44,9 @@ public class Main extends ApplicationAdapter{
 		currentMap.onTick();
 		
 		
-		batch.begin();
-		currentMap.display(batch);
-		batch.end();
+		currentMap.display(camera, batch);
+		
+		System.out.println(Gdx.graphics.getFramesPerSecond());
 		
 	}
 	

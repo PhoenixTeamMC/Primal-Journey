@@ -1,30 +1,26 @@
 package pheonixTeam.main;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
+import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 
-public class Tile {
+public class Tile{
 	
-	static Texture texture;
+	public StaticTiledMapTile tile;
 	
-	public final int x;
-	public final int y;
-	
-	public Tile(int x, int y){
-		this.x = x;
-		this.y = y;
-		
-		if(texture == null){
-			texture = new Texture(getTexturePath());
+	public Tile(){
+		if(tile == null){
+			tile = new StaticTiledMapTile(new TextureRegion(new Texture(getTexturePath())));
 		}
+	}
+	
+	public TiledMapTile getTile(){
+		return tile;
 	}
 	
 	public String getTexturePath(){
 		return "tileBlank.png";
-	}
-	
-	public void display(SpriteBatch batch) {
-		batch.draw(texture, x, y, 1, 1);
 	}
 
 }

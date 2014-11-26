@@ -4,9 +4,14 @@ import java.io.File;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 import pheonixTeam.main.entity.Entity;
+
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 /**
  * 
@@ -15,14 +20,28 @@ import pheonixTeam.main.entity.Entity;
  */
 public class Map {
 	
-	public Tile[][] tiles;
+	TiledMap map;
+	OrthogonalTiledMapRenderer renderer;
+	
+	Tile tile;
 	
 	public Map(int width, int height){
-		tiles = new Tile[width][height];
+		
+		map = new TiledMap();
+		renderer = new OrthogonalTiledMapRenderer(map, 1 / 16f);
+		tile = new Tile();
+		
+		map.getLayers().add(new TiledMapTileLayer(width, height, 16, 16));
+		
+		TiledMapTileLayer layer = (TiledMapTileLayer)map.getLayers().get(0);
 		
 		for(int i = 0; i < width; i++){
 			for(int g = 0; g < height; g++){
-				tiles[i][g] = new Tile(i, g);
+				
+				Cell cell = new Cell();
+				cell.setTile(tile.getTile());
+				
+				layer.setCell(i, g, cell);
 			}
 		}
 	}
@@ -37,6 +56,9 @@ public class Map {
 	 * Called each tick, from the update method
 	 */
 	public void onTick(){
+		
+		
+		
 		for(Entity entity: entityList){
 			entity.update(this);
 			
@@ -83,17 +105,24 @@ public class Map {
 		return null;
 	}
 
-	public void display(SpriteBatch batch){
+	public void display(OrthographicCamera camera, SpriteBatch batch){
 		
+		renderer.setView(camera);
+		renderer.render();
+		
+		batch.begin();
+		/*
 		for (Tile[] tileArray : tiles) {
 			for (Tile tile : tileArray) {
-				tile.display(batch);
+				//tile.display(renderer.getSpriteBatch());
 			}
 		}
-		
+		*/
 		
 		for(Entity entity: entityList){
 			entity.display(batch);
 		}
+		
+		batch.end();
 	}
 }
