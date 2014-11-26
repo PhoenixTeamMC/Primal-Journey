@@ -41,7 +41,8 @@ public class EntityPlayer extends EntityLiving
 
     Main main;
     
-    public EntityPlayer(Main main) {
+    public EntityPlayer(Main main1) {
+        main = main1;
         batch = new SpriteBatch();
         texture = new Texture("player.png");
         skills.add(new SkillFireball());
