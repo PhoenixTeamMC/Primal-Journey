@@ -9,6 +9,7 @@ import pheonixTeam.main.entity.enums.Races;
 import pheonixTeam.main.entity.enums.SecondaryClasses;
 import pheonixTeam.main.entity.living.EntityLiving;
 import pheonixTeam.main.entity.living.familiars.EntityFamiliar;
+import pheonixTeam.main.entity.skills.Skill;
 import pheonixTeam.main.entity.skills.SkillFireball;
 import pheonixTeam.main.item.Item;
 import pheonixTeam.main.map.Map;
@@ -27,6 +28,7 @@ public class EntityPlayer extends EntityLiving
     private int heldItemIndex = 0;
     public Item heldItem;
     public List<Item> inventory;
+    public int mana = 20;
 
     public void switchHeldItemRight() {
         heldItemIndex++;
@@ -49,7 +51,7 @@ public class EntityPlayer extends EntityLiving
     public Races race = Races.NONE;
 
     //Class
-    public PrimaryClasses primaryClass = PrimaryClasses.NONE;
+    public PrimaryClasses primaryClass = PrimaryClasses.MAGE;
     public SecondaryClasses secondaryClass = SecondaryClasses.NONE;
 
     //Stats
@@ -77,7 +79,16 @@ public class EntityPlayer extends EntityLiving
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
             this.move(Direction.DOWN, moveSpeed);
         }
-        
+        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && mana >= 20) {
+            for (Skill skill : skills) {
+                skill.doSkill(this);
+            }
+            mana -= 20;
+        }
+
+        if (map.time % 40 == 0) {
+            mana += 5;
+        }
         //main.camera.position.set(this.x, this.y, 0);
     }
 }

@@ -13,8 +13,6 @@ import pheonixTeam.main.map.Map;
 public class EntityFireball extends Entity
 {
     public int damageAmount = 5;
-    SpriteBatch batch;
-    Texture texture;
 
     public EntityFireball(float xPos, float yPos, Direction direction) {
         x = xPos;
@@ -22,12 +20,6 @@ public class EntityFireball extends Entity
         facing = direction;
         batch = new SpriteBatch();
         texture = new Texture("fireball.png");
-    }
-
-
-    @Override
-    public void display(Batch batch) {
-        batch.draw(texture, x, y, 4, 4);
     }
 
     @Override

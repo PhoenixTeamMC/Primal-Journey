@@ -1,5 +1,6 @@
 package pheonixTeam.main;
 
+import pheonixTeam.main.entity.living.familiars.EntityChris;
 import pheonixTeam.main.entity.living.player.EntityPlayer;
 import pheonixTeam.main.map.Map;
 
@@ -11,44 +12,47 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.thoughtworks.xstream.XStream;
 
 public class Main extends ApplicationAdapter{
-	
+
 	public static final XStream xml = new XStream();
-	
+
 	public Map currentMap;
-	
+	public EntityPlayer player;
 	public OrthographicCamera camera;
 	public SpriteBatch batch;
-	
+
 	@Override
 	public void create () {
-		
-		float w = Gdx.graphics.getWidth();                                      
-        float h = Gdx.graphics.getHeight();                                      
-        camera = new OrthographicCamera(100, 100 * (h / w));                          
-        camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);    
-        camera.update(); 
-		
-        batch = new SpriteBatch();
-        
+
+		float w = Gdx.graphics.getWidth();
+		float h = Gdx.graphics.getHeight();
+		camera = new OrthographicCamera(100, 100 * (h / w));
+		camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);
+		camera.update();
+
+		batch = new SpriteBatch();
+
+		player = new EntityPlayer(this);
 		currentMap = new Map(500, 500);
-		currentMap.spawnEntity(new EntityPlayer(this));
-		
+		currentMap.spawnEntity(player);
+
+		EntityChris familiar = new EntityChris(this, player);
+		currentMap.spawnEntity(familiar);
 	}
 
 	@Override
 	public void render () {
-		
-		
-		
+
+
+
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.setProjectionMatrix(camera.combined);
 		currentMap.onTick();
-		
-		
+
+
 		currentMap.display(camera, batch);
-		
+
 		//System.out.println(Gdx.graphics.getFramesPerSecond());
-		
+
 	}
 	
 	
