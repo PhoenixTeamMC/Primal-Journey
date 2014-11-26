@@ -1,8 +1,8 @@
 package pheonixTeam.main.map;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import pheonixTeam.main.Main;
 import pheonixTeam.main.entity.Entity;
@@ -20,8 +20,11 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
  */
 public class Map {
 	
-	TiledMap map;
-	OrthogonalTiledMapRenderer renderer;
+	public TiledMap map;
+	public OrthogonalTiledMapRenderer renderer;
+	
+	public final int width;
+	public final int height;
 	
 	public Map(int width, int height){
 		
@@ -32,6 +35,9 @@ public class Map {
 		
 		TiledMapTileLayer layer = new MapGenerator((TiledMapTileLayer)map.getLayers().get(0)).generate();
 		
+		this.width = width;
+		this.height = height;
+		
 		/*
 		for(int i = 0; i < width; i++){
 			for(int g = 0; g < height; g++){
@@ -41,7 +47,7 @@ public class Map {
 		*/
 	}
 	
-	public static List<Entity> entityList = new CopyOnWriteArrayList<Entity>();
+	public static List<Entity> entityList = new ArrayList<Entity>();
 	
 	public static Map getMap(File file){
 		return (Map) Main.xml.fromXML(file);

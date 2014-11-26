@@ -30,8 +30,8 @@ public class Main extends ApplicationAdapter{
 		
         batch = new SpriteBatch();
         
-		currentMap = new Map(500, 500);
-		currentMap.spawnEntity(new EntityPlayer(this));
+		currentMap = new Map(2000, 2000);
+		currentMap.spawnEntity(new EntityPlayer(currentMap, camera));
 		
 	}
 
@@ -47,7 +47,7 @@ public class Main extends ApplicationAdapter{
 		
 		currentMap.display(camera, batch);
 		
-		//System.out.println(Gdx.graphics.getFramesPerSecond());
+		System.out.println(Gdx.graphics.getFramesPerSecond());
 		
 	}
 	

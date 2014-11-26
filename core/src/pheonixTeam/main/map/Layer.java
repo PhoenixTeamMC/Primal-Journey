@@ -9,6 +9,8 @@ import pheonixTeam.main.util.Random;
 public class Layer implements Iterable<Integer>{
 	
 	public int[][] data;
+	public boolean[][] hasBeenDone;
+	
 	
 	public final int width;
 	public final int height;
@@ -17,8 +19,20 @@ public class Layer implements Iterable<Integer>{
 	
 	public Layer(int width, int height){
 		data = new int[width][height];
+		hasBeenDone = new boolean[width][height];
 		this.width = width;
 		this.height = height;
+		
+	}
+	
+	public void startGeneration(int x, int y){
+		for(int i = -5; i < 5; i++){
+			for(int g = -5; g < 5; g++){
+				if(random.chance(100 - (Math.abs(i * g) * 4))){
+					this.set(x, y, random.nextInt(getMin(), getMax()));
+				}
+			}
+		}
 	}
 	
 	public void generate(int x, int y){
@@ -43,7 +57,7 @@ public class Layer implements Iterable<Integer>{
 	}
 	
 	public int getChange(){
-		return 3;
+		return 5;
 	}
 	
 	public int get(int width, int height){
@@ -58,22 +72,22 @@ public class Layer implements Iterable<Integer>{
 
 		List<Integer> list = new ArrayList<Integer>(4);
 
-		if(isValid(x,y + 1)){
+		if(isValid(x,y + 1) && hasBeenDone[x][y + 1]){
 			list.add(this.get(x, y + 1));
 		}
 
-		if(isValid(x,y - 1)){
+		if(isValid(x,y - 1) && hasBeenDone[x][y - 1]){
 			list.add(this.get(x,y - 1));
 		}
 
-		if(isValid(x + 1,y)){
+		if(isValid(x + 1,y) && hasBeenDone[x + 1][y]){
 			list.add(this.get(x + 1,y));
 		}
 
-		if(isValid(x - 1,y)){
+		if(isValid(x - 1,y) && hasBeenDone[x - 1][y]){
 			list.add(this.get(x - 1,y));
 		}
-
+		
 		return list;
 	}
 
@@ -82,6 +96,13 @@ public class Layer implements Iterable<Integer>{
 	}
 	
 	public int set(int width, int height, int data){
+		
+		if(!isValid(width, height)){
+			return data;
+		}
+		
+		hasBeenDone[width][height] = true;
+		
 		int temp = this.data[width][height];
 		
 		if(data > this.getMax()){
@@ -95,10 +116,10 @@ public class Layer implements Iterable<Integer>{
 	}
 
 	
-	private static int average(List<Integer> ints){
+	private int average(List<Integer> ints){
 		
 		if(ints.isEmpty()){
-			throw new RuntimeException();
+			return random.nextInt(getMin(), getMax());
 		}
 		
 		int sum = 0;

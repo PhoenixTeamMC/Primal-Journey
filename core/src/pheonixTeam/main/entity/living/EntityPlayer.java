@@ -3,7 +3,6 @@ package pheonixTeam.main.entity.living;
 import java.util.List;
 
 import pheonixTeam.main.Direction;
-import pheonixTeam.main.Main;
 import pheonixTeam.main.entity.enums.PrimaryClasses;
 import pheonixTeam.main.entity.enums.Races;
 import pheonixTeam.main.entity.enums.SecondaryClasses;
@@ -13,12 +12,13 @@ import pheonixTeam.main.map.Map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
 
 /**
- * @author Strikingwolf
+ * @author Strikingwolf, chbachman
  */
 public class EntityPlayer extends EntityLiving
 {
@@ -34,16 +34,17 @@ public class EntityPlayer extends EntityLiving
     public Item getHeldItem() {
         return inventory.get(heldItemIndex);
     }
-
-    SpriteBatch batch;
+    
     Texture texture;
 
-    Main main;
+    OrthographicCamera camera;
     
-    public EntityPlayer(Main main) {
-        batch = new SpriteBatch();
+    public EntityPlayer(Map map, OrthographicCamera camera) {
         texture = new Texture("player.png");
         skills.add(new SkillFireball());
+        this.camera = camera;
+        this.x = map.width / 2;
+        this.y = map.height / 2;
     }
 
     //Race
@@ -67,23 +68,44 @@ public class EntityPlayer extends EntityLiving
         batch.draw(texture, x, y, 4, 4);
     }
 
-    public static final float moveSpeed = .2F;
+    public static final float moveSpeed = 1;
     
     @Override
     public void update(Map map) {
+    	
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+        	camera.translate(1, 0);
             this.move(Direction.RIGHT, moveSpeed);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+        	camera.translate(-1, 0);
             this.move(Direction.LEFT, moveSpeed);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+        	camera.translate(0, 1);
             this.move(Direction.UP, moveSpeed);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+        	camera.translate(0, -1);
             this.move(Direction.DOWN, moveSpeed);
         }
         
-        //main.camera.position.set(this.x, this.y, 0);
+        if(Gdx.input.isKeyPressed(Input.Keys.O)){
+        	camera.zoom += .02;
+        }
+        
+        if(Gdx.input.isKeyPressed(Input.Keys.L)){
+        	camera.zoom -= .02;
+        }
+        
+        camera.zoom = MathUtils.clamp(camera.zoom, 0.1f, 100/camera.viewportWidth);
+
+        float effectiveViewportWidth = camera.viewportWidth * camera.zoom;
+        float effectiveViewportHeight = camera.viewportHeight * camera.zoom;
+
+        //camera.position.x = MathUtils.clamp(camera.position.x, effectiveViewportWidth / 2f, 100 - effectiveViewportWidth / 2f);
+        //camera.position.y = MathUtils.clamp(camera.position.y, effectiveViewportHeight / 2f, 100 - effectiveViewportHeight / 2f);
+        
+        camera.update();
     }
 }

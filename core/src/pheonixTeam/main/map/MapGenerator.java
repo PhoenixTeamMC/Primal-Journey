@@ -12,9 +12,9 @@ public class MapGenerator {
 	private final int xSize;
 	private final int ySize;
 	
-	private final Random random = new Random();
-	
 	Layer height;
+	
+	Random random = new Random();
 	
 	public MapGenerator(TiledMapTileLayer layer){
 		this.layer = layer;
@@ -26,30 +26,47 @@ public class MapGenerator {
 	}
 	
 	public TiledMapTileLayer generate(){
-		startGeneration();
 		
-		for(int x = 0; x < layer.getWidth(); x++){
-			for(int y = 0; y < layer.getHeight(); y++){
-				getTile(height.get(x, y)).setTile(y, x, layer);
-			}
-		}
-		
-		return layer;
-	}
-	
-	private void startGeneration(){
 		int x = random.nextInt(xSize);
 		int y = random.nextInt(ySize);
 		
-		int currHeight = 10;
-		
-		height.set(x, y, currHeight);
-		
-		for(int i = 0; i < xSize; i++){
-			for(int g = 0; g < ySize; g++){
-				height.generate(x,y);
+		height.startGeneration(x, y);
+
+		//Upper Left Quadrant
+		for(int i = 0; i < x; i++){
+			for(int g = 0; g < y; g++){
+				height.generate(i,g);
 			}
 		}
+		
+		//Upper Right Quadrant
+		for(int i = x; i < xSize; i++){
+			for(int g = 0; g < y; g++){
+				height.generate(i,g);
+			}
+		}
+		
+		//Lower Left Quadrant
+		for(int i = 0; i < x; i++){
+			for(int g = y; g < ySize; g++){
+				height.generate(i,g);
+			}
+		}
+		
+		//Lower Right Quadrant
+		for(int i = x; i < xSize; i++){
+			for(int g = y; g < ySize; g++){
+				height.generate(i,g);
+			}
+		}
+
+		for(int i = 0; i < xSize; i++){
+			for(int g = 0; g < ySize; g++){
+				getTile(height.get(i, g)).setTile(g, i, layer);
+			}
+		}
+
+		return layer;
 	}
 	
 	private static Tile getTile(int height){
@@ -59,10 +76,12 @@ public class MapGenerator {
 			return Tile.DESERT; //Will be hill
 		}else if(height > 0){
 			return Tile.GRASS;
-		}else if(height > -20){
+		}else if(height > -10){
+			return Tile.GRASS;
+		}else if(height >= -30){
+			return Tile.WATER; //Will be deep ocean
+		}else if(height >= -50){
 			return Tile.WATER;
-		}else if(height > -50){
-			return Tile.ICE; //Will be deep ocean
 		}
 		
 		return Tile.DEFAULT; // Should never happen
