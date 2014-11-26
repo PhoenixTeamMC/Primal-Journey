@@ -1,10 +1,7 @@
 package pheonixTeam.main;
 
 import pheonixTeam.main.entity.living.familiars.EntityChris;
-<<<<<<< HEAD
-=======
 import pheonixTeam.main.entity.living.familiars.EntityFamiliar;
->>>>>>> development
 import pheonixTeam.main.entity.living.player.EntityPlayer;
 import pheonixTeam.main.map.Map;
 
@@ -20,17 +17,11 @@ public class Main extends ApplicationAdapter{
 	public static final XStream xml = new XStream();
 
 	public Map currentMap;
-<<<<<<< HEAD
-	public EntityPlayer player;
-	public OrthographicCamera camera;
-	public SpriteBatch batch;
-=======
 
 	public OrthographicCamera camera;
 	public SpriteBatch batch;
 	public EntityPlayer player;
-	
->>>>>>> development
+	public EntityFamiliar familiar;
 
 	@Override
 	public void create () {
@@ -43,21 +34,13 @@ public class Main extends ApplicationAdapter{
 
 		batch = new SpriteBatch();
 
-<<<<<<< HEAD
-		player = new EntityPlayer(this);
-		currentMap = new Map(500, 500);
-		currentMap.spawnEntity(player);
-
-		EntityChris familiar = new EntityChris(this, player);
-=======
 		currentMap = new Map(500, 500);
 		player = new EntityPlayer(this);
 		currentMap.spawnEntity(player);
 
-		EntityFamiliar familiar = new EntityChris(this, player);
+		familiar = new EntityChris(this, player);
 		familiar.x = 10;
 		familiar.y = 10;
->>>>>>> development
 		currentMap.spawnEntity(familiar);
 	}
 
