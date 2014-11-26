@@ -27,8 +27,7 @@ public class Entity {
 	//Api for Entities follows
 	/**
 	 * Called every tick, used to update graphics
-	 * @param batch 
-	 * @param g
+	 * @param batch
 	 */
 	public void display(Batch batch){}
 	

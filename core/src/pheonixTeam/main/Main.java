@@ -1,6 +1,6 @@
 package pheonixTeam.main;
 
-import pheonixTeam.main.entity.EntityPlayer;
+import pheonixTeam.main.entity.living.EntityPlayer;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;

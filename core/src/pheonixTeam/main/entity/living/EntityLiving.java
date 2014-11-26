@@ -7,6 +7,7 @@ import pheonixTeam.main.entity.interfaces.IEntityMovable;
 import pheonixTeam.main.entity.skills.Skill;
 
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @author Strikingwolf, CBachman
@@ -14,7 +15,7 @@ import java.util.List;
 public class EntityLiving extends Entity implements IEnityDamageable, IEntityMovable
 {
     public int health = 100;
-    public List<Skill> skills;
+    public List<Skill> skills = new CopyOnWriteArrayList<Skill>();
 
     /**
      * Used to move an entity
