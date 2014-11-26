@@ -1,4 +1,4 @@
-package pheonixTeam.main.entity.living;
+package pheonixTeam.main.entity.living.player;
 
 import java.util.List;
 
@@ -7,6 +7,8 @@ import pheonixTeam.main.Main;
 import pheonixTeam.main.entity.enums.PrimaryClasses;
 import pheonixTeam.main.entity.enums.Races;
 import pheonixTeam.main.entity.enums.SecondaryClasses;
+import pheonixTeam.main.entity.living.EntityLiving;
+import pheonixTeam.main.entity.living.familiars.EntityFamiliar;
 import pheonixTeam.main.entity.skills.SkillFireball;
 import pheonixTeam.main.item.Item;
 import pheonixTeam.main.map.Map;
@@ -35,9 +37,6 @@ public class EntityPlayer extends EntityLiving
         return inventory.get(heldItemIndex);
     }
 
-    SpriteBatch batch;
-    Texture texture;
-
     Main main;
     
     public EntityPlayer(Main main) {
@@ -61,11 +60,6 @@ public class EntityPlayer extends EntityLiving
 
     //Skills
     //TODO
-
-    @Override
-    public void display(Batch batch) {
-        batch.draw(texture, x, y, 4, 4);
-    }
 
     public static final float moveSpeed = .2F;
     
