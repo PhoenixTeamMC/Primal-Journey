@@ -1,5 +1,7 @@
 package pheonixTeam.main.entity;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import pheonixTeam.main.Direction;
 import pheonixTeam.main.map.Map;
 
@@ -11,6 +13,9 @@ import com.badlogic.gdx.graphics.g2d.Batch;
  *
  */
 public class Entity {
+
+	protected SpriteBatch batch;
+	protected Texture texture;
 
 	public Direction facing = Direction.RIGHT;
 
@@ -29,7 +34,7 @@ public class Entity {
 	 * Called every tick, used to update graphics
 	 * @param batch
 	 */
-	public void display(Batch batch){}
+	public void display(Batch batch) {batch.draw(texture, x, y, 4, 4);}
 	
 	/**
 	 * Called every tick, used to update logic. 
