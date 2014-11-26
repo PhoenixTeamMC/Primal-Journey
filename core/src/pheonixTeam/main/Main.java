@@ -37,7 +37,7 @@ public class Main extends ApplicationAdapter{
 		player = new EntityPlayer(currentMap, camera);
 		currentMap.spawnEntity(player);
 		
-		familiar = new EntityChris(this, player);
+		familiar = new EntityChris(player);
 		familiar.x = 10;
 		familiar.y = 10;
 		currentMap.spawnEntity(familiar);

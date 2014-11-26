@@ -1,11 +1,6 @@
 package pheonixTeam.main.entity.living.familiars;
 
-import com.badlogic.gdx.graphics.g2d.Batch;
-import pheonixTeam.main.Direction;
-import pheonixTeam.main.Main;
-import pheonixTeam.main.entity.Entity;
 import pheonixTeam.main.entity.living.EntityLiving;
-import pheonixTeam.main.entity.living.player.EntityPlayer;
 import pheonixTeam.main.map.Map;
 
 /**
@@ -19,7 +14,7 @@ public class EntityFamiliar extends EntityLiving
      * Sets owner
      * @param entity
      */
-    public EntityFamiliar(Main main, EntityLiving entity) {
+    public EntityFamiliar(EntityLiving entity) {
         super();
         owner = entity;
         entity.familiars.add(this);
