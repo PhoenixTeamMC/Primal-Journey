@@ -1,5 +1,8 @@
 package pheonixTeam.main.entity;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import pheonixTeam.main.Direction;
 import pheonixTeam.main.entity.living.EntityLiving;
 import pheonixTeam.main.map.Map;
@@ -10,11 +13,21 @@ import pheonixTeam.main.map.Map;
 public class EntityFireball extends Entity
 {
     public int damageAmount = 5;
+    SpriteBatch batch;
+    Texture texture;
 
     public EntityFireball(float xPos, float yPos, Direction direction) {
         x = xPos;
         y = yPos;
         facing = direction;
+        batch = new SpriteBatch();
+        texture = new Texture("fireball.png");
+    }
+
+
+    @Override
+    public void display(Batch batch) {
+        batch.draw(texture, x, y, 4, 4);
     }
 
     @Override

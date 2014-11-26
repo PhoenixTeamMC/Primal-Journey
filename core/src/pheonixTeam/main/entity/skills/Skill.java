@@ -23,9 +23,9 @@ public abstract class Skill
      * @param entity
      * @return boolean
      */
-    public boolean checkIfEntityHasSkill(EntityLiving entity){
+    public boolean checkIfEntityHasSkill(EntityLiving entity, Skill skillToCheck){
         for (Skill skill : entity.skills) {
-            if (skill.name.equals(name)) {
+            if (skill.name.equals(skillToCheck.name)) {
                 return true;
             }
         }

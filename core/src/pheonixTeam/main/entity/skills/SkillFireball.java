@@ -20,11 +20,11 @@ public class SkillFireball extends Skill
         if (entity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entity;
             if (player.primaryClass == PrimaryClasses.MAGE) {
-                if (checkIfEntityHasSkill(entity)) {
+                if (checkIfEntityHasSkill(entity, this)) {
                     Map.entityList.add(new EntityFireball(entity.x, entity.y, player.facing));
                 }
             }
-        } else if (checkIfEntityHasSkill(entity)) {
+        } else if (checkIfEntityHasSkill(entity, this)) {
             entity.map.spawnEntity(new EntityFireball(entity.x, entity.y, entity.facing));
         }
     }
