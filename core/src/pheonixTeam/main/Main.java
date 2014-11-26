@@ -47,7 +47,7 @@ public class Main extends ApplicationAdapter{
 		
 		currentMap.display(camera, batch);
 		
-		System.out.println(Gdx.graphics.getFramesPerSecond());
+		//System.out.println(Gdx.graphics.getFramesPerSecond());
 		
 	}
 	

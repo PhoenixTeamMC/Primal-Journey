@@ -11,7 +11,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 /**
@@ -24,27 +23,22 @@ public class Map {
 	TiledMap map;
 	OrthogonalTiledMapRenderer renderer;
 	
-	Tile tile;
-	
 	public Map(int width, int height){
 		
 		map = new TiledMap();
 		renderer = new OrthogonalTiledMapRenderer(map, 1 / 16f);
-		tile = new Tile();
 		
 		map.getLayers().add(new TiledMapTileLayer(width, height, 16, 16));
 		
-		TiledMapTileLayer layer = (TiledMapTileLayer)map.getLayers().get(0);
+		TiledMapTileLayer layer = new MapGenerator((TiledMapTileLayer)map.getLayers().get(0)).generate();
 		
+		/*
 		for(int i = 0; i < width; i++){
 			for(int g = 0; g < height; g++){
-				
-				Cell cell = new Cell();
-				cell.setTile(tile.getTile());
-				
-				layer.setCell(i, g, cell);
+				Tile.DESERT.setTile(i, g, layer);
 			}
 		}
+		*/
 	}
 	
 	public static List<Entity> entityList = new CopyOnWriteArrayList<Entity>();
