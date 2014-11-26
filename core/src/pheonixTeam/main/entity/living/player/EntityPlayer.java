@@ -1,4 +1,4 @@
-package pheonixTeam.main.entity.living;
+package pheonixTeam.main.entity.living.player;
 
 import java.util.List;
 
@@ -6,6 +6,9 @@ import pheonixTeam.main.Direction;
 import pheonixTeam.main.entity.enums.PrimaryClasses;
 import pheonixTeam.main.entity.enums.Races;
 import pheonixTeam.main.entity.enums.SecondaryClasses;
+import pheonixTeam.main.entity.living.EntityLiving;
+import pheonixTeam.main.entity.living.familiars.EntityFamiliar;
+import pheonixTeam.main.entity.skills.Skill;
 import pheonixTeam.main.entity.skills.SkillFireball;
 import pheonixTeam.main.item.Item;
 import pheonixTeam.main.map.Map;
@@ -25,6 +28,7 @@ public class EntityPlayer extends EntityLiving
     private int heldItemIndex = 0;
     public Item heldItem;
     public List<Item> inventory;
+    public int mana = 20;
 
     public void switchHeldItemRight() {
         heldItemIndex++;
@@ -51,7 +55,7 @@ public class EntityPlayer extends EntityLiving
     public Races race = Races.NONE;
 
     //Class
-    public PrimaryClasses primaryClass = PrimaryClasses.NONE;
+    public PrimaryClasses primaryClass = PrimaryClasses.MAGE;
     public SecondaryClasses secondaryClass = SecondaryClasses.NONE;
 
     //Stats
@@ -107,5 +111,17 @@ public class EntityPlayer extends EntityLiving
         //camera.position.y = MathUtils.clamp(camera.position.y, effectiveViewportHeight / 2f, 100 - effectiveViewportHeight / 2f);
         
         camera.update();
+        
+        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && mana >= 20) {
+            for (Skill skill : skills) {
+                skill.doSkill(this);
+            }
+            mana -= 20;
+        }
+
+        if (map.time % 40 == 0) {
+            mana += 5;
+        }
+
     }
 }

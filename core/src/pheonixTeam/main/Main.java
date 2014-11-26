@@ -1,6 +1,8 @@
 package pheonixTeam.main;
 
-import pheonixTeam.main.entity.living.EntityPlayer;
+import pheonixTeam.main.entity.living.familiars.EntityChris;
+import pheonixTeam.main.entity.living.familiars.EntityFamiliar;
+import pheonixTeam.main.entity.living.player.EntityPlayer;
 import pheonixTeam.main.map.Map;
 
 import com.badlogic.gdx.ApplicationAdapter;
@@ -11,17 +13,18 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.thoughtworks.xstream.XStream;
 
 public class Main extends ApplicationAdapter{
-	
+
 	public static final XStream xml = new XStream();
-	
+
 	public Map currentMap;
-	
+
 	public OrthographicCamera camera;
 	public SpriteBatch batch;
-	
+	public EntityPlayer player;
+	public EntityFamiliar familiar;
+
 	@Override
 	public void create () {
-		
 		float w = Gdx.graphics.getWidth();                                      
         float h = Gdx.graphics.getHeight();                                      
         camera = new OrthographicCamera(100, 100 * (h / w));                          
@@ -33,22 +36,26 @@ public class Main extends ApplicationAdapter{
 		currentMap = new Map(2000, 2000);
 		currentMap.spawnEntity(new EntityPlayer(currentMap, camera));
 		
+		familiar = new EntityChris(this, player);
+		familiar.x = 10;
+		familiar.y = 10;
+		currentMap.spawnEntity(familiar);
 	}
 
 	@Override
 	public void render () {
-		
-		
-		
+
+
+
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.setProjectionMatrix(camera.combined);
 		currentMap.onTick();
-		
-		
+
+
 		currentMap.display(camera, batch);
 		
 		System.out.println(Gdx.graphics.getFramesPerSecond());
-		
+
 	}
 	
 	
