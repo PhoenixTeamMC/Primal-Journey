@@ -15,8 +15,8 @@ public class Main extends ApplicationAdapter{
 	
 	public Map currentMap;
 	
-	OrthographicCamera camera;
-	SpriteBatch batch;
+	public OrthographicCamera camera;
+	public SpriteBatch batch;
 	
 	@Override
 	public void create () {

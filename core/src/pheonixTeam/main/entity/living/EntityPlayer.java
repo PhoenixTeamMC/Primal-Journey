@@ -64,19 +64,21 @@ public class EntityPlayer extends EntityLiving
         batch.draw(texture, x, y, 4, 4);
     }
 
+    public static final float moveSpeed = .2F;
+    
     @Override
     public void update(Map map) {
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            this.move(Direction.RIGHT, .1F);
+            this.move(Direction.RIGHT, moveSpeed);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            this.move(Direction.LEFT, .1F);
+            this.move(Direction.LEFT, moveSpeed);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            this.move(Direction.UP, .1F);
+            this.move(Direction.UP, moveSpeed);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            this.move(Direction.DOWN, .1F);
+            this.move(Direction.DOWN, moveSpeed);
         }
     }
 }
