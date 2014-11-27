@@ -9,8 +9,8 @@ import pheonixTeam.main.entity.enums.PrimaryClasses;
 import pheonixTeam.main.entity.enums.Races;
 import pheonixTeam.main.entity.enums.SecondaryClasses;
 import pheonixTeam.main.entity.living.EntityLiving;
-import pheonixTeam.main.entity.skills.Skill;
 import pheonixTeam.main.entity.skills.SkillFireball;
+import pheonixTeam.main.eventhandler.EventHandler;
 import pheonixTeam.main.item.Item;
 import pheonixTeam.main.map.Map;
 import pheonixTeam.main.util.Direction;
@@ -59,6 +59,7 @@ public class EntityPlayer extends EntityLiving
 		this.camera = camera;
 		
 		skills.add(new SkillFireball());
+		EventHandler.leftListeners.add(this);
 	}
 
 	//Inventory
@@ -115,10 +116,6 @@ public class EntityPlayer extends EntityLiving
         //camera.position.y = MathUtils.clamp(camera.position.y, effectiveViewportHeight / 2f, 100 - effectiveViewportHeight / 2f);
         
         camera.update();
-        
-        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
-            left();
-        }
 
 		if (map.time % 40 == 0) {
 			mana += 5;
@@ -140,7 +137,7 @@ public class EntityPlayer extends EntityLiving
 		return "player.png";
 	}
 
-	public void left() {skills.get(skillWanted).doSkill(this);}
+	public void leftClick() {skills.get(skillWanted).doSkill(this);}
 
 	public void right() {}
 }

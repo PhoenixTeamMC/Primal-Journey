@@ -1,7 +1,6 @@
 package pheonixTeam.main.map;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -13,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import pheonixTeam.main.eventhandler.EventHandler;
 
 /**
  * 
@@ -62,7 +62,8 @@ public class Map {
 	 */
 	public void onTick(){
 		time++;
-		
+		EventHandler.leftClick();
+
 		for(int i = 0; i < entityList.size(); i++){
 			
 			Entity entity = entityList.get(i);
