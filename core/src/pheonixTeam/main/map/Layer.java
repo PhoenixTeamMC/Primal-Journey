@@ -17,6 +17,10 @@ public class Layer implements Iterable<Integer>{
 	
 	public Random random = new Random();
 	
+	private int max = 50;
+	private int min = -50;
+	private int change = 5;
+	
 	public Layer(int width, int height){
 		data = new int[width][height];
 		hasBeenDone = new boolean[width][height];
@@ -29,7 +33,7 @@ public class Layer implements Iterable<Integer>{
 		for(int i = -5; i < 5; i++){
 			for(int g = -5; g < 5; g++){
 				if(random.chance(100 - (Math.abs(i * g) * 4))){
-					this.set(x, y, random.nextInt(getMin(), getMax()));
+					this.set(x, y, random.nextInt(min, max));
 				}
 			}
 		}
@@ -39,22 +43,25 @@ public class Layer implements Iterable<Integer>{
 		if(this.isValid(x,y)){
 			int average = this.averageOfAllAround(x, y);
 
-			int newHeight = random.variance(average, getChange());
+			int newHeight = random.variance(average, change);
 
 			this.set(x,y,newHeight);
 		}
 	}
 	
-	public int getMax(){
-		return 50;
+	public Layer setMax(int max){
+		this.max = max;
+		return this;
 	}
 	
-	public int getMin(){
-		return -50;
+	public Layer setMin(int min){
+		this.min = min;
+		return this;
 	}
 	
-	public int getChange(){
-		return 5;
+	public Layer setChange(int change){
+		this.change = change;
+		return this;
 	}
 	
 	public int get(int width, int height){
@@ -102,10 +109,10 @@ public class Layer implements Iterable<Integer>{
 		
 		int temp = this.data[width][height];
 		
-		if(data > this.getMax()){
-			data = this.getMax();
-		}else if(data < this.getMin()){
-			data = this.getMin();
+		if(data > this.max){
+			data = this.max;
+		}else if(data < this.min){
+			data = this.min;
 		}
 		
 		this.data[width][height] = data;
@@ -116,7 +123,7 @@ public class Layer implements Iterable<Integer>{
 	private int average(List<Integer> ints){
 		
 		if(ints.isEmpty()){
-			return random.nextInt(getMin(), getMax());
+			return random.nextInt(min, max);
 		}
 		
 		int sum = 0;

@@ -37,7 +37,7 @@ public class Map {
 		
 		map.getLayers().add(new TiledMapTileLayer(width, height, 16, 16));
 		
-		TiledMapTileLayer layer = new MapGenerator((TiledMapTileLayer)map.getLayers().get(0)).generate();
+		new MapGenerator((TiledMapTileLayer)map.getLayers().get(0)).generate();
 		
 		this.width = width;
 		this.height = height;
