@@ -1,5 +1,7 @@
 package pheonixTeam.main.util;
 
+import java.util.List;
+
 /**
  * Wrapper for Random Class
  * @author CBachman
@@ -43,6 +45,12 @@ public class Random {
 	
 	public boolean chance(int percent){
 		return percent > this.nextInt(100);
+	}
+	
+	public <E> E pickRandom(List<E> list){
+		
+		return list.get(nextInt(list.size()));
+		
 	}
 	
 

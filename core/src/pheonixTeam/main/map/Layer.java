@@ -17,9 +17,9 @@ public class Layer implements Iterable<Integer>{
 	
 	public Random random = new Random();
 	
-	private int max = 50;
-	private int min = -50;
-	private int change = 5;
+	public int max = 50;
+	public int min = -50;
+	public int change = 5;
 	
 	public Layer(int width, int height){
 		data = new int[width][height];
