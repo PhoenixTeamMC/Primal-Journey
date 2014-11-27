@@ -1,19 +1,19 @@
 package pheonixTeam.main.map;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import pheonixTeam.main.Main;
 import pheonixTeam.main.entity.Entity;
+import pheonixTeam.main.eventhandler.EventHandler;
+import pheonixTeam.main.util.InputUtil;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import pheonixTeam.main.eventhandler.EventHandler;
-import pheonixTeam.main.util.InputUtil;
 
 /**
  * 
@@ -43,16 +43,9 @@ public class Map {
 		this.width = width;
 		this.height = height;
 		
-		/*
-		for(int i = 0; i < width; i++){
-			for(int g = 0; g < height; g++){
-				Tile.DESERT.setTile(i, g, layer);
-			}
-		}
-		*/
 	}
 	
-	public static List<Entity> entityList = new CopyOnWriteArrayList<Entity>();
+	public static List<Entity> entityList = new ArrayList<Entity>();
 	
 	public static Map getMap(File file){
 		return (Map) Main.xml.fromXML(file);
@@ -121,13 +114,6 @@ public class Map {
 		renderer.render();
 		
 		batch.begin();
-		/*
-		for (Tile[] tileArray : tiles) {
-			for (Tile tile : tileArray) {
-				//tile.display(renderer.getSpriteBatch());
-			}
-		}
-		*/
 		
 		for(Entity entity: entityList){
 			entity.display(batch);

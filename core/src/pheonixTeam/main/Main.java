@@ -7,6 +7,7 @@ import pheonixTeam.main.map.Map;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -23,8 +24,13 @@ public class Main extends ApplicationAdapter{
 	public EntityPlayer player;
 	public EntityFamiliar familiar;
 
+	public FPSLogger log;
+	
 	@Override
 	public void create () {
+		//Setup the FPS Tracker
+		log = new FPSLogger();
+		
 		//Setup the camera
         camera = new OrthographicCamera(100, 100 * (Gdx.graphics.getHeight() / Gdx.graphics.getWidth()));                          
         camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);    
@@ -34,7 +40,7 @@ public class Main extends ApplicationAdapter{
         batch = new SpriteBatch();
 
         //Setup the Map.
-		currentMap = new Map(2000, 2000);
+		currentMap = new Map(50, 50);
 		
 		//Add the player to the map.
 		player = new EntityPlayer(currentMap, camera);
@@ -45,10 +51,13 @@ public class Main extends ApplicationAdapter{
 		familiar.x = 10;
 		familiar.y = 10;
 		currentMap.spawnEntity(familiar);
+		
 	}
 
 	@Override
 	public void render () {
+		log.log();
+		
 		//Clear the screen
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
