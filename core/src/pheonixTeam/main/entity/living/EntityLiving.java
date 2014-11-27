@@ -1,10 +1,12 @@
  package pheonixTeam.main.entity.living;
 
+ import pheonixTeam.main.Main;
  import pheonixTeam.main.entity.Entity;
  import pheonixTeam.main.entity.interfaces.IEnityDamageable;
  import pheonixTeam.main.entity.interfaces.IEntityMovable;
  import pheonixTeam.main.entity.living.familiars.EntityFamiliar;
  import pheonixTeam.main.entity.skills.Skill;
+ import pheonixTeam.main.map.Map;
  import pheonixTeam.main.util.Direction;
  import pheonixTeam.main.util.Random;
 
@@ -16,11 +18,15 @@
  */
 public abstract class EntityLiving extends Entity implements IEnityDamageable, IEntityMovable
 {
-    
-	
+
+    //Mana
+    public int mana = 20;
+
     public int health = 100;
     
     public List<EntityFamiliar> familiars = new ArrayList<EntityFamiliar>();
+
+    public int skillWanted = 0;
     public List<Skill> skills = new ArrayList<Skill>();
 
     public Random random = new Random();

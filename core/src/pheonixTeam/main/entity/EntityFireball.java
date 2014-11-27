@@ -1,8 +1,8 @@
 package pheonixTeam.main.entity;
 
-import pheonixTeam.main.Direction;
 import pheonixTeam.main.entity.living.EntityLiving;
 import pheonixTeam.main.map.Map;
+import pheonixTeam.main.util.Direction;
 
 /**
  * @author Strikingwolf, chbachman

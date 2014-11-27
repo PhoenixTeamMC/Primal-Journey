@@ -14,6 +14,7 @@ import pheonixTeam.main.entity.skills.SkillFireball;
 import pheonixTeam.main.item.Item;
 import pheonixTeam.main.map.Map;
 import pheonixTeam.main.util.Direction;
+import pheonixTeam.main.util.InputUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +28,12 @@ public class EntityPlayer extends EntityLiving
 	private int heldItemIndex = 0;
 	public Item heldItem;
 
-	//TODO: Are we going to have a infinite inventory?
+	//TODO: Are we going to have a infinite inventory? I don't know, but this is how it is for now
 	public List<Item> inventory = new ArrayList<Item>();
 
-	//Mana
-	public int mana = 20;
+	//Experience
+	public int totalExp = 0;
+	public int expLevel = 0;
 
 	//Camera, for moving
 	OrthographicCamera camera;
@@ -79,7 +81,6 @@ public class EntityPlayer extends EntityLiving
     
     @Override
     public void update(Map map) {
-    	
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
         	camera.translate(1, 0);
             this.move(Direction.RIGHT, moveSpeed);
@@ -115,21 +116,31 @@ public class EntityPlayer extends EntityLiving
         
         camera.update();
         
-        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && mana >= 20) {
-            for (Skill skill : skills) {
-                skill.doSkill(this);
-            }
-            mana -= 20;
+        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+            left();
         }
 
-        if (map.time % 40 == 0) {
-            mana += 5;
-        }
+		if (map.time % 40 == 0) {
+			mana += 5;
+		}
+		if (totalExp % 50 == 0) {
+			expLevel++;
+		}
 
+		int numPressed = InputUtil.getNumPressed();
+		if (numPressed != -1) {
+			if (numPressed < skills.size()) {
+				skillWanted = numPressed;
+			}
+		}
     }
 
 	@Override
 	public String getTextureLocation() {
 		return "player.png";
 	}
+
+	public void left() {skills.get(skillWanted).doSkill(this);}
+
+	public void right() {}
 }
