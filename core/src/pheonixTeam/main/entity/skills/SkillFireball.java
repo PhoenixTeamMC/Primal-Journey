@@ -1,9 +1,9 @@
 package pheonixTeam.main.entity.skills;
 
 import pheonixTeam.main.entity.EntityFireball;
+import pheonixTeam.main.entity.enums.PrimaryClasses;
 import pheonixTeam.main.entity.living.EntityLiving;
 import pheonixTeam.main.entity.living.player.EntityPlayer;
-import pheonixTeam.main.entity.enums.PrimaryClasses;
 import pheonixTeam.main.map.Map;
 
 /**
@@ -21,11 +21,11 @@ public class SkillFireball extends Skill
             EntityPlayer player = (EntityPlayer) entity;
             if (player.primaryClass == PrimaryClasses.MAGE) {
                 if (checkIfEntityHasSkill(entity, this)) {
-                    Map.entityList.add(new EntityFireball(entity.x, entity.y, player.facing));
+                    Map.entityList.add(new EntityFireball(player.pos, player.facing));
                 }
             }
         } else if (checkIfEntityHasSkill(entity, this)) {
-            entity.map.spawnEntity(new EntityFireball(entity.x, entity.y, entity.facing));
+            entity.map.spawnEntity(new EntityFireball(entity.pos, entity.facing));
         }
     }
 }

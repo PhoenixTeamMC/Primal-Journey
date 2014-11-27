@@ -1,10 +1,9 @@
 package pheonixTeam.main.entity;
 
-import pheonixTeam.main.Direction;
-import pheonixTeam.main.map.Map;
-
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import pheonixTeam.main.map.Map;
+import pheonixTeam.main.util.Direction;
 
 /**
  * Super class for every entity.

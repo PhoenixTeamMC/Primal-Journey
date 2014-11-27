@@ -1,9 +1,10 @@
 package pheonixTeam.main.entity.living.player;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import pheonixTeam.main.Direction;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.math.MathUtils;
 import pheonixTeam.main.entity.enums.PrimaryClasses;
 import pheonixTeam.main.entity.enums.Races;
 import pheonixTeam.main.entity.enums.SecondaryClasses;
@@ -12,13 +13,10 @@ import pheonixTeam.main.entity.skills.Skill;
 import pheonixTeam.main.entity.skills.SkillFireball;
 import pheonixTeam.main.item.Item;
 import pheonixTeam.main.map.Map;
+import pheonixTeam.main.util.Direction;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.math.MathUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Strikingwolf, chbachman

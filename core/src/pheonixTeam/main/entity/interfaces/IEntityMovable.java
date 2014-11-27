@@ -1,7 +1,7 @@
 package pheonixTeam.main.entity.interfaces;
 
-import pheonixTeam.main.Direction;
 import pheonixTeam.main.entity.Entity;
+import pheonixTeam.main.util.Direction;
 
 /**
  * @author Strikingwolf

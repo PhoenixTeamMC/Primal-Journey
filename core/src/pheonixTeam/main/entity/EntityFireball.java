@@ -4,8 +4,6 @@ import pheonixTeam.main.Direction;
 import pheonixTeam.main.entity.living.EntityLiving;
 import pheonixTeam.main.map.Map;
 
-import com.badlogic.gdx.graphics.Texture;
-
 /**
  * @author Strikingwolf, chbachman
  */

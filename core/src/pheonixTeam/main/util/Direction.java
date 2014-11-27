@@ -1,4 +1,4 @@
-package pheonixTeam.main;
+package pheonixTeam.main.util;
 
 public enum Direction
 {

@@ -1,15 +1,15 @@
  package pheonixTeam.main.entity.living;
 
-import java.util.ArrayList;
-import java.util.List;
+ import pheonixTeam.main.entity.Entity;
+ import pheonixTeam.main.entity.interfaces.IEnityDamageable;
+ import pheonixTeam.main.entity.interfaces.IEntityMovable;
+ import pheonixTeam.main.entity.living.familiars.EntityFamiliar;
+ import pheonixTeam.main.entity.skills.Skill;
+ import pheonixTeam.main.util.Direction;
+ import pheonixTeam.main.util.Random;
 
-import pheonixTeam.main.Direction;
-import pheonixTeam.main.entity.Entity;
-import pheonixTeam.main.entity.interfaces.IEnityDamageable;
-import pheonixTeam.main.entity.interfaces.IEntityMovable;
-import pheonixTeam.main.entity.living.familiars.EntityFamiliar;
-import pheonixTeam.main.entity.skills.Skill;
-import pheonixTeam.main.util.Random;
+ import java.util.ArrayList;
+ import java.util.List;
 
 /**
  * @author Strikingwolf, CBachman

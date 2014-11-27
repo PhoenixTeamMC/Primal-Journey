@@ -2,9 +2,6 @@ package pheonixTeam.main.entity.living.familiars;
 
 import pheonixTeam.main.entity.living.EntityLiving;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 /**
  * @author Strikingwolf, chbachman
  */
