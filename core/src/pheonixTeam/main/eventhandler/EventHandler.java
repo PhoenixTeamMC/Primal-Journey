@@ -13,6 +13,7 @@ public class EventHandler
 {
     public static ArrayList<Object> leftListeners = new ArrayList<Object>();
     public static ArrayList<Object> damgageListeners = new ArrayList<Object>();
+    public static ArrayList<Object> numListeners = new ArrayList<Object>();
 
     public static void leftClick() {
         if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
@@ -22,5 +23,11 @@ public class EventHandler
 
     public static void onDamage() {
         ReflectionUtil.runMethodsFromObjects(damgageListeners, "onDamage");
+    }
+
+    public static void numPressed(int num) {
+        if (num != -1) {
+            ReflectionUtil.runMethodsFromObjects(numListeners, "onNumPressed", num);
+        }
     }
 }

@@ -13,6 +13,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import pheonixTeam.main.eventhandler.EventHandler;
+import pheonixTeam.main.util.InputUtil;
 
 /**
  * 
@@ -63,6 +64,7 @@ public class Map {
 	public void onTick(){
 		time++;
 		EventHandler.leftClick();
+		EventHandler.numPressed(InputUtil.getNumPressed());
 
 		for(int i = 0; i < entityList.size(); i++){
 			

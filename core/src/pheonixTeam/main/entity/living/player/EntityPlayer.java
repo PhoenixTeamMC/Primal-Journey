@@ -11,10 +11,11 @@ import pheonixTeam.main.entity.enums.SecondaryClasses;
 import pheonixTeam.main.entity.living.EntityLiving;
 import pheonixTeam.main.entity.skills.SkillFireball;
 import pheonixTeam.main.eventhandler.EventHandler;
+import pheonixTeam.main.eventhandler.interfaces.ILeftListener;
+import pheonixTeam.main.eventhandler.interfaces.INumListener;
 import pheonixTeam.main.item.Item;
 import pheonixTeam.main.map.Map;
 import pheonixTeam.main.util.Direction;
-import pheonixTeam.main.util.InputUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ import java.util.List;
 /**
  * @author Strikingwolf, chbachman
  */
-public class EntityPlayer extends EntityLiving
+public class EntityPlayer extends EntityLiving implements ILeftListener, INumListener
 {
 	//Held Item
 	private int heldItemIndex = 0;
@@ -60,6 +61,7 @@ public class EntityPlayer extends EntityLiving
 		
 		skills.add(new SkillFireball());
 		EventHandler.leftListeners.add(this);
+		EventHandler.numListeners.add(this);
 	}
 
 	//Inventory
@@ -123,13 +125,6 @@ public class EntityPlayer extends EntityLiving
 		if (totalExp % 50 == 0) {
 			expLevel++;
 		}
-
-		int numPressed = InputUtil.getNumPressed();
-		if (numPressed != -1) {
-			if (numPressed < skills.size()) {
-				skillWanted = numPressed;
-			}
-		}
     }
 
 	@Override
@@ -140,4 +135,14 @@ public class EntityPlayer extends EntityLiving
 	public void leftClick() {skills.get(skillWanted).doSkill(this);}
 
 	public void right() {}
+
+	@Override
+	public void onNumPressed(int num) {
+		System.out.print("You pressed " + num + "\n");
+		if (num != -1) {
+			if (num < skills.size()) {
+				skillWanted = num;
+			}
+		}
+	}
 }
