@@ -1,7 +1,7 @@
 package pheonixTeam.main.entity.living.player;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import pheonixTeam.main.Direction;
 import pheonixTeam.main.entity.enums.PrimaryClasses;
@@ -25,49 +25,54 @@ import com.badlogic.gdx.math.MathUtils;
  */
 public class EntityPlayer extends EntityLiving
 {
-    private int heldItemIndex = 0;
-    public Item heldItem;
-    public List<Item> inventory = new CopyOnWriteArrayList<Item>();
-    public int mana = 20;
+	//Held Item
+	private int heldItemIndex = 0;
+	public Item heldItem;
 
-    public void switchHeldItemRight() {
-        heldItemIndex++;
-        heldItem = inventory.get(heldItemIndex);
-    }
+	//TODO: Are we going to have a infinite inventory?
+	public List<Item> inventory = new ArrayList<Item>();
 
-    public Item getHeldItem() {
-        return inventory.get(heldItemIndex);
-    }
-    
-    Texture texture;
+	//Mana
+	public int mana = 20;
 
-    OrthographicCamera camera;
-    
-    public EntityPlayer(Map map, OrthographicCamera camera) {
-        texture = new Texture("player.png");
-        skills.add(new SkillFireball());
-        this.camera = camera;
-        this.x = map.width / 2;
-        this.y = map.height / 2;
-    }
+	//Camera, for moving
+	OrthographicCamera camera;
 
-    //Race
-    public Races race = Races.NONE;
+	//Race
+	public Races race = Races.NONE;
 
-    //Class
-    public PrimaryClasses primaryClass = PrimaryClasses.MAGE;
-    public SecondaryClasses secondaryClass = SecondaryClasses.NONE;
+	//Class
+	public PrimaryClasses primaryClass = PrimaryClasses.MAGE;
+	public SecondaryClasses secondaryClass = SecondaryClasses.NONE;
 
-    //Stats
-    int constitution = 0;
-    int strength = 0;
-    int dexterity = 0;
-    int wisdom = 0;
+	//Stats
+	int constitution = 0;
+	int strength = 0;
+	int dexterity = 0;
+	int wisdom = 0;
 
-    //Skills
-    //TODO
+	//Skills
+	//TODO
 
-    @Override
+	public EntityPlayer(Map map, OrthographicCamera camera) {
+		super(map.width/2, map.height/2);
+		this.camera = camera;
+		
+		skills.add(new SkillFireball());
+	}
+
+	//Inventory
+	public void switchHeldItemRight() {
+		heldItemIndex++;
+		heldItem = inventory.get(heldItemIndex);
+	}
+
+	public Item getHeldItem() {
+		return inventory.get(heldItemIndex);
+	}
+
+	
+	@Override
     public void display(Batch batch) {
         batch.draw(texture, x, y, 4, 4);
     }
@@ -124,4 +129,9 @@ public class EntityPlayer extends EntityLiving
         }
 
     }
+
+	@Override
+	public String getTextureLocation() {
+		return "player.png";
+	}
 }

@@ -10,8 +10,12 @@ public abstract class Skill
     /**
      * Implement this in your skill class
      */
-    public String name;
-
+    public final String name;
+    
+    public Skill(String name){
+    	this.name = name;
+    }
+    
     /**
      * Implement in Skill class
      * @param entity

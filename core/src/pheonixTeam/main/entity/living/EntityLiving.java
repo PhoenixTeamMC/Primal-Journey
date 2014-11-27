@@ -9,16 +9,27 @@ import pheonixTeam.main.entity.interfaces.IEnityDamageable;
 import pheonixTeam.main.entity.interfaces.IEntityMovable;
 import pheonixTeam.main.entity.living.familiars.EntityFamiliar;
 import pheonixTeam.main.entity.skills.Skill;
+import pheonixTeam.main.util.Random;
 
 /**
  * @author Strikingwolf, CBachman
  */
-public class EntityLiving extends Entity implements IEnityDamageable, IEntityMovable
+public abstract class EntityLiving extends Entity implements IEnityDamageable, IEntityMovable
 {
-    public List<EntityFamiliar> familiars = new ArrayList<EntityFamiliar>();
+    
+	
     public int health = 100;
+    
+    public List<EntityFamiliar> familiars = new ArrayList<EntityFamiliar>();
     public List<Skill> skills = new ArrayList<Skill>();
 
+    public Random random = new Random();
+    
+    public EntityLiving(float x, float y) {
+		super(x, y);
+	}
+
+    
     /**
      * Used to move an entity
      * @param direction

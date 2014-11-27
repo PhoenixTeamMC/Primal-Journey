@@ -25,18 +25,22 @@ public class Main extends ApplicationAdapter{
 
 	@Override
 	public void create () {
-		float w = Gdx.graphics.getWidth();                                      
-        float h = Gdx.graphics.getHeight();                                      
-        camera = new OrthographicCamera(100, 100 * (h / w));                          
+		//Setup the camera
+        camera = new OrthographicCamera(100, 100 * (Gdx.graphics.getHeight() / Gdx.graphics.getWidth()));                          
         camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);    
         camera.update(); 
 		
+        //Setup the SpriteBatch for rendering Entities
         batch = new SpriteBatch();
 
+        //Setup the Map.
 		currentMap = new Map(2000, 2000);
+		
+		//Add the player to the map.
 		player = new EntityPlayer(currentMap, camera);
 		currentMap.spawnEntity(player);
 		
+		//Add the familiar
 		familiar = new EntityChris(player);
 		familiar.x = 10;
 		familiar.y = 10;
@@ -45,18 +49,16 @@ public class Main extends ApplicationAdapter{
 
 	@Override
 	public void render () {
-
-
-
+		//Clear the screen
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.setProjectionMatrix(camera.combined);
-		currentMap.onTick();
-
-
-		currentMap.display(camera, batch);
 		
-		System.out.println(Gdx.graphics.getFramesPerSecond());
-
+		//Set the batch to adjust for the camera
+		batch.setProjectionMatrix(camera.combined);
+		
+		//Tick the map
+		currentMap.onTick();
+		
+		currentMap.display(camera, batch);
 	}
 	
 	

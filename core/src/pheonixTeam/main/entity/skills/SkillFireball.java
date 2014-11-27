@@ -12,7 +12,7 @@ import pheonixTeam.main.map.Map;
 public class SkillFireball extends Skill
 {
     public SkillFireball() {
-        name = "Fireball";
+    	super("Fireball");
     }
 
     @Override

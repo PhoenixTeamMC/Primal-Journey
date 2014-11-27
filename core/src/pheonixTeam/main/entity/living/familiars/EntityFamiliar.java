@@ -6,7 +6,7 @@ import pheonixTeam.main.map.Map;
 /**
  * @author Strikingwolf, chbachman
  */
-public class EntityFamiliar extends EntityLiving
+public abstract class EntityFamiliar extends EntityLiving
 {
     public EntityLiving owner;
 
@@ -15,7 +15,7 @@ public class EntityFamiliar extends EntityLiving
      * @param entity
      */
     public EntityFamiliar(EntityLiving entity) {
-        super();
+        super(entity.x, entity.y);
         owner = entity;
         entity.familiars.add(this);
     }

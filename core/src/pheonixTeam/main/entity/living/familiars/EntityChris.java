@@ -17,7 +17,13 @@ public class EntityChris extends EntityFamiliar
      */
     public EntityChris(EntityLiving entity) {
         super(entity);
-        batch = new SpriteBatch();
-        texture = new Texture("chris.png");
     }
+
+	@Override
+	public String getTextureLocation() {
+		// TODO Auto-generated method stub
+		return "chris.png";
+	}
+    
+    
 }

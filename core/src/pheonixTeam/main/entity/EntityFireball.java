@@ -5,7 +5,6 @@ import pheonixTeam.main.entity.living.EntityLiving;
 import pheonixTeam.main.map.Map;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
  * @author Strikingwolf, chbachman
@@ -15,11 +14,8 @@ public class EntityFireball extends Entity
     public int damageAmount = 5;
 
     public EntityFireball(float xPos, float yPos, Direction direction) {
-        x = xPos;
-        y = yPos;
+    	super(xPos, yPos);
         facing = direction;
-        batch = new SpriteBatch();
-        texture = new Texture("fireball.png");
     }
 
     @Override
@@ -36,4 +32,9 @@ public class EntityFireball extends Entity
             map.killEntity(this);
         }
     }
+
+	@Override
+	public String getTextureLocation() {
+		return "fireball.png";
+	}
 }
