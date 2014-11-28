@@ -137,8 +137,7 @@ public class EntityPlayer extends EntityLiving implements ILeftListener, INumLis
 	public void right() {}
 
 	@Override
-	public void onNumPressed(int num) {
-		System.out.print("You pressed " + num + "\n");
+	public void onNumPressed(Integer num) {
 		if (num != -1) {
 			if (num < skills.size()) {
 				skillWanted = num;
