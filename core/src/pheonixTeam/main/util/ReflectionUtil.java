@@ -1,6 +1,6 @@
 package pheonixTeam.main.util;
 
-import java.lang.reflect.Array;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -16,6 +16,12 @@ public class ReflectionUtil
         }
     }
 
+    public static void runMethodsFromClasses(ArrayList<Class> classes, String methodName, Object... args) {
+        for (int i = 0; i < classes.size(); i++) {
+            runMethodFromClass(classes.get(i), methodName, args);
+        }
+    }
+
     public static void runMethodFromObj(Object obj, String methodName, Object... args) {
         try {
             Class[] params = new Class[args.length];
@@ -23,6 +29,7 @@ public class ReflectionUtil
                 params[i] = args[i].getClass();
             }
             Method method = obj.getClass().getMethod(methodName, params);
+            method.setAccessible(true);
             method.invoke(obj, args);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
@@ -31,5 +38,52 @@ public class ReflectionUtil
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void runMethodFromClass(Class aClass, String methodName, Object... args) {
+        try {
+            Class[] params = new Class[args.length];
+            for (int i = 0; i < args.length; i++) {
+                params[i] = args[i].getClass();
+            }
+            Method method = aClass.getMethod(methodName, params);
+            method.setAccessible(true);
+            method.invoke(aClass, args);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void changeFieldFromObj(Object obj, String fieldName, Object value) {
+        Class aClass = obj.getClass();
+        Field field;
+        try {
+            field = aClass.getField(fieldName);
+            field.setAccessible(true);
+            field.set(obj, value);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static Object getFieldValFromObj(Object obj, String fieldName) {
+        Class aClass = obj.getClass();
+        Field field;
+        try {
+            field = aClass.getField(fieldName);
+            field.setAccessible(true);
+            return field.get(obj);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
