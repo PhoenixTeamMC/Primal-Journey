@@ -28,7 +28,7 @@ public class ReflectionUtil
             for (int i = 0; i < args.length; i++) {
                 params[i] = args[i].getClass();
             }
-            Method method = obj.getClass().getMethod(methodName, params);
+            Method method = obj.getClass().getDeclaredMethod(methodName, params);
             method.setAccessible(true);
             method.invoke(obj, args);
         } catch (NoSuchMethodException e) {
@@ -46,7 +46,7 @@ public class ReflectionUtil
             for (int i = 0; i < args.length; i++) {
                 params[i] = args[i].getClass();
             }
-            Method method = aClass.getMethod(methodName, params);
+            Method method = aClass.getDeclaredMethod(methodName, params);
             method.setAccessible(true);
             method.invoke(aClass, args);
         } catch (NoSuchMethodException e) {
@@ -62,7 +62,7 @@ public class ReflectionUtil
         Class aClass = obj.getClass();
         Field field;
         try {
-            field = aClass.getField(fieldName);
+            field = aClass.getDeclaredField(fieldName);
             field.setAccessible(true);
             field.set(obj, value);
         } catch (NoSuchFieldException e) {
@@ -76,7 +76,7 @@ public class ReflectionUtil
         Class aClass = obj.getClass();
         Field field;
         try {
-            field = aClass.getField(fieldName);
+            field = aClass.getDeclaredField(fieldName);
             field.setAccessible(true);
             return field.get(obj);
         } catch (NoSuchFieldException e) {
