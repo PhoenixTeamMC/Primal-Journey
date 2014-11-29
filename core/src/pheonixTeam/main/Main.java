@@ -32,7 +32,9 @@ public class Main extends ApplicationAdapter{
 		log = new FPSLogger();
 		
 		//Setup the camera
-        camera = new OrthographicCamera(100, 100 * (Gdx.graphics.getHeight() / Gdx.graphics.getWidth()));                          
+		float w = Gdx.graphics.getWidth();
+		float h = Gdx.graphics.getHeight();
+        camera = new OrthographicCamera(100, 100 * (h/w));
         camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);    
         camera.update(); 
 		
