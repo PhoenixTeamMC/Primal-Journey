@@ -11,8 +11,6 @@ import pheonixTeam.main.entity.enums.SecondaryClasses;
 import pheonixTeam.main.entity.living.EntityLiving;
 import pheonixTeam.main.entity.skills.SkillFireball;
 import pheonixTeam.main.eventhandler.EventHandler;
-import pheonixTeam.main.eventhandler.interfaces.ILeftListener;
-import pheonixTeam.main.eventhandler.interfaces.INumListener;
 import pheonixTeam.main.item.Item;
 import pheonixTeam.main.map.Map;
 import pheonixTeam.main.util.Direction;
@@ -23,7 +21,7 @@ import java.util.List;
 /**
  * @author Strikingwolf, chbachman
  */
-public class EntityPlayer extends EntityLiving implements ILeftListener, INumListener
+public class EntityPlayer extends EntityLiving
 {
 	//Held Item
 	private int heldItemIndex = 0;
@@ -132,12 +130,11 @@ public class EntityPlayer extends EntityLiving implements ILeftListener, INumLis
 		return "player.png";
 	}
 
-	public void leftClick() {skills.get(skillWanted).doSkill(this);}
+	private void leftClick() {skills.get(skillWanted).doSkill(this);}
 
 	public void right() {}
 
-	@Override
-	public void onNumPressed(Integer num) {
+	private void onNumPressed(Integer num) {
 		if (num != -1) {
 			if (num < skills.size()) {
 				skillWanted = num;
