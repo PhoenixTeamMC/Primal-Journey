@@ -130,11 +130,11 @@ public class EntityPlayer extends EntityLiving
 		return "player.png";
 	}
 
-	private void leftClick() {skills.get(skillWanted).doSkill(this);}
+	public void leftClick() {skills.get(skillWanted).doSkill(this);}
 
 	public void right() {}
 
-	private void onNumPressed(Integer num) {
+	public void onNumPressed(Integer num) {
 		if (num != -1) {
 			if (num < skills.size()) {
 				skillWanted = num;
