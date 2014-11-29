@@ -13,7 +13,7 @@ public class Layer implements Iterable<Integer>{
 	
 	
 	public final int width;
-	public final int height;
+	public final int height; 
 	
 	public Random random = new Random();
 	
