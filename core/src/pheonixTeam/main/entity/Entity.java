@@ -14,6 +14,7 @@ public abstract class Entity {
 
 	protected Texture texture;
 
+
 	public Direction facing = Direction.RIGHT;
 
 	public Map map;
@@ -22,13 +23,12 @@ public abstract class Entity {
 	public float y;
 
 	public Entity(float x, float y){
-		
 		this.x = x;
 		this.y = y;
 		
 		texture = new Texture(this.getTextureLocation());
 	}
-	
+
 	/**
 	 * If set to true, will be removed next tick.
 	 */
@@ -54,7 +54,7 @@ public abstract class Entity {
 	 * Called when a entity is spawned in
 	 * @param map
 	 */
-	public void onSpawn(Map map) {}
+	public void onSpawn(Map map) {this.map = map;}
 	
 	/**
 	 * Called when an entity is killed

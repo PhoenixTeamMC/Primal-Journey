@@ -11,13 +11,15 @@ public abstract class EntityFamiliar extends EntityLiving
     public EntityLiving owner;
 
     /**
-     * Sets owner
-     * @param entity
+     * Makes entity
+     * @param x
+     * @param y
+     * @param theOwner
      */
-    public EntityFamiliar(EntityLiving entity) {
-        super(entity.x, entity.y);
-        owner = entity;
-        entity.familiars.add(this);
+    public EntityFamiliar(float x, float y, EntityLiving theOwner) {
+        super(x, y);
+        owner = theOwner;
+        theOwner.familiars.add(this);
     }
 
     /**

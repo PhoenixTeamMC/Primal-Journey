@@ -49,11 +49,8 @@ public class Main extends ApplicationAdapter{
 		currentMap.spawnEntity(player);
 		
 		//Add the familiar
-		familiar = new EntityChris(player);
-		familiar.x = 10;
-		familiar.y = 10;
+		familiar = new EntityChris(10, 10, currentMap, player);
 		currentMap.spawnEntity(familiar);
-		
 	}
 
 	@Override

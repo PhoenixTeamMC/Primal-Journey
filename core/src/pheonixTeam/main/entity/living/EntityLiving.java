@@ -1,6 +1,5 @@
  package pheonixTeam.main.entity.living;
 
- import pheonixTeam.main.Main;
  import pheonixTeam.main.entity.Entity;
  import pheonixTeam.main.entity.interfaces.IEnityDamageable;
  import pheonixTeam.main.entity.interfaces.IEntityMovable;
