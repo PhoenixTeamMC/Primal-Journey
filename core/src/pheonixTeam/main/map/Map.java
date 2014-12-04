@@ -45,7 +45,7 @@ public class Map {
 		
 	}
 	
-	public static List<Entity> entityList = new ArrayList<Entity>();
+	public static ArrayList<Entity> entityList = new ArrayList<Entity>();
 	
 	public static Map getMap(File file){
 		return (Map) Main.xml.fromXML(file);
@@ -78,7 +78,7 @@ public class Map {
 	public void spawnEntity(Entity entity){
 		
 		entity.onSpawn(this);
-		
+
 		entityList.add(entity);
 	}
 	
@@ -106,6 +106,43 @@ public class Map {
 			}
 		}
 		return null;
+	}
+
+	public ArrayList<Entity> getEntitiesWithin(float x, float y, float withinX, float withinY) {
+		ArrayList<Entity> returnList = new ArrayList<Entity>();
+		float maxX = x + withinX;
+		float minX = x - withinX;
+		float maxY = y + withinY;
+		float minY = y - withinY;
+
+		for (Entity entity : entityList) {
+			if (minX <= entity.x && entity.x <= maxX) {
+				if (minY <= entity.y && entity.y <= maxY) {
+					returnList.add(entity);
+				}
+			}
+		}
+		return returnList;
+	}
+
+	public Entity getClosestEntityOutOf(float x, float y, ArrayList<Entity> entities) {
+		Entity closest = null;
+		for (Entity entity : entities) {
+			if (closest == null) {
+				closest = entity;
+			} else {
+				float thisDiff = (entity.x - x) + (entity.y - y);
+				float lastDiff = (closest.x - x) + (closest.y - y);
+				if (thisDiff < lastDiff) {
+					closest = entity;
+				}
+			}
+		}
+		return closest;
+	}
+
+	public Entity getClosestEntity(float x, float y) {
+		return getClosestEntityOutOf(x, y, entityList);
 	}
 
 	public void display(OrthographicCamera camera, SpriteBatch batch){

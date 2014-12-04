@@ -22,6 +22,4 @@ public class EntityChris extends EntityFamiliar
 		// TODO Auto-generated method stub
 		return "chris.png";
 	}
-    
-    
 }
