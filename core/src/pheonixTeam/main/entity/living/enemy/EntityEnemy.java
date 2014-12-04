@@ -12,10 +12,13 @@ import java.util.ArrayList;
 public abstract class EntityEnemy extends EntityLiving
 {
     public Entity target;
+
     public float trackRangeX;
     public float trackRangeY;
     public float attackRangeX;
     public float attackRangeY;
+
+    public int damageAmount;
 
     public EntityEnemy(float x, float y) {
         super(x, y);
@@ -32,5 +35,13 @@ public abstract class EntityEnemy extends EntityLiving
         }
         target = map.getClosestEntityOutOf(x, y, validTargets);
         moveToEntity(target, attackRangeX - 1, attackRangeY - 1);
+        for (Entity entity : map.getEntitiesWithin(target.x, target.y, trackRangeX, trackRangeY)) {
+            if (entity == this) {
+                if (target instanceof EntityLiving){
+                    EntityLiving living = (EntityLiving) target;
+                    living.damage(damageAmount);
+                }
+            }
+        }
     }
 }
