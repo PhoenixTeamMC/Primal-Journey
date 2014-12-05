@@ -72,9 +72,9 @@ public class Main extends ApplicationAdapter{
 		
 		currentMap.display(camera, batch);
 	}
-	
-	
-	
+
+
+
 	/*
 	 * Animation Code:
 	 * batch = new SpriteBatch();

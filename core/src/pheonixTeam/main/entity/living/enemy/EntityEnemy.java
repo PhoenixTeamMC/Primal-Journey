@@ -34,12 +34,14 @@ public abstract class EntityEnemy extends EntityLiving
             }
         }
         target = map.getClosestEntityOutOf(x, y, validTargets);
-        moveToEntity(target, attackRangeX - 1, attackRangeY - 1);
-        for (Entity entity : map.getEntitiesWithin(target.x, target.y, trackRangeX, trackRangeY)) {
-            if (entity == this) {
-                if (target instanceof EntityLiving){
-                    EntityLiving living = (EntityLiving) target;
-                    living.damage(damageAmount);
+        if (target != null) {
+            moveToEntity(target, attackRangeX - 1, attackRangeY - 1);
+            for (Entity entity : map.getEntitiesWithin(target.x, target.y, trackRangeX, trackRangeY)) {
+                if (entity == this) {
+                    if (target instanceof EntityLiving) {
+                        EntityLiving living = (EntityLiving) target;
+                        living.damage(damageAmount);
+                    }
                 }
             }
         }
