@@ -1,16 +1,16 @@
  package pheonixTeam.main.entity.living;
 
- import pheonixTeam.main.entity.Entity;
- import pheonixTeam.main.entity.interfaces.IEnityDamageable;
- import pheonixTeam.main.entity.interfaces.IEntityMovable;
- import pheonixTeam.main.entity.living.familiars.EntityFamiliar;
- import pheonixTeam.main.entity.skills.Skill;
- import pheonixTeam.main.map.Map;
- import pheonixTeam.main.util.Direction;
- import pheonixTeam.main.util.Random;
-
  import java.util.ArrayList;
- import java.util.List;
+import java.util.List;
+
+import pheonixTeam.main.entity.Entity;
+import pheonixTeam.main.entity.interfaces.IEnityDamageable;
+import pheonixTeam.main.entity.interfaces.IEntityMovable;
+import pheonixTeam.main.entity.living.familiars.EntityFamiliar;
+import pheonixTeam.main.entity.skills.Skill;
+import pheonixTeam.main.event.entity.EntityDamagedEvent;
+import pheonixTeam.main.util.Direction;
+import pheonixTeam.main.util.Random;
 
 /**
  * @author Strikingwolf, CBachman
@@ -72,6 +72,9 @@ public abstract class EntityLiving extends Entity implements IEnityDamageable, I
 
     @Override
     public void damage(int amount) {
+    	new EntityDamagedEvent(this, amount).callEvent();
+    	
+    	
         health -= amount;
         if(health <= 0){
         	this.isDead = true;

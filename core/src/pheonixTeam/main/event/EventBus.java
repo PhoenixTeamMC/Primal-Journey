@@ -1,18 +1,22 @@
 package pheonixTeam.main.event;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class EventBus {
 	
-	private HashMap<Class<? extends Event>, ArrayList<Method>> listenerList;
+	public static final EventBus INSTANCE = new EventBus();
 	
-	public EventBus(){
-		 listenerList = new HashMap<Class<? extends Event>, ArrayList<Method>>();
+	HashMap<Class<? extends Event>, List<EventListener<Object,Method>>> listenerList;
+	
+	private EventBus(){
+		 listenerList = new HashMap<Class<? extends Event>, List<EventListener<Object,Method>>>();
 	}
 	
-	public static void register(Object target){
+	public void register(Object target){
 		
 		Class<?> clazz = target.getClass();
 		
@@ -32,10 +36,52 @@ public class EventBus {
 					throw new RuntimeException("The parameter is not a Event type");
 				}
 				
+				@SuppressWarnings("unchecked")
+				Class<? extends Event> eventClass = (Class<? extends Event>) parameter;
+				
+				List<EventListener<Object, Method>> eventListenerList = listenerList.get(eventClass); 
+				
+				if(eventListenerList == null){
+					eventListenerList = new ArrayList<EventListener<Object, Method>>();
+				}
+				
+				eventListenerList.add(new EventListener<Object, Method>(target, method));
 				
 				
 			}
 			
+		}
+		
+	}
+	
+	public static class EventListener<E, M>{
+		
+		public final Object o;
+		public final Method m;
+		
+		public EventListener(Object o, Method m){
+			this.o = o;
+			this.m = m;
+		}
+		
+		public Object getObj(){
+			return o;
+		}
+		
+		public Method getMethod(){
+			return m;
+		}
+		
+		public void invoke(Event event){
+			try {
+				this.m.invoke(o, event);
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (IllegalArgumentException e) {
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				e.printStackTrace();
+			}
 		}
 		
 	}
