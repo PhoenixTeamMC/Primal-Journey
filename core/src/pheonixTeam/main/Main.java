@@ -28,6 +28,10 @@ public class Main extends ApplicationAdapter{
 	
 	@Override
 	public void create () {
+		char c = 7;
+		
+		System.out.println(c);
+		
 		//Setup the FPS Tracker
 		log = new FPSLogger();
 		
