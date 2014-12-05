@@ -5,6 +5,7 @@ This is the PhoenixTeam RPG
 
 ##Run From Src tutorial
 Here are the steps needed to run this from the source, as we don't have a compiled version yet this is absolutely necessary
+
 1. If you don't have one already download either IntelliJ IDEA or Eclipse
 
 2. Download or clone the source code from github
