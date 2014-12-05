@@ -122,7 +122,7 @@ Pheonix RPG crashes every time?  Have a suggestion?  Found a bug?  Create an iss
 5. Click `Submit new issue`, and wait for feedback!
 
 ###Credits
-chbachman - Lead Dev
-Striking wolf - Lead Dev
+chbachman - Lead Dev.
+Strikingwolf - Lead Dev.
 
- - For creating most of this Readme. 
+Pahimar - For creating most of this Readme. 
