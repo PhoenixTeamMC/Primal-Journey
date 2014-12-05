@@ -60,8 +60,6 @@ public class Main extends ApplicationAdapter{
 		currentMap.spawnEntity(familiar);
 		
 		EventBus.INSTANCE.register(this);
-		
-		new LeftClickEvent(5L).callEvent();
 	}
 
 	@Override
@@ -79,12 +77,6 @@ public class Main extends ApplicationAdapter{
 		
 		currentMap.display(camera, batch);
 	}
-
-	@Subscribe
-	public void temp(LeftClickEvent event){
-		System.out.println("Event has been called");
-	}
-	
 
 	/*
 	 * Animation Code:

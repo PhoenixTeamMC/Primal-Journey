@@ -87,7 +87,7 @@ public class Map {
 	 * @param entity
 	 */
 	public void spawnEntity(Entity entity){
-		
+		EventBus.INSTANCE.register(entity);
 		entity.onSpawn(this);
 
 		entityList.add(entity);
