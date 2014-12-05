@@ -48,11 +48,7 @@ public class EventBus {
 					return;
 				}
 				
-				
 				eventListenerList.add(new EventListener<Object, Method>(target, method));
-				
-				
-				
 			}
 			
 		}

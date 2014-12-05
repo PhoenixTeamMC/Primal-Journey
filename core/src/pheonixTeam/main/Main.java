@@ -3,7 +3,6 @@ package pheonixTeam.main;
 import pheonixTeam.main.entity.living.familiars.EntityChris;
 import pheonixTeam.main.entity.living.familiars.EntityFamiliar;
 import pheonixTeam.main.entity.living.player.EntityPlayer;
-import pheonixTeam.main.event.EventBus;
 import pheonixTeam.main.event.Subscribe;
 import pheonixTeam.main.event.entity.LeftClickEvent;
 import pheonixTeam.main.map.Map;
@@ -58,10 +57,6 @@ public class Main extends ApplicationAdapter{
 		//Add the familiar
 		familiar = new EntityChris(10, 10, currentMap, player);
 		currentMap.spawnEntity(familiar);
-		
-		EventBus.INSTANCE.register(this);
-		
-		new LeftClickEvent(5L).callEvent();
 	}
 
 	@Override
