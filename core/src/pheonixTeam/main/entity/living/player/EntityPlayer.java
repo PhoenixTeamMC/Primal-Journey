@@ -11,10 +11,8 @@ import pheonixTeam.main.entity.enums.SecondaryClasses;
 import pheonixTeam.main.entity.living.EntityLiving;
 import pheonixTeam.main.entity.skills.SkillFireball;
 import pheonixTeam.main.event.Subscribe;
-import pheonixTeam.main.event.entity.EntityDamagedEvent;
 import pheonixTeam.main.event.entity.LeftClickEvent;
 import pheonixTeam.main.event.entity.NumPressedEvent;
-import pheonixTeam.main.eventhandler.EventHandler;
 import pheonixTeam.main.item.Item;
 import pheonixTeam.main.map.Map;
 import pheonixTeam.main.util.Direction;
@@ -62,8 +60,6 @@ public class EntityPlayer extends EntityLiving
 		this.camera = camera;
 		
 		skills.add(new SkillFireball());
-		EventHandler.leftListeners.add(this);
-		EventHandler.numListeners.add(this);
 	}
 
 	//Inventory
@@ -135,7 +131,9 @@ public class EntityPlayer extends EntityLiving
 	}
 
 	@Subscribe
-	public void leftClick(LeftClickEvent event) {skills.get(skillWanted).doSkill(this);}
+	public void leftClick(LeftClickEvent event) {
+		skills.get(skillWanted).doSkill(this);
+	}
 
 	public void right() {}
 

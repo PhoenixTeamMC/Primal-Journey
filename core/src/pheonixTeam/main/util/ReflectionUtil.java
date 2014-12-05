@@ -11,14 +11,14 @@ import java.util.ArrayList;
 public class ReflectionUtil
 {
     public static void runMethodsFromObjects(ArrayList<Object> objects, String methodName, Object... args) {
-        for (int i = 0; i < objects.size(); i++) {
-            runMethodFromObj(objects.get(i), methodName, args );
+        for (Object object : objects) {
+            runMethodFromObj(object, methodName, args);
         }
     }
 
     public static void runMethodsFromClasses(ArrayList<Class> classes, String methodName, Object... args) {
-        for (int i = 0; i < classes.size(); i++) {
-            runMethodFromClass(classes.get(i), methodName, args);
+        for (Class aClass : classes) {
+            runMethodFromClass(aClass, methodName, args);
         }
     }
 
@@ -40,7 +40,7 @@ public class ReflectionUtil
         }
     }
 
-    public static void runMethodFromClass(Class aClass, String methodName, Object... args) {
+    public static void runMethodFromClass(Class<?> aClass, String methodName, Object... args) {
         try {
             Class[] params = new Class[args.length];
             for (int i = 0; i < args.length; i++) {

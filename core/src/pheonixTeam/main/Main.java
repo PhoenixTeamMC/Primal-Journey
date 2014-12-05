@@ -75,12 +75,6 @@ public class Main extends ApplicationAdapter{
 		currentMap.display(camera, batch);
 	}
 
-	@Subscribe
-	public void temp(LeftClickEvent event){
-		System.out.println("Event has been called");
-	}
-	
-
 	/*
 	 * Animation Code:
 	 * batch = new SpriteBatch();
