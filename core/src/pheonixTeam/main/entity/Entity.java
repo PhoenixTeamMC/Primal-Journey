@@ -2,6 +2,7 @@ package pheonixTeam.main.entity;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import pheonixTeam.main.event.EventBus;
 import pheonixTeam.main.map.Map;
 import pheonixTeam.main.util.Direction;
 
@@ -23,6 +24,7 @@ public abstract class Entity {
 	public float y;
 
 	public Entity(float x, float y){
+		EventBus.INSTANCE.register(this);
 		this.x = x;
 		this.y = y;
 		

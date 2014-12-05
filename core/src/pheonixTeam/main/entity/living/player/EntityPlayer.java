@@ -10,6 +10,10 @@ import pheonixTeam.main.entity.enums.Races;
 import pheonixTeam.main.entity.enums.SecondaryClasses;
 import pheonixTeam.main.entity.living.EntityLiving;
 import pheonixTeam.main.entity.skills.SkillFireball;
+import pheonixTeam.main.event.Subscribe;
+import pheonixTeam.main.event.entity.EntityDamagedEvent;
+import pheonixTeam.main.event.entity.LeftClickEvent;
+import pheonixTeam.main.event.entity.NumPressedEvent;
 import pheonixTeam.main.eventhandler.EventHandler;
 import pheonixTeam.main.item.Item;
 import pheonixTeam.main.map.Map;
@@ -130,14 +134,17 @@ public class EntityPlayer extends EntityLiving
 		return "player.png";
 	}
 
-	private void leftClick() {skills.get(skillWanted).doSkill(this);}
+	@Subscribe
+	public void leftClick(LeftClickEvent event) {skills.get(skillWanted).doSkill(this);}
 
 	public void right() {}
 
-	private void onNumPressed(Integer num) {
-		if (num != -1) {
-			if (num < skills.size()) {
-				skillWanted = num;
+	@Subscribe
+	public void onNumPressed(NumPressedEvent event) {
+		System.out.print(event.num + "\n");
+		if (event.num != -1) {
+			if (event.num < skills.size()) {
+				skillWanted = event.num;
 			}
 		}
 	}

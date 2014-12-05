@@ -4,8 +4,13 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import pheonixTeam.main.Main;
 import pheonixTeam.main.entity.Entity;
+import pheonixTeam.main.event.EventBus;
+import pheonixTeam.main.event.entity.LeftClickEvent;
+import pheonixTeam.main.event.entity.NumPressedEvent;
 import pheonixTeam.main.eventhandler.EventHandler;
 import pheonixTeam.main.util.InputUtil;
 
@@ -56,13 +61,19 @@ public class Map {
 	 */
 	public void onTick(){
 		time++;
-		EventHandler.leftClick();
-		EventHandler.numPressed(InputUtil.getNumPressed());
+		if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+			new LeftClickEvent(this.time).callEvent();
+		}
+
+		int num = InputUtil.getNumPressed();
+		if (num != -1) {
+			new NumPressedEvent(num).callEvent();
+		}
 
 		for(int i = 0; i < entityList.size(); i++){
 			
 			Entity entity = entityList.get(i);
-			
+
 			entity.update(this);
 			
 			if(entity.isDead){

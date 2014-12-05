@@ -13,5 +13,4 @@ public class EntityDamagedEvent extends Event{
 		this.entity = entity;
 		this.damage = damage;
 	}
-	
 }
