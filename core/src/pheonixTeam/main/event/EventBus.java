@@ -43,9 +43,14 @@ public class EventBus {
 				
 				if(eventListenerList == null){
 					eventListenerList = new ArrayList<EventListener<Object, Method>>();
+					eventListenerList.add(new EventListener<Object, Method>(target, method));
+					listenerList.put(eventClass, eventListenerList);
+					return;
 				}
 				
+				
 				eventListenerList.add(new EventListener<Object, Method>(target, method));
+				
 				
 				
 			}
