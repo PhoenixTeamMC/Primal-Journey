@@ -9,7 +9,7 @@ public class EntityDamagedEvent extends Event{
 	public Entity entity;
 	public int damage;
 	
-	public EntityDamagedEvent(EntityLiving entity, int damage){
+	public EntityDamagedEvent(Entity entity, int damage){
 		this.entity = entity;
 		this.damage = damage;
 	}

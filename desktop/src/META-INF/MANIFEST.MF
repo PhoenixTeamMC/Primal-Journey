@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Class-Path: /Users/Wes/Desktop/Repos/PhoenixTeam/PheonixRPG/core/asset
+ s
+Main-Class: pheonix.rpg.desktop.DesktopLauncher
+

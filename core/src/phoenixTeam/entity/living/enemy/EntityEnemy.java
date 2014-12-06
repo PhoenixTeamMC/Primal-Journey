@@ -39,11 +39,12 @@ public abstract class EntityEnemy extends EntityLiving
             for (Entity entity : map.getEntitiesWithin(target.x, target.y, trackRangeX, trackRangeY)) {
                 if (entity == this) {
                     if (target instanceof EntityLiving) {
-                        EntityLiving living = (EntityLiving) target;
-                        living.damage(damageAmount);
+                        attack(target);
                     }
                 }
             }
         }
     }
+
+    public abstract void attack(Entity entity);
 }

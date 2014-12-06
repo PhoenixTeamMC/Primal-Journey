@@ -1,6 +1,7 @@
 package phoenixTeam.entity;
 
 import phoenixTeam.event.EventBus;
+import phoenixTeam.event.entity.EntityDamagedEvent;
 import phoenixTeam.map.Map;
 import phoenixTeam.util.Direction;
 import phoenixTeam.util.TextureUtil;
@@ -16,6 +17,7 @@ public abstract class Entity {
 
 	protected Texture texture;
 
+	public int health = 100;
 
 	public Direction facing = Direction.RIGHT;
 
@@ -64,5 +66,47 @@ public abstract class Entity {
 	 * @param map
 	 */
 	public void onDeath(Map map) {}
+
+	/**
+	 * Used to move an entity
+	 * @param direction
+	 */
+	public void move(Direction direction, float amount) {
+		if (direction == Direction.LEFT) {x -= amount; facing = Direction.LEFT;}
+		if (direction == Direction.RIGHT) {x += amount; facing = Direction.RIGHT;}
+		if (direction == Direction.DOWN) {y -= amount; facing = Direction.DOWN;}
+		if (direction == Direction.UP) {y += amount; facing = Direction.UP;}
+	}
+
+	public void moveTo(float x, float y) {
+		float xDiff = this.x - x;
+		float yDiff = this.y - y;
+
+		if (xDiff < 0) {
+			move(Direction.RIGHT, -1 * xDiff);
+		} else if (xDiff > 0) {
+			move(Direction.LEFT, xDiff);
+		}
+
+		if (yDiff < 0) {
+			move(Direction.UP, -1 * yDiff);
+		} else if (yDiff > 0) {
+			move(Direction.DOWN, yDiff);
+		}
+	}
+
+	public void moveToEntity(Entity entity, float withinX, float withinY) {
+		moveTo(entity.x - withinX, entity.y - withinY);
+	}
+
+	public void damage(int amount) {
+		new EntityDamagedEvent(this, amount).callEvent();
+
+
+		health -= amount;
+		if(health <= 0){
+			this.isDead = true;
+		}
+	}
 
 }
