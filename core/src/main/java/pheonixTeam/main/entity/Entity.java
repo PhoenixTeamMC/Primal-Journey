@@ -2,9 +2,11 @@ package pheonixTeam.main.entity;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+
 import pheonixTeam.main.event.EventBus;
 import pheonixTeam.main.map.Map;
 import pheonixTeam.main.util.Direction;
+import pheonixTeam.main.util.TextureUtil;
 
 /**
  * Super class for every entity.
@@ -28,7 +30,7 @@ public abstract class Entity {
 		this.x = x;
 		this.y = y;
 		
-		texture = new Texture(this.getTextureLocation());
+		texture = TextureUtil.getTexture(this.getTextureLocation());
 	}
 
 	/**

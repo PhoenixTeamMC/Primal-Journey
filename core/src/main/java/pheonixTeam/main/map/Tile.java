@@ -3,6 +3,8 @@ package pheonixTeam.main.map;
 import java.util.ArrayList;
 import java.util.List;
 
+import pheonixTeam.main.util.TextureUtil;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -39,7 +41,7 @@ public class Tile{
 		this.temperature = temperature;
 		
 		if(tile == null){
-			tile = new StaticTiledMapTile(new TextureRegion(new Texture(texturePath)));
+			tile = new StaticTiledMapTile(new TextureRegion(TextureUtil.getTexture(texturePath)));
 		}
 		
 		tileList.add(this);
