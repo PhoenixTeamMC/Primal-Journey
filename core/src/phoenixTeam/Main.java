@@ -1,5 +1,6 @@
 package phoenixTeam;
 
+import phoenixTeam.entity.living.enemy.EntitySlime;
 import phoenixTeam.entity.living.familiars.EntityChris;
 import phoenixTeam.entity.living.familiars.EntityFamiliar;
 import phoenixTeam.entity.living.player.EntityPlayer;
@@ -46,7 +47,7 @@ public class Main extends ApplicationAdapter{
         batch = new SpriteBatch();
 
         //Setup the Map.
-		currentMap = new Map(50, 50);
+		currentMap = new Map(100, 100);
 		
 		//Add the player to the map.
 		player = new EntityPlayer(currentMap, camera);
@@ -55,6 +56,10 @@ public class Main extends ApplicationAdapter{
 		//Add the familiar
 		familiar = new EntityChris(10, 10, currentMap, player);
 		currentMap.spawnEntity(familiar);
+
+		//Add a slime
+		EntitySlime slime = new EntitySlime(100, 100);
+		currentMap.spawnEntity(slime);
 	}
 
 	@Override
