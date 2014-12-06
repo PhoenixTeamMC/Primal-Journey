@@ -1,6 +1,6 @@
 package pheonix.rpg.desktop;
 
-import pheonixTeam.main.Main;
+import phoenixTeam.Main;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;

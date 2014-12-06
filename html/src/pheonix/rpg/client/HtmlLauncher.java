@@ -1,6 +1,6 @@
 package pheonix.rpg.client;
 
-import pheonixTeam.main.Main;
+import phoenixTeam.Main;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
