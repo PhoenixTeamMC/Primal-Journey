@@ -10,7 +10,8 @@ public class EntitySlime extends EntityEnemy
     public EntitySlime(float x, float y) {
         super(x, y);
 
-        damageAmount = 10;
+        moveSpeed = 1;
+        damageAmount = 1;
         attackRangeX = 2;
         attackRangeY = 2;
         trackRangeX = 50;

@@ -15,7 +15,8 @@ public class EntityChris extends EntityFamiliar
      */
     public EntityChris(float x, float y, Map map, EntityLiving entity) {
         super(x, y, entity);
-    }
+		moveSpeed = 1;
+	}
 
 	@Override
 	public String getTextureLocation() {

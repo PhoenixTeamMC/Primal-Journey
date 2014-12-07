@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import phoenixTeam.entity.Entity;
 import phoenixTeam.entity.living.EntityLiving;
+import phoenixTeam.event.map.OnTickEvent;
 import phoenixTeam.map.Map;
 
 /**
@@ -35,7 +36,11 @@ public abstract class EntityEnemy extends EntityLiving
         }
         target = map.getClosestEntityOutOf(x, y, validTargets);
         if (target != null) {
-            moveToEntity(target, attackRangeX - 1, attackRangeY - 1);
+            if (map.time % 2 == 0) {
+                moveCloserToEntity(target, moveSpeed, 0, 2, 2);
+            } else {
+                moveCloserToEntity(target, 0, moveSpeed, 2, 2);
+            }
             for (Entity entity : map.getEntitiesWithin(target.x, target.y, trackRangeX, trackRangeY)) {
                 if (entity == this) {
                     if (target instanceof EntityLiving) {

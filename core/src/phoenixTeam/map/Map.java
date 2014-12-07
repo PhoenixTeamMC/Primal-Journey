@@ -8,6 +8,7 @@ import phoenixTeam.entity.Entity;
 import phoenixTeam.event.EventBus;
 import phoenixTeam.event.entity.LeftClickEvent;
 import phoenixTeam.event.entity.NumPressedEvent;
+import phoenixTeam.event.map.OnTickEvent;
 import phoenixTeam.util.InputUtil;
 
 import com.badlogic.gdx.Gdx;
@@ -63,20 +64,20 @@ public class Map {
 			new LeftClickEvent(this.time).callEvent();
 		}
 
-		int num = InputUtil.getNumPressed();
-		if (num != -1) {
-			new NumPressedEvent(num).callEvent();
-		}
-
 		for(int i = 0; i < entityList.size(); i++){
-			
-			Entity entity = entityList.get(i);
 
+			Entity entity = entityList.get(i);
 			entity.update(this);
-			
+
 			if(entity.isDead){
 				this.killEntity(entity);
 			}
+		}
+
+
+		int num = InputUtil.getNumPressed();
+		if (num != -1) {
+			new NumPressedEvent(num).callEvent();
 		}
 	}
 	

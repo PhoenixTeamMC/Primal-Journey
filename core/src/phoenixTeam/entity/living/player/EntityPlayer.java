@@ -11,6 +11,7 @@ import phoenixTeam.entity.skills.SkillFireball;
 import phoenixTeam.event.Subscribe;
 import phoenixTeam.event.entity.LeftClickEvent;
 import phoenixTeam.event.entity.NumPressedEvent;
+import phoenixTeam.event.map.OnTickEvent;
 import phoenixTeam.item.Item;
 import phoenixTeam.map.Map;
 import phoenixTeam.util.Direction;
@@ -80,7 +81,7 @@ public class EntityPlayer extends EntityLiving
     }
 
     public static final float moveSpeed = 1;
-    
+
     @Override
     public void update(Map map) {
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {

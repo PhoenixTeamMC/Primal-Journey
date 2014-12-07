@@ -1,7 +1,9 @@
 package phoenixTeam.entity;
 
 import phoenixTeam.event.EventBus;
+import phoenixTeam.event.Subscribe;
 import phoenixTeam.event.entity.EntityDamagedEvent;
+import phoenixTeam.event.map.OnTickEvent;
 import phoenixTeam.map.Map;
 import phoenixTeam.util.Direction;
 import phoenixTeam.util.TextureUtil;
@@ -20,6 +22,8 @@ public abstract class Entity {
 	public int health = 100;
 
 	public Direction facing = Direction.RIGHT;
+
+	public static float moveSpeed = 0;
 
 	public Map map;
 
@@ -109,4 +113,24 @@ public abstract class Entity {
 		}
 	}
 
+	public void moveCloserToEntity(Entity entity, float howMuchCloserX, float howMuchCloserY, float withinX, float withinY) {
+		float howFarX = (this.x - entity.x);
+		float howFarY = (this.y - entity.y);
+		float whereToX = entity.x;
+		float whereToY = entity.y;
+
+		if (howFarX > 0) {
+			whereToX = howFarX - howMuchCloserX + withinX;
+		} else if (howFarX < 0) {
+			whereToX = howFarX + howMuchCloserX - withinX;
+		}
+
+		if (howFarY > 0) {
+			whereToY = howFarY - howMuchCloserY + withinY;
+		} else if (howFarX < 0) {
+			whereToY = howFarY + howMuchCloserY - withinY;
+		}
+
+		moveTo(whereToX, whereToY);
+	}
 }

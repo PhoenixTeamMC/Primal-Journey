@@ -1,6 +1,7 @@
 package phoenixTeam.entity.living.familiars;
 
 import phoenixTeam.entity.living.EntityLiving;
+import phoenixTeam.event.map.OnTickEvent;
 import phoenixTeam.map.Map;
 
 /**
@@ -29,6 +30,10 @@ public abstract class EntityFamiliar extends EntityLiving
     @Override
     public void update(Map map) {
         super.update(map);
-        moveToEntity(owner, -5, 0);
+        if (map.time % 2 == 0) {
+            moveCloserToEntity(owner, moveSpeed, 0, 5, 5);
+        } else {
+            moveCloserToEntity(owner, 0, moveSpeed, 5, 5);
+        }
     }
 }
