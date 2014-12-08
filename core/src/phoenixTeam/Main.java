@@ -58,7 +58,7 @@ public class Main extends ApplicationAdapter{
 		currentMap.spawnEntity(familiar);
 
 		//Add a slime
-		EntitySlime slime = new EntitySlime(100, 100);
+		EntitySlime slime = new EntitySlime(10, 10);
 		currentMap.spawnEntity(slime);
 	}
 
@@ -78,32 +78,5 @@ public class Main extends ApplicationAdapter{
 		currentMap.display(camera, batch);
 	}
 
-	/*
-	 * Animation Code:
-	 * batch = new SpriteBatch();
-		img = new Texture("animation.png");
-		TextureRegion[][] tmp = TextureRegion.split(img, img.getWidth()/FRAME_COLS, img.getHeight()/FRAME_ROWS);
-		
-		walkFrames = new TextureRegion[FRAME_COLS * FRAME_ROWS]; 
-		
-		int index = 0;
-        for (int i = 0; i < FRAME_ROWS; i++) {
-            for (int j = 0; j < FRAME_COLS; j++) {
-                walkFrames[index++] = tmp[i][j];
-            }
-        }
-        
-        animation = new Animation(.025f, walkFrames);
-        
-        stateTime = 0f;
-        
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);                        // #14
-        stateTime += Gdx.graphics.getDeltaTime(); 
-        
-        current = animation.getKeyFrame(stateTime, true);
-        
-		batch.begin();
-		batch.draw(current, 50, 50, 300, 300);
-		batch.end();
-	 */
+	
 }

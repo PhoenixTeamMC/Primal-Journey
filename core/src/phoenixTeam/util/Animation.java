@@ -10,7 +10,7 @@ public class Animation {
 	final TextureRegion[] frames;
 	final com.badlogic.gdx.graphics.g2d.Animation animation;
 	
-	int stateTime;
+	float stateTime;
 	TextureRegion current;
 	
 	public Animation(Texture texture, final int FRAME_COLS, final int FRAME_ROWS, float time){
@@ -26,9 +26,11 @@ public class Animation {
         }
         
         animation = new com.badlogic.gdx.graphics.g2d.Animation(time, frames);
+        
+        stateTime = 0f;
 	}
 	
-	public void display(Batch batch, int x, int y, int width, int height){
+	public void display(Batch batch, float x, float y, int width, int height){
 		stateTime += Gdx.graphics.getDeltaTime();
 		
 		current = animation.getKeyFrame(stateTime, true);

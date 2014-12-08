@@ -1,9 +1,7 @@
 package phoenixTeam.entity;
 
 import phoenixTeam.event.EventBus;
-import phoenixTeam.event.Subscribe;
 import phoenixTeam.event.entity.EntityDamagedEvent;
-import phoenixTeam.event.map.OnTickEvent;
 import phoenixTeam.map.Map;
 import phoenixTeam.util.Direction;
 import phoenixTeam.util.TextureUtil;
