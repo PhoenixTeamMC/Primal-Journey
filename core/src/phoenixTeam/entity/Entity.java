@@ -4,6 +4,8 @@ import phoenixTeam.event.EventBus;
 import phoenixTeam.event.entity.EntityDamagedEvent;
 import phoenixTeam.map.Map;
 import phoenixTeam.util.Direction;
+import phoenixTeam.util.MathUtil;
+import phoenixTeam.util.Random;
 import phoenixTeam.util.TextureUtil;
 
 import com.badlogic.gdx.graphics.Texture;
@@ -28,8 +30,11 @@ public abstract class Entity {
 	public float x;
 	public float y;
 
+	private Random random;
+	
 	public Entity(float x, float y){
 		EventBus.INSTANCE.register(this);
+		random = new Random();
 		this.x = x;
 		this.y = y;
 		
@@ -111,24 +116,15 @@ public abstract class Entity {
 		}
 	}
 
-	public void moveCloserToEntity(Entity entity, float howMuchCloserX, float howMuchCloserY, float withinX, float withinY) {
-		float howFarX = (this.x - entity.x);
-		float howFarY = (this.y - entity.y);
-		float whereToX = entity.x;
-		float whereToY = entity.y;
+	public void moveCloserToEntity(Entity entity, float howMuchCloser) {
+		float toX = entity.x;
+		float toY = entity.y;
+		
+		float ratio = howMuchCloser / MathUtil.distance(toX, toY, this.x, this.y);
 
-		if (howFarX > 0) {
-			whereToX = howFarX - howMuchCloserX + withinX;
-		} else if (howFarX < 0) {
-			whereToX = howFarX + howMuchCloserX - withinX;
-		}
-
-		if (howFarY > 0) {
-			whereToY = howFarY - howMuchCloserY + withinY;
-		} else if (howFarX < 0) {
-			whereToY = howFarY + howMuchCloserY - withinY;
-		}
-
-		moveTo(whereToX, whereToY);
+		float toMoveX = ratio * (this.x - toX);
+		float toMoveY = ratio * (this.y - toY);
+		
+		moveTo(toMoveX, toMoveY);
 	}
 }

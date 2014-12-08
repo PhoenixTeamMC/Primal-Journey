@@ -32,12 +32,35 @@ public class Random {
 		
 	}
 	
+	public float nextFloat(int limit){
+		
+		if(limit < 0){
+			return -random.nextFloat() * -limit;
+		}else if(limit == 0){
+			return 0;
+		}else{
+			return random.nextInt(limit);
+		}
+
+	}
+	
 	public int nextInt(int lower, int upper){
 		return (int) (Math.random() * (upper - lower)) + lower;
 	}
 	
+	public float nextFloat(float lower, float upper){
+		return (float) (Math.random() * (upper - lower)) + lower;
+	}
+	
 	public int variance(int number, int variance){
 		int num = (int) (Math.floor(Math.random()*variance) + 1); // this will get a number between 1 and 99;
+		num *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
+		
+		return num + number;
+	}
+	
+	public float variance(float number, float variance){
+		float num = (float) (Math.floor(Math.random()*variance) + 1); // this will get a number between 1 and 99;
 		num *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
 		
 		return num + number;

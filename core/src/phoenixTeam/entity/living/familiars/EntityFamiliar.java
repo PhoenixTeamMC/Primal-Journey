@@ -31,9 +31,7 @@ public abstract class EntityFamiliar extends EntityLiving
     public void update(Map map) {
         super.update(map);
         if (map.time % 2 == 0) {
-            moveCloserToEntity(owner, moveSpeed, 0, 5, 5);
-        } else {
-            moveCloserToEntity(owner, 0, moveSpeed, 5, 5);
+            moveCloserToEntity(owner, moveSpeed);
         }
     }
 }
