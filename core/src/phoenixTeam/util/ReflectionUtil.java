@@ -16,15 +16,15 @@ public class ReflectionUtil
         }
     }
 
-    public static void runMethodsFromClasses(ArrayList<Class> classes, String methodName, Object... args) {
-        for (Class aClass : classes) {
+    public static void runMethodsFromClasses(ArrayList<Class<?>> classes, String methodName, Object... args) {
+        for (Class<?> aClass : classes) {
             runMethodFromClass(aClass, methodName, args);
         }
     }
 
     public static void runMethodFromObj(Object obj, String methodName, Object... args) {
         try {
-            Class[] params = new Class[args.length];
+            Class<?>[] params = new Class<?>[args.length];
             for (int i = 0; i < args.length; i++) {
                 params[i] = args[i].getClass();
             }
@@ -42,7 +42,7 @@ public class ReflectionUtil
 
     public static void runMethodFromClass(Class<?> aClass, String methodName, Object... args) {
         try {
-            Class[] params = new Class[args.length];
+            Class<?>[] params = new Class<?>[args.length];
             for (int i = 0; i < args.length; i++) {
                 params[i] = args[i].getClass();
             }
@@ -59,7 +59,7 @@ public class ReflectionUtil
     }
 
     public static void changeFieldFromObj(Object obj, String fieldName, Object value) {
-        Class aClass = obj.getClass();
+        Class<?> aClass = obj.getClass();
         Field field;
         try {
             field = aClass.getDeclaredField(fieldName);
@@ -73,7 +73,7 @@ public class ReflectionUtil
     }
 
     public static Object getFieldValFromObj(Object obj, String fieldName) {
-        Class aClass = obj.getClass();
+        Class<?> aClass = obj.getClass();
         Field field;
         try {
             field = aClass.getDeclaredField(fieldName);

@@ -2,8 +2,8 @@ package phoenixTeam;
 
 import phoenixTeam.entity.living.enemy.EntitySlime;
 import phoenixTeam.entity.living.familiars.EntityChris;
-import phoenixTeam.entity.living.familiars.EntityFamiliar;
 import phoenixTeam.entity.living.player.EntityPlayer;
+import phoenixTeam.event.input.InputHandler;
 import phoenixTeam.map.Map;
 
 import com.badlogic.gdx.ApplicationAdapter;
@@ -14,6 +14,10 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.thoughtworks.xstream.XStream;
 
+/**
+ * @author chbachman
+ *
+ */
 public class Main extends ApplicationAdapter{
 
 	public static final XStream xml = new XStream();
@@ -23,16 +27,11 @@ public class Main extends ApplicationAdapter{
 	public OrthographicCamera camera;
 	public SpriteBatch batch;
 	public EntityPlayer player;
-	public EntityFamiliar familiar;
 
 	public FPSLogger log;
 	
 	@Override
 	public void create () {
-		char c = 7;
-		
-		System.out.println(c);
-		
 		//Setup the FPS Tracker
 		log = new FPSLogger();
 		
@@ -49,17 +48,18 @@ public class Main extends ApplicationAdapter{
         //Setup the Map.
 		currentMap = new Map(100, 100);
 		
+		//Init the InputHandler
+		InputHandler.init();
+		
 		//Add the player to the map.
 		player = new EntityPlayer(currentMap, camera);
 		currentMap.spawnEntity(player);
 		
 		//Add the familiar
-		familiar = new EntityChris(10, 10, currentMap, player);
-		currentMap.spawnEntity(familiar);
+		currentMap.spawnEntity(new EntityChris(10, 10, currentMap, player));
 
 		//Add a slime
-		EntitySlime slime = new EntitySlime(10, 10);
-		currentMap.spawnEntity(slime);
+		currentMap.spawnEntity(new EntitySlime(10, 10));
 	}
 
 	@Override

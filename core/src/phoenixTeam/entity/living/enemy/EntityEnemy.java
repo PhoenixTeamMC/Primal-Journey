@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import phoenixTeam.entity.Entity;
 import phoenixTeam.entity.living.EntityLiving;
 import phoenixTeam.map.Map;
+import phoenixTeam.util.EntityUtil;
 
 /**
  * @author Strikingwolf, chbachman
@@ -13,8 +14,7 @@ public abstract class EntityEnemy extends EntityLiving
 {
     public Entity target;
 
-    public float trackRangeX;
-    public float trackRangeY;
+    public float trackRange;
     public float attackRangeX;
     public float attackRangeY;
 
@@ -26,7 +26,7 @@ public abstract class EntityEnemy extends EntityLiving
 
     @Override
     public void update(Map map) {
-        ArrayList<Entity> entitiesWithin = map.getEntitiesWithin(x, y, trackRangeX, trackRangeY);
+        ArrayList<Entity> entitiesWithin = map.getEntitiesWithin(x, y, trackRange, trackRange);
         ArrayList<Entity> validTargets = new ArrayList<Entity>();
         for (Entity entity : entitiesWithin) {
             if (!(entity instanceof EntityEnemy)) {
@@ -35,16 +35,12 @@ public abstract class EntityEnemy extends EntityLiving
         }
         target = map.getClosestEntityOutOf(x, y, validTargets);
         if (target != null) {
-        	
         	 moveCloserToEntity(target, moveSpeed);
         	 
-            for (Entity entity : map.getEntitiesWithin(target.x, target.y, trackRangeX, trackRangeY)) {
-                if (entity == this) {
-                    if (target instanceof EntityLiving) {
-                        attack(target);
-                    }
-                }
-            }
+        	 if(EntityUtil.isWithin(this, target, trackRange)){
+        		 attack(target);
+        	 }
+            
         }
     }
 

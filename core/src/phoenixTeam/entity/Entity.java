@@ -30,6 +30,7 @@ public abstract class Entity {
 	public float x;
 	public float y;
 
+	@SuppressWarnings("unused")
 	private Random random;
 	
 	public Entity(float x, float y){

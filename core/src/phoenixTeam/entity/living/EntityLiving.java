@@ -7,8 +7,6 @@ import phoenixTeam.entity.Entity;
 import phoenixTeam.entity.interfaces.IEntityMovable;
 import phoenixTeam.entity.living.familiars.EntityFamiliar;
 import phoenixTeam.entity.skills.Skill;
-import phoenixTeam.event.entity.EntityDamagedEvent;
-import phoenixTeam.util.Direction;
 import phoenixTeam.util.Random;
 
 /**

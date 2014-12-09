@@ -1,7 +1,6 @@
 package phoenixTeam.event.entity;
 
 import phoenixTeam.entity.Entity;
-import phoenixTeam.entity.living.EntityLiving;
 import phoenixTeam.event.Event;
 
 public class EntityDamagedEvent extends Event{

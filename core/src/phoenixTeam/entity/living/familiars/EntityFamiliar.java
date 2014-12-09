@@ -1,7 +1,6 @@
 package phoenixTeam.entity.living.familiars;
 
 import phoenixTeam.entity.living.EntityLiving;
-import phoenixTeam.event.map.OnTickEvent;
 import phoenixTeam.map.Map;
 
 /**

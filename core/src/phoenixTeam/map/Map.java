@@ -6,13 +6,9 @@ import java.util.ArrayList;
 import phoenixTeam.Main;
 import phoenixTeam.entity.Entity;
 import phoenixTeam.event.EventBus;
-import phoenixTeam.event.entity.LeftClickEvent;
 import phoenixTeam.event.entity.NumPressedEvent;
-import phoenixTeam.event.map.OnTickEvent;
 import phoenixTeam.util.InputUtil;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -60,9 +56,6 @@ public class Map {
 	 */
 	public void onTick(){
 		time++;
-		if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
-			new LeftClickEvent(this.time).callEvent();
-		}
 
 		for(int i = 0; i < entityList.size(); i++){
 
