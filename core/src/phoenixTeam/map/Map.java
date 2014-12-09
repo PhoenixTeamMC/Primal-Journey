@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import phoenixTeam.Main;
 import phoenixTeam.entity.Entity;
 import phoenixTeam.event.EventBus;
-import phoenixTeam.event.entity.NumPressedEvent;
-import phoenixTeam.util.InputUtil;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -65,12 +63,6 @@ public class Map {
 			if(entity.isDead){
 				this.killEntity(entity);
 			}
-		}
-
-
-		int num = InputUtil.getNumPressed();
-		if (num != -1) {
-			new NumPressedEvent(num).callEvent();
 		}
 	}
 	

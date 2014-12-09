@@ -5,6 +5,7 @@ import phoenixTeam.event.Event;
 /**
  * @author Strikingwolf, chbachman
  */
+@Deprecated
 public class NumPressedEvent extends Event
 {
     public int num;

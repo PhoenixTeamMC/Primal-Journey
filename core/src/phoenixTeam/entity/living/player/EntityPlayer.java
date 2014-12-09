@@ -9,7 +9,7 @@ import phoenixTeam.entity.enums.SecondaryClasses;
 import phoenixTeam.entity.living.EntityLiving;
 import phoenixTeam.entity.skills.SkillFireball;
 import phoenixTeam.event.Subscribe;
-import phoenixTeam.event.entity.NumPressedEvent;
+import phoenixTeam.event.input.InputEvent.KeyTypedEvent;
 import phoenixTeam.event.input.InputEvent.MouseDownEvent;
 import phoenixTeam.item.Item;
 import phoenixTeam.map.Map;
@@ -139,12 +139,19 @@ public class EntityPlayer extends EntityLiving
 	public void right() {}
 
 	@Subscribe
-	public void onNumPressed(NumPressedEvent event) {
-		System.out.print(event.num + "\n");
-		if (event.num != -1) {
-			if (event.num < skills.size()) {
-				skillWanted = event.num;
+	public void onNumPressed(KeyTypedEvent event) {
+		
+		if(Character.isDigit(event.keyTyped)){
+			
+			int num = Character.getNumericValue(event.keyTyped);
+			
+			if (num != -1) {
+				if (num < skills.size()) {
+					skillWanted = num;
+				}
 			}
 		}
+		
+		
 	}
 }
