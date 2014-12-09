@@ -20,7 +20,7 @@ public class EntitySlime extends EntityEnemy
         damageAmount = 1;
         attackRangeX = 2;
         attackRangeY = 2;
-        trackRange = 50;
+        trackRange = 5;
         
         animation = new Animation(TextureUtil.getTexture("slime.png"), 4, 1, .1F);
     }

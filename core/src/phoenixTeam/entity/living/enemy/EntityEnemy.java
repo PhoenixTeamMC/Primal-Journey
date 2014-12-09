@@ -26,22 +26,28 @@ public abstract class EntityEnemy extends EntityLiving
 
     @Override
     public void update(Map map) {
-        ArrayList<Entity> entitiesWithin = map.getEntitiesWithin(x, y, trackRange, trackRange);
-        ArrayList<Entity> validTargets = new ArrayList<Entity>();
-        for (Entity entity : entitiesWithin) {
-            if (!(entity instanceof EntityEnemy)) {
-                validTargets.add(entity);
+    	super.update(map);
+    	
+    	if(target == null || target.isDead){
+    		ArrayList<Entity> entitiesWithin = EntityUtil.getEntitiesWithin(x, y, 10000, 100000);
+            ArrayList<Entity> validTargets = new ArrayList<Entity>();
+            for (Entity entity : entitiesWithin) {
+                if (!(entity instanceof EntityEnemy)) {
+                    validTargets.add(entity);
+                }
             }
+            target = EntityUtil.getClosestEntityOutOf(x, y, validTargets);
+    	}
+    	
+        if(target == null){
+        	return;
         }
-        target = map.getClosestEntityOutOf(x, y, validTargets);
-        if (target != null) {
-        	 moveCloserToEntity(target, moveSpeed);
-        	 
-        	 if(EntityUtil.isWithin(this, target, trackRange)){
-        		 attack(target);
-        	 }
-            
-        }
+        
+    	this.moveTo(target.x, target.y);
+   	 
+   	 if(EntityUtil.isWithin(this, target, trackRange)){
+   		 attack(target);
+   	 }
     }
 
     public abstract void attack(Entity entity);

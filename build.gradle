@@ -46,6 +46,7 @@ project(":core") {
 
 
     dependencies {
+	compile "com.badlogicgames.ashley:ashley:1.3.2"
 	compile "com.thoughtworks.xstream:xstream:1.4.2"
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
     }
@@ -58,6 +59,7 @@ project(":html") {
 
     dependencies {
         compile project(":core")
+	compile "com.badlogicgames.ashley:ashley:1.3.2:sources"
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"

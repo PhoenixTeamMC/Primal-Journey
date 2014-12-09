@@ -5,8 +5,11 @@ import java.util.ArrayList;
 
 import phoenixTeam.Main;
 import phoenixTeam.entity.Entity;
+import phoenixTeam.entity.living.player.EntityPlayer;
 import phoenixTeam.event.EventBus;
 
+import com.badlogic.ashley.core.Engine;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -18,8 +21,10 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
  * @author chbachman
  *
  */
-public class Map {
+public class Map extends ScreenAdapter{
 	
+	
+
 	public TiledMap map;
 	public OrthogonalTiledMapRenderer renderer;
 	
@@ -30,7 +35,6 @@ public class Map {
 
 	
 	public Map(int width, int height){
-		
 		map = new TiledMap();
 		renderer = new OrthogonalTiledMapRenderer(map, 1 / 16f);
 		
@@ -65,6 +69,29 @@ public class Map {
 			}
 		}
 	}
+
+
+	
+
+	@Override
+	public void render(float delta) {
+		super.render(delta);
+	}
+	
+	public void display(OrthographicCamera camera, SpriteBatch batch){
+		
+		renderer.setView(camera);
+		renderer.render();
+		
+		batch.begin();
+		
+		for(Entity entity: entityList){
+			entity.display(batch);
+		}
+		
+		batch.end();
+	}
+	
 	
 	/**
 	 * Spawn the entity into the world
@@ -101,56 +128,5 @@ public class Map {
 			}
 		}
 		return null;
-	}
-
-	public ArrayList<Entity> getEntitiesWithin(float x, float y, float withinX, float withinY) {
-		ArrayList<Entity> returnList = new ArrayList<Entity>();
-		float maxX = x + withinX;
-		float minX = x - withinX;
-		float maxY = y + withinY;
-		float minY = y - withinY;
-
-		for (Entity entity : entityList) {
-			if (minX <= entity.x && entity.x <= maxX) {
-				if (minY <= entity.y && entity.y <= maxY) {
-					returnList.add(entity);
-				}
-			}
-		}
-		return returnList;
-	}
-
-	public Entity getClosestEntityOutOf(float x, float y, ArrayList<Entity> entities) {
-		Entity closest = null;
-		for (Entity entity : entities) {
-			if (closest == null) {
-				closest = entity;
-			} else {
-				float thisDiff = (entity.x - x) + (entity.y - y);
-				float lastDiff = (closest.x - x) + (closest.y - y);
-				if (thisDiff < lastDiff) {
-					closest = entity;
-				}
-			}
-		}
-		return closest;
-	}
-
-	public Entity getClosestEntity(float x, float y) {
-		return getClosestEntityOutOf(x, y, entityList);
-	}
-
-	public void display(OrthographicCamera camera, SpriteBatch batch){
-		
-		renderer.setView(camera);
-		renderer.render();
-		
-		batch.begin();
-		
-		for(Entity entity: entityList){
-			entity.display(batch);
-		}
-		
-		batch.end();
 	}
 }

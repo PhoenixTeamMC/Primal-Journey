@@ -23,12 +23,15 @@ public abstract class Entity {
 
 	public Direction facing = Direction.RIGHT;
 
-	public static float moveSpeed = 0;
+	public float moveSpeed = 0;
 
 	public Map map;
 
 	public float x;
 	public float y;
+	
+	public float targetX;
+	public float targetY;
 
 	@SuppressWarnings("unused")
 	private Random random;
@@ -61,7 +64,11 @@ public abstract class Entity {
 	 * Called every tick, used to update logic. 
 	 * @param map
 	 */
-	public void update(Map map){}
+	public void update(Map map){
+		if(!(x == targetX && y == targetY)){
+			this.moveTowards(targetX, targetY);
+		}
+	}
 
 	/**
 	 * Called when a entity is spawned in
@@ -75,41 +82,13 @@ public abstract class Entity {
 	 */
 	public void onDeath(Map map) {}
 
-	/**
-	 * Used to move an entity
-	 * @param direction
-	 */
-	public void move(Direction direction, float amount) {
-		if (direction == Direction.LEFT) {x -= amount; facing = Direction.LEFT;}
-		if (direction == Direction.RIGHT) {x += amount; facing = Direction.RIGHT;}
-		if (direction == Direction.DOWN) {y -= amount; facing = Direction.DOWN;}
-		if (direction == Direction.UP) {y += amount; facing = Direction.UP;}
-	}
-
 	public void moveTo(float x, float y) {
-		float xDiff = this.x - x;
-		float yDiff = this.y - y;
-
-		if (xDiff < 0) {
-			move(Direction.RIGHT, -1 * xDiff);
-		} else if (xDiff > 0) {
-			move(Direction.LEFT, xDiff);
-		}
-
-		if (yDiff < 0) {
-			move(Direction.UP, -1 * yDiff);
-		} else if (yDiff > 0) {
-			move(Direction.DOWN, yDiff);
-		}
-	}
-
-	public void moveToEntity(Entity entity, float withinX, float withinY) {
-		moveTo(entity.x - withinX, entity.y - withinY);
+		this.targetX = x;
+		this.targetY = y;
 	}
 
 	public void damage(int amount) {
 		new EntityDamagedEvent(this, amount).callEvent();
-
 
 		health -= amount;
 		if(health <= 0){
@@ -117,15 +96,14 @@ public abstract class Entity {
 		}
 	}
 
-	public void moveCloserToEntity(Entity entity, float howMuchCloser) {
-		float toX = entity.x;
-		float toY = entity.y;
-		
-		float ratio = howMuchCloser / MathUtil.distance(toX, toY, this.x, this.y);
+	public void moveTowards(float x, float y){
 
-		float toMoveX = ratio * (this.x - toX);
-		float toMoveY = ratio * (this.y - toY);
+		float ratio = this.moveSpeed / MathUtil.distance(x, y, this.x, this.y);
+
+		float toMoveX = ratio * (x - this.x);
+		float toMoveY = ratio * (y - this.y);
 		
-		moveTo(toMoveX, toMoveY);
+		this.x += toMoveX;
+		this.y += toMoveY;
 	}
 }

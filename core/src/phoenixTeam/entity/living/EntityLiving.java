@@ -4,7 +4,6 @@
 import java.util.List;
 
 import phoenixTeam.entity.Entity;
-import phoenixTeam.entity.interfaces.IEntityMovable;
 import phoenixTeam.entity.living.familiars.EntityFamiliar;
 import phoenixTeam.entity.skills.Skill;
 import phoenixTeam.util.Random;
@@ -12,7 +11,7 @@ import phoenixTeam.util.Random;
 /**
  * @author Strikingwolf, CBachman
  */
-public abstract class EntityLiving extends Entity implements IEntityMovable
+public abstract class EntityLiving extends Entity
 {
     //Mana
     public int mana = 20;

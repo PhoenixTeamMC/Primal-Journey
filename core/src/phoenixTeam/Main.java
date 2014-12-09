@@ -1,16 +1,12 @@
 package phoenixTeam;
 
-import phoenixTeam.entity.living.enemy.EntitySlime;
-import phoenixTeam.entity.living.familiars.EntityChris;
-import phoenixTeam.entity.living.player.EntityPlayer;
 import phoenixTeam.event.input.InputHandler;
-import phoenixTeam.map.Map;
+import phoenixTeam.map.MapScreen;
 
-import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.thoughtworks.xstream.XStream;
 
@@ -18,50 +14,32 @@ import com.thoughtworks.xstream.XStream;
  * @author chbachman
  *
  */
-public class Main extends ApplicationAdapter{
+public class Main extends Game{
 
 	public static final XStream xml = new XStream();
 
-	public Map currentMap;
-
-	public OrthographicCamera camera;
-	public SpriteBatch batch;
-	public EntityPlayer player;
+	public static final SpriteBatch batch = new SpriteBatch();
 
 	public FPSLogger log;
 	
+	/**
+	 * This is for creating things that do not depend on what screen we are currently in. 
+	 */
 	@Override
 	public void create () {
+		
 		//Setup the FPS Tracker
 		log = new FPSLogger();
-		
-		//Setup the camera
-		float w = Gdx.graphics.getWidth();
-		float h = Gdx.graphics.getHeight();
-        camera = new OrthographicCamera(100, 100 * (h/w));
-        camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);    
-        camera.update(); 
-		
-        //Setup the SpriteBatch for rendering Entities
-        batch = new SpriteBatch();
-
-        //Setup the Map.
-		currentMap = new Map(100, 100);
 		
 		//Init the InputHandler
 		InputHandler.init();
 		
-		//Add the player to the map.
-		player = new EntityPlayer(currentMap, camera);
-		currentMap.spawnEntity(player);
-		
-		//Add the familiar
-		currentMap.spawnEntity(new EntityChris(10, 10, currentMap, player));
-
-		//Add a slime
-		currentMap.spawnEntity(new EntitySlime(10, 10));
+		this.setScreen(new MapScreen());
 	}
 
+	/**
+	 * This is for rendering things that do not depend on what screen we are in.
+	 */
 	@Override
 	public void render () {
 		log.log();
@@ -69,13 +47,7 @@ public class Main extends ApplicationAdapter{
 		//Clear the screen
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
-		//Set the batch to adjust for the camera
-		batch.setProjectionMatrix(camera.combined);
-		
-		//Tick the map
-		currentMap.onTick();
-		
-		currentMap.display(camera, batch);
+		super.render();
 	}
 
 	

@@ -85,19 +85,19 @@ public class EntityPlayer extends EntityLiving
     public void update(Map map) {
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
         	camera.translate(1, 0);
-            this.move(Direction.RIGHT, moveSpeed);
+           // this.move(Direction.RIGHT, moveSpeed);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
         	camera.translate(-1, 0);
-            this.move(Direction.LEFT, moveSpeed);
+           // this.move(Direction.LEFT, moveSpeed);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
         	camera.translate(0, 1);
-            this.move(Direction.UP, moveSpeed);
+           // this.move(Direction.UP, moveSpeed);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
         	camera.translate(0, -1);
-            this.move(Direction.DOWN, moveSpeed);
+           // this.move(Direction.DOWN, moveSpeed);
         }
         
         if(Gdx.input.isKeyPressed(Input.Keys.O)){
