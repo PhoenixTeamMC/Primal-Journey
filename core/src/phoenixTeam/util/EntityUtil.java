@@ -2,18 +2,18 @@ package phoenixTeam.util;
 
 import java.util.ArrayList;
 
-import phoenixTeam.entity.Entity;
+import phoenixTeam.entity.EntityLiving;
 import phoenixTeam.map.Map;
 
 public class EntityUtil {
 	
-	public static boolean isWithin(Entity original, Entity toCheck, float boundary){
+	public static boolean isWithin(EntityLiving original, EntityLiving toCheck, float boundary){
 		return MathUtil.isWithin(original.x, original.y, toCheck.x, toCheck.y, boundary);
 	}
 	
-	public static Entity getClosestEntityOutOf(float x, float y, ArrayList<Entity> entities) {
-		Entity closest = null;
-		for (Entity entity : entities) {
+	public static EntityLiving getClosestEntityOutOf(float x, float y, ArrayList<EntityLiving> entities) {
+		EntityLiving closest = null;
+		for (EntityLiving entity : entities) {
 			if (closest == null) {
 				closest = entity;
 			} else {
@@ -27,18 +27,18 @@ public class EntityUtil {
 		return closest;
 	}
 	
-	public static Entity getClosestEntity(float x, float y) {
+	public static EntityLiving getClosestEntity(float x, float y) {
 		return getClosestEntityOutOf(x, y, Map.entityList);
 	}
 	
-	public static ArrayList<Entity> getEntitiesWithin(float x, float y, float withinX, float withinY) {
-		ArrayList<Entity> returnList = new ArrayList<Entity>();
+	public static ArrayList<EntityLiving> getEntitiesWithin(float x, float y, float withinX, float withinY) {
+		ArrayList<EntityLiving> returnList = new ArrayList<EntityLiving>();
 		float maxX = x + withinX;
 		float minX = x - withinX;
 		float maxY = y + withinY;
 		float minY = y - withinY;
 
-		for (Entity entity : Map.entityList) {
+		for (EntityLiving entity : Map.entityList) {
 			if (minX <= entity.x && entity.x <= maxX) {
 				if (minY <= entity.y && entity.y <= maxY) {
 					returnList.add(entity);

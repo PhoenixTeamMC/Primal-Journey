@@ -2,7 +2,7 @@ package phoenixTeam.entity.living.enemy;
 
 import java.util.ArrayList;
 
-import phoenixTeam.entity.Entity;
+import phoenixTeam.entity.EntityLiving;
 import phoenixTeam.entity.living.EntityLiving;
 import phoenixTeam.map.Map;
 import phoenixTeam.util.EntityUtil;
@@ -12,7 +12,7 @@ import phoenixTeam.util.EntityUtil;
  */
 public abstract class EntityEnemy extends EntityLiving
 {
-    public Entity target;
+    public EntityLiving target;
 
     public float trackRange;
     public float attackRangeX;
@@ -29,9 +29,9 @@ public abstract class EntityEnemy extends EntityLiving
     	super.update(map);
     	
     	if(target == null || target.isDead){
-    		ArrayList<Entity> entitiesWithin = EntityUtil.getEntitiesWithin(x, y, 10000, 100000);
-            ArrayList<Entity> validTargets = new ArrayList<Entity>();
-            for (Entity entity : entitiesWithin) {
+    		ArrayList<EntityLiving> entitiesWithin = EntityUtil.getEntitiesWithin(x, y, 10000, 100000);
+            ArrayList<EntityLiving> validTargets = new ArrayList<EntityLiving>();
+            for (EntityLiving entity : entitiesWithin) {
                 if (!(entity instanceof EntityEnemy)) {
                     validTargets.add(entity);
                 }
@@ -50,5 +50,5 @@ public abstract class EntityEnemy extends EntityLiving
    	 }
     }
 
-    public abstract void attack(Entity entity);
+    public abstract void attack(EntityLiving entity);
 }

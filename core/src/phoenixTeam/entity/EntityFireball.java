@@ -7,7 +7,7 @@ import phoenixTeam.util.Direction;
 /**
  * @author Strikingwolf, chbachman
  */
-public class EntityFireball extends Entity
+public class EntityFireball extends EntityLiving
 {
     public int damageAmount = 5;
 
@@ -23,7 +23,7 @@ public class EntityFireball extends Entity
         if (facing == Direction.LEFT) {x--;}
         if (facing == Direction.UP) {y++;}
         if (facing == Direction.DOWN) {y--;}
-        Entity entity = map.getEntityAt(x, y);
+        EntityLiving entity = map.getEntityAt(x, y);
         if (entity instanceof EntityLiving) {
             EntityLiving living = (EntityLiving) entity;
             living.damage(damageAmount);

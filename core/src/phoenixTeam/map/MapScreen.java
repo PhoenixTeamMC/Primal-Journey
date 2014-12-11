@@ -9,18 +9,17 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
 public class MapScreen extends ScreenAdapter{
-
-	OrthographicCamera camera;
 	
-	Map map;
-	Engine engine;
+	public Engine engine;
 	
 	EntityPlayer player;
+	
+	Map map;
 	
 	public MapScreen(){
 		engine = new Engine();
 		
-		map = new Map(100, 100);
+		map = new Map(engine, 100, 100);
 		
 		//Add the player to the map.
 		player = new EntityPlayer(map, camera);
@@ -39,10 +38,6 @@ public class MapScreen extends ScreenAdapter{
 	public void render(float delta) {
 		
 		//Set the batch to adjust for the camera
-		Main.batch.setProjectionMatrix(camera.combined);
-		
-		//Tick the map
-		map.onTick();
 		
 		map.display(camera, Main.batch);
 	}

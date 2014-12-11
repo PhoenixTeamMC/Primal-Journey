@@ -1,6 +1,6 @@
 package phoenixTeam.entity.living.enemy;
 
-import phoenixTeam.entity.Entity;
+import phoenixTeam.entity.EntityLiving;
 import phoenixTeam.util.Animation;
 import phoenixTeam.util.TextureUtil;
 
@@ -27,7 +27,7 @@ public class EntitySlime extends EntityEnemy
 
     
     @Override
-    public void attack(Entity entity) {
+    public void attack(EntityLiving entity) {
         int rand = random.nextInt(100);
         if (rand % 7 == 0) {
             entity.damage(damageAmount * 2);
