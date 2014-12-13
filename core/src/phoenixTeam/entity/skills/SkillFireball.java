@@ -1,10 +1,6 @@
 package phoenixTeam.entity.skills;
 
-import phoenixTeam.entity.EntityFireball;
-import phoenixTeam.entity.enums.PrimaryClasses;
-import phoenixTeam.entity.living.EntityLiving;
-import phoenixTeam.entity.living.player.EntityPlayer;
-import phoenixTeam.map.Map;
+import com.badlogic.ashley.core.Entity;
 
 /**
  * @author Strikingwolf, chbachman
@@ -16,7 +12,11 @@ public class SkillFireball extends Skill
     }
 
     @Override
-    public void doSkill(EntityLiving entity) {
+    public void doSkill(Entity entity) {
+    	
+    	//TODO: Striking, fix this.
+    	
+    	/*
         if (entity.mana >= 20) {
             if (entity instanceof EntityPlayer) {
                 EntityPlayer player = (EntityPlayer) entity;
@@ -31,5 +31,6 @@ public class SkillFireball extends Skill
                 entity.mana -= 20;
             }
         }
+        */
     }
 }

@@ -27,8 +27,10 @@ public class RenderingSystem extends IteratingSystem{
 	private ComponentMapper<PositionComponent> p;
 	
 	@SuppressWarnings("unchecked")
-	public RenderingSystem() {
+	public RenderingSystem(OrthographicCamera camera) {
 		super(Family.all(RenderComponent.class, PositionComponent.class).get());
+		
+		this.camera = camera;
 		
 		r = ComponentMapper.getFor(RenderComponent.class);
 		p = ComponentMapper.getFor(PositionComponent.class);

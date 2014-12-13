@@ -1,10 +1,7 @@
 package phoenixTeam.map;
 
-import phoenixTeam.entity.Entity;
-
 import com.badlogic.ashley.core.Engine;
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
+import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -53,13 +50,6 @@ public class Map{
 	 * @param entity
 	 */
 	public void spawnEntity(Entity entity){
-		
-		Game main = (Game) Gdx.app.getApplicationListener();
-		
-		main.getScreen()
-		
-		entity.onSpawn(this);
-
 		engine.addEntity(entity);
 	}
 	
@@ -68,9 +58,6 @@ public class Map{
 	 * @param entity
 	 */
 	public void killEntity(Entity entity){
-		
-		entity.onDeath(this);
-		
-		entityList.remove(entity);
+		engine.removeEntity(entity);
 	}
 }

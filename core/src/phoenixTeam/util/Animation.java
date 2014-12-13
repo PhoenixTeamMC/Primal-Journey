@@ -37,23 +37,5 @@ public class Animation {
 		
 		batch.draw(current,x,y,width,height);
 	}
-	
-	/*
-	 * Animation Code:
-	 * batch = new SpriteBatch();
-        
-        animation = new Animation(.025f, walkFrames);
-        
-        stateTime = 0f;
-        
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);                        // #14
-        stateTime += Gdx.graphics.getDeltaTime(); 
-        
-        current = animation.getKeyFrame(stateTime, true);
-        
-		batch.begin();
-		batch.draw(current, 50, 50, 300, 300);
-		batch.end();
-	 */
 
 }
