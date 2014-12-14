@@ -30,7 +30,7 @@ public class RenderingSystem extends IteratingSystem{
 	public RenderingSystem(OrthographicCamera camera) {
 		super(Family.all(RenderComponent.class, PositionComponent.class).get());
 		
-		this.camera = camera;
+		this.camera = camera; 
 		
 		r = ComponentMapper.getFor(RenderComponent.class);
 		p = ComponentMapper.getFor(PositionComponent.class);

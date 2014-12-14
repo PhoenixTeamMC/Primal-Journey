@@ -18,7 +18,7 @@ public class Main extends Game{
 
 	public static final XStream xml = new XStream();
 
-	public static final SpriteBatch batch = new SpriteBatch();
+	public static SpriteBatch batch;
 
 	public FPSLogger log;
 	
@@ -27,6 +27,8 @@ public class Main extends Game{
 	 */
 	@Override
 	public void create () {
+		
+		batch = new SpriteBatch();
 		
 		//Setup the FPS Tracker
 		log = new FPSLogger();
