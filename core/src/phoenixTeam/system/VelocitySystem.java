@@ -26,8 +26,8 @@ public class VelocitySystem extends IteratingSystem{
 		PositionComponent pos = p.get(entity);
 		VelocityComponent velocity = v.get(entity);
 		
-		pos.x += velocity.velocity * Math.cos(Math.toRadians(velocity.angle));
-		pos.y += velocity.velocity * Math.sin(Math.toRadians(velocity.angle));
+		pos.x += velocity.velocity.x;
+		pos.y += velocity.velocity.y;
 	}
 	
 	

@@ -44,6 +44,7 @@ public class MapScreen extends ScreenAdapter{
 	public void render(float delta) {
 		super.render(delta);
 		map.display(camera, Main.batch);
+		engine.update(delta);
 	}
 	
 	public Entity spawnPlayer(){
