@@ -122,6 +122,7 @@ Primal Journey crashes every time?  Have a suggestion?  Found a bug?  Create an 
 5. Click `Submit new issue`, and wait for feedback!
 
 ###Credits
+---
 chbachman - Lead Dev.
 
 Strikingwolf - Lead Dev.
