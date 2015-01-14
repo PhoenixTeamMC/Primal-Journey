@@ -37,8 +37,6 @@ public class PlayerSystem extends IteratingSystem{
 		
 		pos.x += velocity.x;
 		pos.y += velocity.y;
-		
-		camera.position.set(pos.x, pos.y, 0);
         
         if(Gdx.input.isKeyPressed(Input.Keys.O)){
         	camera.zoom += .02;
@@ -48,10 +46,11 @@ public class PlayerSystem extends IteratingSystem{
         	camera.zoom -= .02;
         }
         
-        
+        camera.position.x = pos.x;
+        camera.position.y = pos.y;
         
         camera.zoom = MathUtils.clamp(camera.zoom, 0.1f, 100/camera.viewportWidth);
-
+        
         float effectiveViewportWidth = camera.viewportWidth * camera.zoom;
         float effectiveViewportHeight = camera.viewportHeight * camera.zoom;
 

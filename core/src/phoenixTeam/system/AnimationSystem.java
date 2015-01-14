@@ -1,6 +1,7 @@
 package phoenixTeam.system;
 
 import phoenixTeam.component.AnimationComponent;
+import phoenixTeam.component.ComponentMappers;
 import phoenixTeam.component.RenderComponent;
 import phoenixTeam.component.StateComponent;
 
@@ -21,9 +22,9 @@ public class AnimationSystem extends IteratingSystem{
 	public AnimationSystem(){
 		super(Family.all(RenderComponent.class, AnimationComponent.class, StateComponent.class).get());
 		
-		a = ComponentMapper.getFor(AnimationComponent.class);
-		r = ComponentMapper.getFor(RenderComponent.class);
-		s = ComponentMapper.getFor(StateComponent.class);
+		a = ComponentMappers.animation;
+		r = ComponentMappers.render;
+		s = ComponentMappers.state;
 	}
 	
 	public void processEntity(Entity entity, float deltaTime) {

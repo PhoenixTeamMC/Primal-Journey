@@ -2,7 +2,8 @@ package phoenixTeam.system;
 
 import java.util.Comparator;
 
-import phoenixTeam.Main;
+import phoenixTeam.PrimalJourney;
+import phoenixTeam.component.ComponentMappers;
 import phoenixTeam.component.PositionComponent;
 import phoenixTeam.component.RenderComponent;
 
@@ -16,7 +17,7 @@ import com.badlogic.gdx.utils.Array;
 
 public class RenderingSystem extends IteratingSystem{
 
-	SpriteBatch batch = Main.batch;
+	SpriteBatch batch = PrimalJourney.batch;
 	
 	Array<Entity> renderQueue;
 	Comparator<Entity> comparator;
@@ -32,8 +33,8 @@ public class RenderingSystem extends IteratingSystem{
 		
 		this.camera = camera; 
 		
-		r = ComponentMapper.getFor(RenderComponent.class);
-		p = ComponentMapper.getFor(PositionComponent.class);
+		r = ComponentMappers.render;
+		p = ComponentMappers.position;
 		
 		renderQueue = new Array<Entity>();
 		
@@ -71,7 +72,13 @@ public class RenderingSystem extends IteratingSystem{
 				continue;
 			}
 			
-			batch.draw(tex.region, pos.x, pos.y);
+			if(tex.xSize < 0 || tex.ySize < 0){
+				batch.draw(tex.region, pos.x, pos.y);
+			}else{
+				batch.draw(tex.region, pos.x, pos.y, tex.xSize, tex.ySize);
+			}
+			
+			
 		}
 		
 		batch.end();

@@ -1,6 +1,6 @@
 package pheonix.rpg.desktop;
 
-import phoenixTeam.Main;
+import phoenixTeam.PrimalJourney;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
@@ -11,7 +11,8 @@ public class DesktopLauncher {
 		
 		config.height = 1000;
 		config.width = 1000;
+		config.title = "Primal Journey";
 		
-		new LwjglApplication(new Main(), config);
+		new LwjglApplication(new PrimalJourney(), config);
 	}
 }

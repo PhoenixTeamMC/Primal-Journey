@@ -1,9 +1,12 @@
 package phoenixTeam.map;
 
-import phoenixTeam.Main;
+import phoenixTeam.PrimalJourney;
+import phoenixTeam.component.AnimationComponent;
 import phoenixTeam.component.PlayerComponent;
 import phoenixTeam.component.PositionComponent;
 import phoenixTeam.component.RenderComponent;
+import phoenixTeam.component.StateComponent;
+import phoenixTeam.system.AnimationSystem;
 import phoenixTeam.system.PlayerSystem;
 import phoenixTeam.system.RenderingSystem;
 import phoenixTeam.util.TextureUtil;
@@ -13,6 +16,8 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
 
 public class MapScreen extends ScreenAdapter{
 	
@@ -32,10 +37,11 @@ public class MapScreen extends ScreenAdapter{
 		camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);    
 		camera.update(); 
 
-		map = new Map(engine, 100, 100);
+		map = new Map(engine, 1000, 1000);
 		
 		engine.addSystem(new PlayerSystem(camera));
 		engine.addSystem(new RenderingSystem(camera));
+		engine.addSystem(new AnimationSystem());
 		
 		engine.addEntity(spawnPlayer());
 	}
@@ -43,7 +49,7 @@ public class MapScreen extends ScreenAdapter{
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-		map.display(camera, Main.batch);
+		map.display(camera, PrimalJourney.batch);
 		engine.update(delta);
 	}
 	
@@ -52,7 +58,18 @@ public class MapScreen extends ScreenAdapter{
 		
 		entity.add(new PositionComponent());
 		entity.add(new PlayerComponent());
-		entity.add(new RenderComponent(TextureUtil.getTexture("player.png")));
+		entity.add(new RenderComponent(TextureUtil.getTexture("player.png"), 6, 6));
+		entity.add(new StateComponent());
+		
+		AnimationComponent component = new AnimationComponent();
+		
+		PrimalJourney.manager.load("data/ba.gif", Animation.class);
+		
+		PrimalJourney.manager.finishLoading();
+		
+		component.animation = PrimalJourney.manager.get("data/ba.gif");
+		component.animation.setPlayMode(PlayMode.LOOP);
+		entity.add(component);
 		
 		return entity;
 	}

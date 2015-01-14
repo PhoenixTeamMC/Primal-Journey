@@ -2,11 +2,15 @@ package phoenixTeam;
 
 import phoenixTeam.event.input.InputHandler;
 import phoenixTeam.map.MapScreen;
+import phoenixTeam.util.GifLoader;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.thoughtworks.xstream.XStream;
 
@@ -14,11 +18,12 @@ import com.thoughtworks.xstream.XStream;
  * @author chbachman
  *
  */
-public class Main extends Game{
+public class PrimalJourney extends Game{
 
 	public static final XStream xml = new XStream();
 
 	public static SpriteBatch batch;
+	public static AssetManager manager;
 
 	public FPSLogger log;
 	
@@ -27,6 +32,8 @@ public class Main extends Game{
 	 */
 	@Override
 	public void create () {
+		manager = new AssetManager();
+		manager.setLoader(Animation.class, new GifLoader(new InternalFileHandleResolver()));
 		
 		batch = new SpriteBatch();
 		
