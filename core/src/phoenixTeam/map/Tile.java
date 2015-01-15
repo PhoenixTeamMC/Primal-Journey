@@ -38,7 +38,6 @@ public class Tile{
 	
 	//Temperature 50-75
 	
-	public static final Tile 
 	public static final Tile GRASSY_HILLS = new Tile("grass.png", 50, 80, 25, 50, 25, 50);
 	
 	
