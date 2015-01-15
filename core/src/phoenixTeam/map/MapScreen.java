@@ -73,5 +73,15 @@ public class MapScreen extends ScreenAdapter{
 		
 		return entity;
 	}
+	
+	@Override
+	public void hide() {
+		this.dispose();
+	}
+
+	@Override
+	public void dispose(){
+		map.map.dispose();
+	}
 
 }
