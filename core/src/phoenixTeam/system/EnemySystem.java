@@ -1,12 +1,5 @@
 package phoenixTeam.system;
 
-import com.badlogic.gdx.math.Vector2;
-import phoenixTeam.component.EnemyComponent;
-import phoenixTeam.component.HealthComponent;
-import phoenixTeam.component.PositionComponent;
-import phoenixTeam.component.VelocityComponent;
-import phoenixTeam.util.EntityUtil;
-
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
@@ -14,6 +7,11 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.utils.Array;
+import phoenixTeam.component.EnemyComponent;
+import phoenixTeam.component.HealthComponent;
+import phoenixTeam.component.PositionComponent;
+import phoenixTeam.component.VelocityComponent;
+import phoenixTeam.util.EntityUtil;
 
 public class EnemySystem extends IteratingSystem{
 

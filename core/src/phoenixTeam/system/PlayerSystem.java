@@ -1,8 +1,5 @@
 package phoenixTeam.system;
 
-import phoenixTeam.component.PlayerComponent;
-import phoenixTeam.component.PositionComponent;
-
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
@@ -12,6 +9,10 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import phoenixTeam.PrimalJourney;
+import phoenixTeam.component.PlayerComponent;
+import phoenixTeam.component.PositionComponent;
+import phoenixTeam.map.MapScreen;
 
 public class PlayerSystem extends IteratingSystem{
 	
@@ -44,6 +45,10 @@ public class PlayerSystem extends IteratingSystem{
         
         if(Gdx.input.isKeyPressed(Input.Keys.L)){
         	camera.zoom -= .02;
+        }
+
+        if(Gdx.input.isKeyPressed(Input.Keys.BACKSLASH)) {
+            PrimalJourney.INSTANCE.setScreen(new MapScreen());
         }
         
         camera.position.x = pos.x;

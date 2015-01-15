@@ -20,6 +20,7 @@ import com.thoughtworks.xstream.XStream;
  */
 public class PrimalJourney extends Game{
 
+    public static PrimalJourney INSTANCE;
 	public static final XStream xml = new XStream();
 
 	public static SpriteBatch batch;
@@ -44,6 +45,7 @@ public class PrimalJourney extends Game{
 		InputHandler.init();
 		
 		this.setScreen(new MapScreen());
+        INSTANCE = this;
 	}
 
 	/**

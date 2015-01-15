@@ -1,14 +1,13 @@
 package phoenixTeam.map;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import phoenixTeam.util.TextureUtil;
-
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
+import phoenixTeam.util.TextureUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Tile{
 	

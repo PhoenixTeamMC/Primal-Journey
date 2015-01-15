@@ -1,12 +1,11 @@
 package phoenixTeam.system;
 
-import phoenixTeam.component.PositionComponent;
-import phoenixTeam.component.VelocityComponent;
-
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
+import phoenixTeam.component.PositionComponent;
+import phoenixTeam.component.VelocityComponent;
 
 public class VelocitySystem extends IteratingSystem{
 
