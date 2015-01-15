@@ -1,16 +1,14 @@
 package phoenixTeam.map;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
-import phoenixTeam.map.Tile.Levels;
 import phoenixTeam.util.Random;
 
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 
 public class MapGenerator {
 
+	private static final int chunkSize = 16;
+	
 	private TiledMapTileLayer layer;
 
 	private final int xSize;
@@ -22,27 +20,36 @@ public class MapGenerator {
 
 	Random random = new Random();
 
+	
+	
 	public MapGenerator(TiledMapTileLayer layer){
 		this.layer = layer;
 
+		
+		
 		this.xSize = layer.getWidth();
 		this.ySize = layer.getHeight();
 
-		height = new Layer(xSize,ySize).setMin(-50).setMax(50).setChange(5);
-		moisture = new Layer(xSize, ySize).setMin(-50).setMax(50).setChange(5);
-		temperature = new Layer(xSize, ySize).setMin(-50).setMax(50).setChange(5);
+		if(this.xSize % chunkSize != 0){
+			throw new IllegalArgumentException("X Size must divisible by the chunk size:" + chunkSize);
+		}
+		
+		if(this.ySize % chunkSize != 0){
+			throw new IllegalArgumentException("Y Size must divisible by the chunk size:" + chunkSize);
+		}
+		
+		height = new Layer(xSize,ySize).setMin(-50).setMax(100).setChange(5);
+		moisture = new Layer(xSize, ySize).setMin(0).setMax(100).setChange(5);
+		temperature = new Layer(xSize, ySize).setMin(-25).setMax(100).setChange(5);
 
 		calculateInterval();
 	}
 
 	public TiledMapTileLayer generate(){
 
-		int x = random.nextInt(xSize);
-		int y = random.nextInt(ySize);
-
-		generateLayer(height, x,y);
-		generateLayer(moisture, x, y);
-		generateLayer(temperature,x,y);
+		generateLayer(height);
+		generateLayer(moisture);
+		generateLayer(temperature);
 
 		for(int i = 0; i < xSize; i++){
 			for(int g = 0; g < ySize; g++){
@@ -53,49 +60,63 @@ public class MapGenerator {
 		return layer;
 	}
 
-	private void generateLayer(Layer layer, int x, int y){
+	private void generateLayer(Layer layer){
+		for(int i = 0; i < this.xSize; i += chunkSize){
+			for(int g = 0; g < this.ySize; g += chunkSize){
+				this.generateSection(layer, i, g, chunkSize);
+			}
+		}
+	}
 
+	private void generateSection(Layer layer, int startX, int startY, int width){
+
+		int endY = startY + width;
+		int endX = startX + width;
+		
+		int x = random.nextInt(startX, endX);
+		int y = random.nextInt(startY, endY);
+		
+		
+		
 		layer.startGeneration(x, y);
-
+		
 		//Upper Left Quadrant
-		for(int i = 0; i < x; i++){
-			for(int g = 0; g < y; g++){
+		for(int i = startX; i < x; i++){
+			for(int g = startX; g < y; g++){
 				layer.generate(i,g);
 			}
 		}
 
 		//Upper Right Quadrant
-		for(int i = x; i < xSize; i++){
-			for(int g = 0; g < y; g++){
+		for(int i = x; i < endX; i++){
+			for(int g = startX; g < y; g++){
 				layer.generate(i,g);
 			}
 		}
 
 		//Lower Left Quadrant
-		for(int i = 0; i < x; i++){
-			for(int g = y; g < ySize; g++){
+		for(int i = startX; i < x; i++){
+			for(int g = y; g < endY; g++){
 				layer.generate(i,g);
 			}
 		}
 
 		//Lower Right Quadrant
-		for(int i = x; i < xSize; i++){
-			for(int g = y; g < ySize; g++){
+		for(int i = x; i < endX; i++){
+			for(int g = y; g < endY; g++){
 				layer.generate(i,g);
 			}
 		}
 	}
-
+	
 	private Tile getTile(int x, int y){
 
 		int height = this.height.get(x, y);
-		int moisture = this.height.get(x, y);
-		int temperature = this.height.get(x, y);
+		int moisture = this.moisture.get(x, y);
+		int temperature = this.temperature.get(x, y);
 
 
-		List<Tile> tiles = this.getTiles(height, moisture, temperature);
-		
-		return random.pickRandom(tiles);
+		return Tile.getTile(height, moisture, temperature);
 	}
 
 	private int[] heightMap;
@@ -134,61 +155,6 @@ public class MapGenerator {
 			temperatureMap[i] = temperatureMap[i - 1] + temperatureInterval;
 		}
 
-	}
-
-	public List<Tile> getTiles(int height, int moisture, int temperature){
-		List<Tile> output = new ArrayList<Tile>();
-		List<Tile> tileList = Tile.tileList;
-
-		for(Tile tile : tileList){
-			
-			boolean shouldUse = false;
-			
-			if(isWithin(height, tile.height, heightMap)){
-				shouldUse = true;
-			}
-			
-			if(isWithin(moisture, tile.moisture, moistureMap)){
-				shouldUse = true;
-			}
-			
-			if(isWithin(temperature, tile.temperature, temperatureMap)){
-				shouldUse = true;
-			}
-			
-			if(shouldUse){
-				output.add(tile);
-			}
-			
-		}
-
-		return output;
-	}
-
-	private static boolean isWithin(int tile, Levels level, int[] map){
-		if(level == Levels.ANY){
-			return true;
-		}
-		
-		int counter = 0;
-		
-		for(int data : map){
-			
-			if(data > tile){
-				 switch(counter){
-				 
-				 case 0: return false;
-				 case 1: return level == Levels.LOW;
-				 case 2: return level == Levels.MIDDLE;
-				 case 3: return level == Levels.HIGH;
-				 
-				 }
-			}
-			
-		}
-		
-		return false;
-		
 	}
 
 }

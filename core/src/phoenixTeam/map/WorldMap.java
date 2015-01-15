@@ -13,7 +13,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
  * @author chbachman
  *
  */
-public class Map{
+public class WorldMap{
 	
 	
 
@@ -26,7 +26,7 @@ public class Map{
 	public final int height;
 
 	
-	public Map(Engine engine, int width, int height){
+	public WorldMap(Engine engine, int width, int height){
 		map = new TiledMap();
 		renderer = new OrthogonalTiledMapRenderer(map, 1 / 16f);
 		

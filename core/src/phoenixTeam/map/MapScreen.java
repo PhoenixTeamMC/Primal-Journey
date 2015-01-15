@@ -25,7 +25,7 @@ public class MapScreen extends ScreenAdapter{
 	
 	public OrthographicCamera camera;
 	
-	Map map;
+	WorldMap map;
 	
 	public MapScreen(){
 		engine = new Engine();
@@ -37,7 +37,7 @@ public class MapScreen extends ScreenAdapter{
 		camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);    
 		camera.update(); 
 
-		map = new Map(engine, 1000, 1000);
+		map = new WorldMap(engine, 64, 64);
 		
 		engine.addSystem(new PlayerSystem(camera));
 		engine.addSystem(new RenderingSystem(camera));
