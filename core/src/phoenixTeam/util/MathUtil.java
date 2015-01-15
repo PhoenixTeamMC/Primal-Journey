@@ -10,5 +10,9 @@ public class MathUtil {
 	public static boolean isWithin(float x, float y, float x2, float y2, float boundary){
 		return Math.abs(x - x2) < boundary && Math.abs(y - y2) < boundary;
 	}
+	
+	public static boolean isWithin(int x, int y, int x2, int y2, int boundary){
+		return Math.abs(x - x2) < boundary && Math.abs(y - y2) < boundary;
+	}
 
 }
