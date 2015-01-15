@@ -58,7 +58,7 @@ public class MapScreen extends ScreenAdapter{
 		
 		entity.add(new PositionComponent());
 		entity.add(new PlayerComponent());
-		entity.add(new RenderComponent(TextureUtil.getTexture("player.png"), 6, 6));
+		entity.add(new RenderComponent(TextureUtil.getTexture("ba.gif"), 6, 6));
 		entity.add(new StateComponent());
 		
 		AnimationComponent component = new AnimationComponent();
