@@ -41,7 +41,7 @@ public class EnemySystem extends IteratingSystem{
 	protected void processEntity(Entity entity, float deltaTime) {
 		
 		EnemyComponent enemy = e.get(entity);
-		PositionComponent position = enemy.position;
+		PositionComponent position = p.get(entity);
 
 		Entity target = enemy.target;
 		

@@ -11,9 +11,4 @@ public class EnemyComponent extends Component{
 	public float attackRange;
 	
 	public int damage;
-
-	public StatsComponent stats = new StatsComponent();
-	public PositionComponent position = new PositionComponent();
-	public VelocityComponent velocity = new VelocityComponent();
-	public HealthComponent health = new HealthComponent();
 }
