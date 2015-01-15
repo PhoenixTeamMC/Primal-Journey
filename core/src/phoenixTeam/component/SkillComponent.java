@@ -1,11 +1,10 @@
 package phoenixTeam.component;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.badlogic.ashley.core.Component;
 import phoenixTeam.entity.skills.Skill;
 
-import com.badlogic.ashley.core.Component;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class SkillComponent extends Component{
     public String name;

@@ -6,9 +6,10 @@ import com.badlogic.ashley.core.Component;
  * @author Strikingwolf
  *
  */
-public class StatsComponet extends Component {
+public class StatsComponent extends Component {
     //UTIL
-    public int speed;
+    public float speed;
+
 
     //COMBAT
 
@@ -17,7 +18,7 @@ public class StatsComponet extends Component {
     public int attackSpeed;
     public int attackRange;
     public int defense;
-
+    public int baseHealth;
 
     //magic
     public int intelligence;

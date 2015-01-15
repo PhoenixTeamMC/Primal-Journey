@@ -9,9 +9,8 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.utils.Array;
-import phoenixTeam.component.StateComponent;
 import phoenixTeam.component.VelocityComponent;
-import phoenixTeam.component.constants.StatsComponet;
+import phoenixTeam.component.constants.StatsComponent;
 
 public class EntityUtil {
 	
@@ -23,12 +22,12 @@ public class EntityUtil {
 	private ImmutableArray<Entity> livingList;
 	
 	private ComponentMapper<PositionComponent> p;
-	private ComponentMapper<StatsComponet> s;
+	private ComponentMapper<StatsComponent> s;
 	private ComponentMapper<VelocityComponent> v;
 	
 	public EntityUtil(){
 		p = ComponentMapper.getFor(PositionComponent.class);
-		s = ComponentMapper.getFor(StatsComponet.class);
+		s = ComponentMapper.getFor(StatsComponent.class);
 		v = ComponentMapper.getFor(VelocityComponent.class);
 	}
 	
@@ -139,7 +138,7 @@ public class EntityUtil {
 		return returnList;
 	}
 
-	public Vector2 getVectorToGetToPoint(PositionComponent current, PositionComponent destination, int speed) {
+	public Vector2 getVectorToGetToPoint(PositionComponent current, PositionComponent destination, float speed) {
 		Vector2 vector = new Vector2();
 		vector.x = 0;
 		vector.y = 0;
