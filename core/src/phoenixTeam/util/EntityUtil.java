@@ -1,5 +1,6 @@
 package phoenixTeam.util;
 
+import com.badlogic.gdx.math.Vector2;
 import phoenixTeam.component.PositionComponent;
 
 import com.badlogic.ashley.core.ComponentMapper;
@@ -8,6 +9,9 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.utils.Array;
+import phoenixTeam.component.StateComponent;
+import phoenixTeam.component.VelocityComponent;
+import phoenixTeam.component.constants.StatsComponet;
 
 public class EntityUtil {
 	
@@ -19,9 +23,13 @@ public class EntityUtil {
 	private ImmutableArray<Entity> livingList;
 	
 	private ComponentMapper<PositionComponent> p;
+	private ComponentMapper<StatsComponet> s;
+	private ComponentMapper<VelocityComponent> v;
 	
 	public EntityUtil(){
 		p = ComponentMapper.getFor(PositionComponent.class);
+		s = ComponentMapper.getFor(StatsComponet.class);
+		v = ComponentMapper.getFor(VelocityComponent.class);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -131,4 +139,30 @@ public class EntityUtil {
 		return returnList;
 	}
 
+	public Vector2 getVectorToGetToPoint(PositionComponent current, PositionComponent destination, int speed) {
+		Vector2 vector = new Vector2();
+		vector.x = 0;
+		vector.y = 0;
+
+		float diffX = current.x - destination.x;
+		float diffY = current.y - destination.y;
+
+		if (diffX > 0) {
+			vector.x = -speed;
+		} else if (diffX < 0) {
+			vector.x = speed;
+		}
+
+		if (diffY > 0) {
+			vector.y = -speed;
+		} else if (diffY < 0) {
+			vector.y = speed;
+		}
+
+		return vector;
+	}
+
+	public void goToPoint(Entity entity, PositionComponent destination) {
+		v.get(entity).velocity = getVectorToGetToPoint(p.get(entity), destination, s.get(entity).speed);
+	}
 }

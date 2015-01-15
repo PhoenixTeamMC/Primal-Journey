@@ -1,8 +1,10 @@
 package phoenixTeam.system;
 
+import com.badlogic.gdx.math.Vector2;
 import phoenixTeam.component.EnemyComponent;
 import phoenixTeam.component.HealthComponent;
 import phoenixTeam.component.PositionComponent;
+import phoenixTeam.component.VelocityComponent;
 import phoenixTeam.util.EntityUtil;
 
 import com.badlogic.ashley.core.ComponentMapper;
@@ -20,6 +22,7 @@ public class EnemySystem extends IteratingSystem{
 	ComponentMapper<EnemyComponent> e;
 	ComponentMapper<PositionComponent> p;
 	ComponentMapper<HealthComponent> h;
+	ComponentMapper<VelocityComponent> v;
 	
 	private ImmutableArray<Entity> targets;
 	
@@ -30,6 +33,7 @@ public class EnemySystem extends IteratingSystem{
 		e = ComponentMapper.getFor(EnemyComponent.class);
 		p = ComponentMapper.getFor(PositionComponent.class);
 		h = ComponentMapper.getFor(HealthComponent.class);
+		v = ComponentMapper.getFor(VelocityComponent.class);
 	}
 	
 	
@@ -37,7 +41,8 @@ public class EnemySystem extends IteratingSystem{
 	protected void processEntity(Entity entity, float deltaTime) {
 		
 		EnemyComponent enemy = e.get(entity);
-		
+		PositionComponent position = enemy.position;
+
 		Entity target = enemy.target;
 		
 		if(target == null || !targets.contains(target, true)){
@@ -57,17 +62,16 @@ public class EnemySystem extends IteratingSystem{
         if(target == null){
         	return;
         }
-        
-    	
-   	 
-   	 if(EntityUtil.INSTANCE.isWithin(entity, target, enemy.attackRange)){
-   		 HealthComponent health = h.get(entity);
-   		 
-   		 health.health -= enemy.damage;
-   	 }
-		
+
+		EntityUtil.INSTANCE.goToPoint(entity, p.get(target));
+
+		if(EntityUtil.INSTANCE.isWithin(entity, target, enemy.attackRange)){
+			HealthComponent health = h.get(entity);
+
+			health.health -= enemy.damage;
+		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public void addedToEngine(Engine engine){
