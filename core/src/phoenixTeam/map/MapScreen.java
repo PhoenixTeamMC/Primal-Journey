@@ -33,11 +33,13 @@ public class MapScreen extends ScreenAdapter{
 		//Setup the camera
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
+		
+		
 		camera = new OrthographicCamera(100, 100 * (h/w));
 		camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);    
 		camera.update(); 
 
-		map = new WorldMap(engine, 64, 64);
+		map = new WorldMap(engine, 400, 400);
 		
 		engine.addSystem(new PlayerSystem(camera));
 		engine.addSystem(new RenderingSystem(camera));

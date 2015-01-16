@@ -34,6 +34,7 @@ public class PrimalJourney extends Game{
 	@Override
 	public void create () {
 		manager = new AssetManager();
+		INSTANCE = this;
 		manager.setLoader(Animation.class, new GifLoader(new InternalFileHandleResolver()));
 		
 		batch = new SpriteBatch();
@@ -45,7 +46,6 @@ public class PrimalJourney extends Game{
 		InputHandler.init();
 		
 		this.setScreen(new MapScreen());
-        INSTANCE = this;
 	}
 
 	/**
@@ -60,6 +60,5 @@ public class PrimalJourney extends Game{
 		
 		super.render();
 	}
-
 	
 }
