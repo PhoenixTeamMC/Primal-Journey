@@ -16,9 +16,6 @@ public class PlayerComponent extends Component{
 	public int totalExp = 0;
 	public int expLevel = 0;
 
-	//Camera, for moving
-	OrthographicCamera camera;
-
 	//Stats
 	int constitution = 0;
 	int strength = 0;

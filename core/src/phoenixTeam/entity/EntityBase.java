@@ -1,5 +1,8 @@
 package phoenixTeam.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.Entity;
 
@@ -11,10 +14,19 @@ import com.badlogic.ashley.core.Entity;
 public abstract class EntityBase extends Entity {
 	
 	public EntityBase(Component... components){
-		for(Component c : components){
-			super.add(c);
+		
+		List<Component> list = new ArrayList<Component>();
+		
+		this.registerComponents(list);
+		
+		for(Component c : list){
+			this.add(c);
 		}
 	}
+	
+	public void registerComponents(List<Component> list){}
+	
+	
 	
 	
 

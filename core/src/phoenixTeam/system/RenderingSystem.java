@@ -1,46 +1,36 @@
 package phoenixTeam.system;
 
-import com.badlogic.ashley.core.ComponentMapper;
-import com.badlogic.ashley.core.Entity;
-import com.badlogic.ashley.core.Family;
-import com.badlogic.ashley.systems.IteratingSystem;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.Array;
-import phoenixTeam.PrimalJourney;
+import static phoenixTeam.PrimalJourney.camera;
+
+import java.util.Comparator;
+
 import phoenixTeam.component.ComponentMappers;
 import phoenixTeam.component.PositionComponent;
 import phoenixTeam.component.RenderComponent;
 
-import java.util.Comparator;
+import com.badlogic.ashley.core.Entity;
+import com.badlogic.ashley.core.Family;
+import com.badlogic.ashley.systems.IteratingSystem;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 
 public class RenderingSystem extends IteratingSystem{
 
-	SpriteBatch batch = PrimalJourney.batch;
+	SpriteBatch batch = new SpriteBatch();
 	
 	Array<Entity> renderQueue;
 	Comparator<Entity> comparator;
-
-	OrthographicCamera camera;
-
-	private ComponentMapper<RenderComponent> r;
-	private ComponentMapper<PositionComponent> p;
 	
 	@SuppressWarnings("unchecked")
-	public RenderingSystem(OrthographicCamera camera) {
-		super(Family.all(RenderComponent.class, PositionComponent.class).get());
-		
-		this.camera = camera; 
-		
-		r = ComponentMappers.render;
-		p = ComponentMappers.position;
+	public RenderingSystem() {
+		super(Family.all(RenderComponent.class, PositionComponent.class).get()); 
 		
 		renderQueue = new Array<Entity>();
 		
 		comparator = new Comparator<Entity>() {
 			@Override
 			public int compare(Entity entityA, Entity entityB) {
-				return (int)Math.signum(p.get(entityB).layer - p.get(entityA).layer);
+				return (int)Math.signum(ComponentMappers.position.get(entityB).layer - ComponentMappers.position.get(entityA).layer);
 			}
 		};
 		
@@ -64,8 +54,8 @@ public class RenderingSystem extends IteratingSystem{
 		batch.begin();
 		
 		for (Entity entity : renderQueue) {
-			RenderComponent tex = r.get(entity);
-			PositionComponent pos = p.get(entity);
+			RenderComponent tex = ComponentMappers.render.get(entity);
+			PositionComponent pos = ComponentMappers.position.get(entity);
 			
 			if (tex.region == null) {
 				continue;

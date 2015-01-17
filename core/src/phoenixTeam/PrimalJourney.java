@@ -4,12 +4,14 @@ import phoenixTeam.event.input.InputHandler;
 import phoenixTeam.map.MapScreen;
 import phoenixTeam.util.GifLoader;
 
+import com.badlogic.ashley.core.Engine;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.thoughtworks.xstream.XStream;
@@ -24,8 +26,10 @@ public class PrimalJourney extends Game{
 	public static final XStream xml = new XStream();
 
 	public static SpriteBatch batch;
-	public static AssetManager manager;
-
+	public static AssetManager assetManager;
+	public static Engine engine;
+	public static OrthographicCamera camera;
+	
 	public FPSLogger log;
 	
 	/**
@@ -33,10 +37,25 @@ public class PrimalJourney extends Game{
 	 */
 	@Override
 	public void create () {
-		manager = new AssetManager();
 		INSTANCE = this;
-		manager.setLoader(Animation.class, new GifLoader(new InternalFileHandleResolver()));
+
+		//Setup the camera
+		float w = Gdx.graphics.getWidth();
+		float h = Gdx.graphics.getHeight();
+
+
+		camera = new OrthographicCamera(100, 100 * (h/w));
+		camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);    
+		camera.update(); 
+
+		engine = new Engine();
 		
+		//Setup the assetManager, and add the GifLoader
+		assetManager = new AssetManager();
+		assetManager.setLoader(Animation.class, new GifLoader(new InternalFileHandleResolver()));
+		
+		
+		//Setup the SpriteBatch
 		batch = new SpriteBatch();
 		
 		//Setup the FPS Tracker
@@ -53,12 +72,12 @@ public class PrimalJourney extends Game{
 	 */
 	@Override
 	public void render () {
-		log.log();
-		
-		//Clear the screen
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
 		super.render();
+		log.log();
+		assetManager.update();
+		engine.update(Gdx.graphics.getDeltaTime());
+
 	}
 	
 }

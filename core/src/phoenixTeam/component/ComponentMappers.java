@@ -17,5 +17,7 @@ public final class ComponentMappers {
 	public static final ComponentMapper<SkillComponent> skill = ComponentMapper.getFor(SkillComponent.class);
 	public static final ComponentMapper<StateComponent> state = ComponentMapper.getFor(StateComponent.class);
 	public static final ComponentMapper<VelocityComponent> velocity = ComponentMapper.getFor(VelocityComponent.class);
+	public static final ComponentMapper<AnimationLoaderComponent> animationloader = ComponentMapper.getFor(AnimationLoaderComponent.class);
+	public static final ComponentMapper<LoaderComponent> loader = ComponentMapper.getFor(LoaderComponent.class);
 
 }
