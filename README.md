@@ -7,6 +7,9 @@ This is the game Primal Journey, by the PhoenixTeam!
 
 [Contributing](#contributing) - For those that want to help out.
 
+##Build Status
+[![Build Status](https://travis-ci.org/PhoenixTeamMC/Primal-Journey.svg?branch=master)](https://travis-ci.org/PhoenixTeamMC/Primal-Journey)
+
 ###Compiling Primal Journey
 IMPORTANT: Please report any issues you have, there might be some problems with the documentation!
 Also make sure you know EXACTLY what you're doing!  It's not any of our faults if your OS crashes, becomes corrupted, etc.
