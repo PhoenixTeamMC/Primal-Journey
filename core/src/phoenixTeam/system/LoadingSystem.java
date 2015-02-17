@@ -36,9 +36,8 @@ public class LoadingSystem extends IteratingSystem{
 				entity.add(c);
 				entity.add(new RenderComponent(c.animation.getKeyFrame(0)));
 				entity.remove(AnimationLoaderComponent.class);
-				
 			}
-		}else{
+		} else {
 			LoaderComponent l = ComponentMappers.loader.get(entity);
 			
 			if(!l.hasStarted){
