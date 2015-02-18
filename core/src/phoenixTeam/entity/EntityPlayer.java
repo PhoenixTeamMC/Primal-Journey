@@ -10,7 +10,7 @@ import phoenixTeam.component.StateComponent;
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
 
-public class EntityPlayer extends EntityBase{
+public class EntityPlayer extends EntityBase {
 
 	@Override
 	public void registerComponents(List<Component> list) {	
@@ -20,7 +20,4 @@ public class EntityPlayer extends EntityBase{
 		list.add(new AnimationLoaderComponent("data/ba.gif", PlayMode.LOOP));
 		
 	}
-
-	
-	
 }
