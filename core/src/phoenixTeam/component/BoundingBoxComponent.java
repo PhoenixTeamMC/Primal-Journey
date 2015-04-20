@@ -4,7 +4,12 @@ import com.badlogic.ashley.core.Component;
 
 public class BoundingBoxComponent extends Component{
 	
-	float width;
-	float height;
+	public BoundingBoxComponent(int width, int height){
+		this.width = width;
+		this.height = height;
+	}
+	
+	public float width;
+	public float height;
 
 }

@@ -14,6 +14,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.thoughtworks.xstream.XStream;
 
 /**
@@ -53,7 +54,8 @@ public class PrimalJourney extends Game{
 		//Setup the assetManager, and add the GifLoader
 		assetManager = new AssetManager();
 		assetManager.setLoader(Animation.class, new GifLoader(new InternalFileHandleResolver()));
-		
+		assetManager.load("data/pack/pack.atlas", TextureAtlas.class);
+		assetManager.finishLoading();
 		
 		//Setup the SpriteBatch
 		batch = new SpriteBatch();

@@ -2,6 +2,7 @@ package phoenixTeam.system;
 
 import static phoenixTeam.PrimalJourney.camera;
 import phoenixTeam.PrimalJourney;
+import phoenixTeam.component.BoundingBoxComponent;
 import phoenixTeam.component.ComponentMappers;
 import phoenixTeam.component.PlayerComponent;
 import phoenixTeam.component.PositionComponent;
@@ -43,10 +44,21 @@ public class PlayerSystem extends IteratingSystem{
             PrimalJourney.INSTANCE.setScreen(new MapScreen());
         }
         
-        camera.position.x = pos.x;
-        camera.position.y = pos.y;
+        if(ComponentMappers.boundingBox.has(entity)){
+        	
+        	BoundingBoxComponent b = ComponentMappers.boundingBox.get(entity);
+        	
+        	camera.position.x = pos.x + b.width / 2;
+        	camera.position.y = pos.y + b.height / 2;
+        	
+        }else{
+        	camera.position.x = pos.x;
+            camera.position.y = pos.y;
+        }
         
-        //camera.zoom = MathUtils.clamp(camera.zoom, 0.1f, 100/camera.viewportWidth);
+        
+        
+        camera.zoom = MathUtils.clamp(camera.zoom, 0.1f, 100/camera.viewportWidth);
         
         float effectiveViewportWidth = camera.viewportWidth * camera.zoom;
         float effectiveViewportHeight = camera.viewportHeight * camera.zoom;

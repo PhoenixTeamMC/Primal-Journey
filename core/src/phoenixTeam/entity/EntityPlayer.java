@@ -3,6 +3,7 @@ package phoenixTeam.entity;
 import java.util.List;
 
 import phoenixTeam.component.AnimationLoaderComponent;
+import phoenixTeam.component.BoundingBoxComponent;
 import phoenixTeam.component.PlayerComponent;
 import phoenixTeam.component.PositionComponent;
 import phoenixTeam.component.StateComponent;
@@ -18,6 +19,6 @@ public class EntityPlayer extends EntityBase {
 		list.add(new PlayerComponent());
 		list.add(new StateComponent());
 		list.add(new AnimationLoaderComponent("data/ba.gif", PlayMode.LOOP));
-		
+		list.add(new BoundingBoxComponent(10, 10));
 	}
 }

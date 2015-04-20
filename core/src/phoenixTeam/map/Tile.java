@@ -1,13 +1,14 @@
 package phoenixTeam.map;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import java.util.ArrayList;
+import java.util.List;
+
+import phoenixTeam.PrimalJourney;
+
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Tile{
 	
@@ -22,43 +23,43 @@ public class Tile{
 	//Height -> Temp -> MoistureO
 	
 	//Height 90-100 - Ice Cap 
-	public static final Tile ICE_CAP = new Tile("ice.png", 90, 100, -25, 100, 0, 100);
+	public static final Tile ICE_CAP = new Tile("ice", 90, 100, -25, 100, 0, 100);
 	
 	//Height 80-90 - Mountains
-	public static final Tile MOUNTAIN = new Tile("desert.png", 80, 90, -25, 100, 0, 100);
+	public static final Tile MOUNTAIN = new Tile("desert", 80, 90, -25, 100, 0, 100);
 	
 	//Height 50-80 - Various Hills
-	public static final Tile DESERT_DUNES = new Tile("desert.png",    50, 80, 25 , 100, 0 , 25 );
-	public static final Tile SAVANNAH_HILLS = new Tile("grass.png",   50, 80, 75 , 100, 25, 50 ); 
-	public static final Tile TROPICAL_FOREST = new Tile("grass.png",  50, 80, 75 , 100, 50, 75 );
-	public static final Tile RAINFOREST_HILLS = new Tile("grass.png", 50, 80, 50 , 100, 75, 100);
-	public static final Tile GRASSY_HILLS = new Tile("grass.png",     50, 80, 25 , 75 , 25, 50 );
-	public static final Tile FOREST_HILLS = new Tile("grass.png",     50, 80, 25 , 75 , 50, 75 );
-	public static final Tile TAIGA_HILLS = new Tile("ice.png",        50, 80, 0  , 50 , 0 , 100);
-	public static final Tile TUNDRA_HILLS = new Tile("ice.png",       50, 80, -50, 0  , 0 , 100);
+	public static final Tile DESERT_DUNES = new Tile("desert",    50, 80, 25 , 100, 0 , 25 );
+	public static final Tile SAVANNAH_HILLS = new Tile("grass",   50, 80, 75 , 100, 25, 50 ); 
+	public static final Tile TROPICAL_FOREST = new Tile("grass",  50, 80, 75 , 100, 50, 75 );
+	public static final Tile RAINFOREST_HILLS = new Tile("grass", 50, 80, 50 , 100, 75, 100);
+	public static final Tile GRASSY_HILLS = new Tile("grass",     50, 80, 25 , 75 , 25, 50 );
+	public static final Tile FOREST_HILLS = new Tile("grass",     50, 80, 25 , 75 , 50, 75 );
+	public static final Tile TAIGA_HILLS = new Tile("ice",        50, 80, 0  , 50 , 0 , 100);
+	public static final Tile TUNDRA_HILLS = new Tile("ice",       50, 80, -50, 0  , 0 , 100);
 	
 	
 	
 	//Height 0-50 - Plains, etc
-	public static final Tile DESERT = new Tile("desert.png",    0 , 50, 25 , 100, 0 , 25 );
-	public static final Tile SAVANNAH = new Tile("grass.png",   0 , 50, 75 , 100, 25, 50 ); 
-	public static final Tile TROPICAL = new Tile("grass.png",   0 , 50, 75 , 100, 50, 75 );
-	public static final Tile RAINFOREST = new Tile("grass.png", 0 , 50, 50 , 100, 75, 100);
-	public static final Tile GRASSY = new Tile("grass.png",     0 , 50, 25 , 75 , 25, 50 );
-	public static final Tile FOREST = new Tile("grass.png",     0 , 50, 25 , 75 , 50, 75 );
-	public static final Tile TAIGA = new Tile("ice.png",        0 , 50, 0  , 50 , 0 , 100);
-	public static final Tile TUNDRA = new Tile("ice.png",       0 , 50, -50, 0  , 0 , 100);
+	public static final Tile DESERT = new Tile("desert",    0 , 50, 25 , 100, 0 , 25 );
+	public static final Tile SAVANNAH = new Tile("grass",   0 , 50, 75 , 100, 25, 50 ); 
+	public static final Tile TROPICAL = new Tile("grass",   0 , 50, 75 , 100, 50, 75 );
+	public static final Tile RAINFOREST = new Tile("grass", 0 , 50, 50 , 100, 75, 100);
+	public static final Tile GRASSY = new Tile("grass",     0 , 50, 25 , 75 , 25, 50 );
+	public static final Tile FOREST = new Tile("grass",     0 , 50, 25 , 75 , 50, 75 );
+	public static final Tile TAIGA = new Tile("ice",        0 , 50, 0  , 50 , 0 , 100);
+	public static final Tile TUNDRA = new Tile("ice",       0 , 50, -50, 0  , 0 , 100);
 	
 	//Height -50-0 - Underwater
-	public static final Tile ICE = new Tile("ice.png", -50, 0, -25, 0, 10, 100);
-	public static final Tile WATER = new Tile("water.png", -50, 0, 0, 100, 10, 100);
+	public static final Tile ICE = new Tile("ice", -50, 0, -25, 0, 10, 100);
+	public static final Tile WATER = new Tile("water", -50, 0, 0, 100, 10, 100);
 	
-	public static final Tile DRY_SEABED = new Tile("grass.png", -50, 0, -25, 100, 0, 10);
+	public static final Tile DRY_SEABED = new Tile("grass", -50, 0, -25, 100, 0, 10);
 	
 	
 	public static final Tile DEFAULT;
 	static{
-		 DEFAULT = new Tile("tileBlank.png", -50, 100, -25, 100, 0, 100);
+		 DEFAULT = new Tile("tileBlank", -50, 100, -25, 100, 0, 100);
 		 tileList.remove(DEFAULT);
 	}
 	
@@ -73,7 +74,7 @@ public class Tile{
 	int moistureMin;
 	
 	public Tile(String location, int heightMin, int heightMax, int temperatureMin, int temperatureMax, int moistureMin, int moistureMax){
-		tile = new StaticTiledMapTile(new TextureRegion(new Texture("data/"+location)));
+		tile = new StaticTiledMapTile(PrimalJourney.assetManager.get("data/pack/pack.atlas", TextureAtlas.class).findRegion(location));
 		
 		this.heightMax = heightMax;
 		this.heightMin = heightMin;

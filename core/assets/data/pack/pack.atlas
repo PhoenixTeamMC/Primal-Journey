@@ -1,0 +1,83 @@
+
+pack.png
+size: 1024,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+animation
+  rotate: false
+  xy: 2, 104
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+badlogic
+  rotate: false
+  xy: 260, 104
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+chris
+  rotate: false
+  xy: 20, 28
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+desert
+  rotate: false
+  xy: 518, 344
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+fireball
+  rotate: false
+  xy: 2, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+grass
+  rotate: false
+  xy: 260, 86
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+ice
+  rotate: false
+  xy: 518, 326
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+player
+  rotate: false
+  xy: 260, 76
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+slime
+  rotate: false
+  xy: 2, 38
+  size: 256, 64
+  orig: 256, 64
+  offset: 0, 0
+  index: -1
+tileBlank
+  rotate: false
+  xy: 536, 344
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+water
+  rotate: false
+  xy: 2, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
