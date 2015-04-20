@@ -67,7 +67,6 @@ public class RenderingSystem extends IteratingSystem{
 				batch.draw(tex.region, pos.x, pos.y, tex.xSize, tex.ySize);
 			}
 			
-			
 		}
 		
 		batch.end();

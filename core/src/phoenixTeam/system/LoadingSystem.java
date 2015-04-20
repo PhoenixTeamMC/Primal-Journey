@@ -34,7 +34,7 @@ public class LoadingSystem extends IteratingSystem{
 				AnimationComponent c = new AnimationComponent(assetManager.get(a.toLoad, Animation.class), a.mode);
 				
 				entity.add(c);
-				entity.add(new RenderComponent(c.animation.getKeyFrame(0)));
+				entity.add(new RenderComponent(c.animation.getKeyFrame(0), 10, 10));
 				entity.remove(AnimationLoaderComponent.class);
 			}
 		} else {
@@ -45,7 +45,7 @@ public class LoadingSystem extends IteratingSystem{
 				l.hasStarted = true;
 			}
 			
-			if(assetManager.isLoaded(l.toLoad)){
+			if(assetManager.isLoaded(l.toLoad, Texture.class)){
 				entity.add(new RenderComponent(assetManager.get(l.toLoad, Texture.class)));
 				entity.remove(LoaderComponent.class);
 			}

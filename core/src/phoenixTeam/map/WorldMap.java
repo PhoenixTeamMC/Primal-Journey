@@ -13,8 +13,6 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
  */
 public class WorldMap{
 	
-	
-
 	public TiledMap map;
 	public OrthogonalTiledMapRenderer renderer;
 	
