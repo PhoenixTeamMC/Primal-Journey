@@ -1,56 +1,45 @@
 package phoenixTeam.system;
 
-import com.badlogic.ashley.core.ComponentMapper;
+import phoenixTeam.component.ComponentMappers;
+import phoenixTeam.component.EnemyComponent;
+import phoenixTeam.component.HealthComponent;
+import phoenixTeam.component.PositionComponent;
+import phoenixTeam.util.EntityUtil;
+
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.utils.Array;
-import phoenixTeam.component.EnemyComponent;
-import phoenixTeam.component.HealthComponent;
-import phoenixTeam.component.PositionComponent;
-import phoenixTeam.component.VelocityComponent;
-import phoenixTeam.util.EntityUtil;
 
 public class EnemySystem extends IteratingSystem{
 
 	Engine engine;
 	
-	ComponentMapper<EnemyComponent> e;
-	ComponentMapper<PositionComponent> p;
-	ComponentMapper<HealthComponent> h;
-	ComponentMapper<VelocityComponent> v;
-	
 	private ImmutableArray<Entity> targets;
 	
-	@SuppressWarnings({ "unchecked" })
 	public EnemySystem() {
 		super(Family.all(EnemyComponent.class, PositionComponent.class).get());
-		
-		e = ComponentMapper.getFor(EnemyComponent.class);
-		p = ComponentMapper.getFor(PositionComponent.class);
-		h = ComponentMapper.getFor(HealthComponent.class);
-		v = ComponentMapper.getFor(VelocityComponent.class);
 	}
 	
 	
 	@Override
 	protected void processEntity(Entity entity, float deltaTime) {
 		
-		EnemyComponent enemy = e.get(entity);
-		PositionComponent position = p.get(entity);
+		EnemyComponent enemy = ComponentMappers.enemy.get(entity);
+		PositionComponent position = ComponentMappers.position.get(entity);
 
 		Entity target = enemy.target;
 		
 		if(target == null || !targets.contains(target, true)){
 			
-			PositionComponent pos = p.get(entity);
+			PositionComponent pos = ComponentMappers.position.get(entity);
 			
     		Array<Entity> entitiesWithin = EntityUtil.INSTANCE.getEntitiesWithin(Family.all(HealthComponent.class).get(), pos.x, pos.y, 10000, 100000);
             Array<Entity> validTargets = new Array<Entity>();
             for (Entity ent : entitiesWithin) {
-                if (e.get(ent) != null) {
+                if (ComponentMappers.enemy.has(ent)) {
                     validTargets.add(ent);
                 }
             }
@@ -61,16 +50,15 @@ public class EnemySystem extends IteratingSystem{
         	return;
         }
 
-		EntityUtil.INSTANCE.goToPoint(entity, p.get(target));
+		EntityUtil.INSTANCE.goToPoint(entity, ComponentMappers.position.get(target));
 
 		if(EntityUtil.INSTANCE.isWithin(entity, target, enemy.attackRange)){
-			HealthComponent health = h.get(entity);
+			HealthComponent health = ComponentMappers.health.get(entity);
 
 			health.health -= enemy.damage;
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void addedToEngine(Engine engine){
 		this.engine = engine;

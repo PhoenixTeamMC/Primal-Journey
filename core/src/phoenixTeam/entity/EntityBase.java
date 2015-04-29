@@ -17,14 +17,14 @@ public abstract class EntityBase extends Entity {
 		
 		List<Component> list = new ArrayList<Component>();
 		
-		this.registerComponents(list);
+		registerComponents(list);
 		
 		for(Component c : list){
 			this.add(c);
 		}
 	}
 	
-	public void registerComponents(List<Component> list){}
+	public abstract void registerComponents(List<Component> list);
 	
 	
 	

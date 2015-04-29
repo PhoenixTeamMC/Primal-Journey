@@ -1,5 +1,6 @@
 package phoenixTeam.event.input;
 
+import phoenixTeam.PrimalJourney;
 import phoenixTeam.event.input.InputEvent.*;
 
 import com.badlogic.gdx.Gdx;
@@ -7,55 +8,51 @@ import com.badlogic.gdx.InputProcessor;
 
 public class InputHandler implements InputProcessor {
 
-	public static void init(){
-		Gdx.input.setInputProcessor(new InputHandler());
-	}
-
 	@Override
 	public boolean keyDown (int keycode) {
-		new KeyDownEvent(keycode).callEvent();
-		return true;
+		PrimalJourney.bus.post(new KeyDownEvent(keycode));
+		return false;
 	}
 
 	@Override
 	public boolean keyUp (int keycode) {
-		new KeyUpEvent(keycode).callEvent();
-		return true;
+		PrimalJourney.bus.post(new KeyUpEvent(keycode));
+		return false;
 	}
 
 	@Override
 	public boolean keyTyped (char character) {
-		new KeyTypedEvent(character).callEvent();
-		return true;
+		PrimalJourney.bus.post(new KeyTypedEvent(character));
+		return false;
 	}
 
 	@Override
 	public boolean touchDown (int x, int y, int pointer, int button) {
-		new MouseDownEvent(x,y,pointer,button).callEvent();
-		return true;
+		PrimalJourney.bus.post(new MouseDownEvent(x,y,pointer,button));
+		return false;
 	}
 
 	@Override
 	public boolean touchUp (int x, int y, int pointer, int button) {
-		new MouseUpEvent(x,y,pointer,button).callEvent();
-		return true;
+		PrimalJourney.bus.post(new MouseUpEvent(x,y,pointer,button));
+		return false;
 	}
 
 	@Override
 	public boolean touchDragged (int x, int y, int pointer) {
-		new MouseDraggedEvent(x,y,pointer).callEvent();
-		return true;
+		PrimalJourney.bus.post(new MouseDraggedEvent(x,y,pointer));
+		return false;
 	}
 
 	@Override
 	public boolean mouseMoved (int x, int y) {
-		new MouseMovedEvent(x,y).callEvent();
-		return true;
+		PrimalJourney.bus.post(new MouseMovedEvent(x,y));
+		return false;
 	}
 
 	@Override
 	public boolean scrolled (int amount) {
-		new ScrolledEvent(amount).callEvent();
-		return true;
+		PrimalJourney.bus.post(new ScrolledEvent(amount));
+		return false;
 	}
 }

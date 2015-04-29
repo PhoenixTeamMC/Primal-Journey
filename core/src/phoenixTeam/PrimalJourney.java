@@ -1,12 +1,14 @@
 package phoenixTeam;
 
 import phoenixTeam.event.input.InputHandler;
+import phoenixTeam.gui.GuiBase;
 import phoenixTeam.map.MapScreen;
 import phoenixTeam.util.GifLoader;
 
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.FPSLogger;
@@ -15,7 +17,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.thoughtworks.xstream.XStream;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Json;
+import com.google.common.eventbus.EventBus;
 
 /**
  * @author chbachman
@@ -23,14 +27,34 @@ import com.thoughtworks.xstream.XStream;
  */
 public class PrimalJourney extends Game{
 
+	//An instance of this, for easy access
     public static PrimalJourney INSTANCE;
-	public static final XStream xml = new XStream();
 
+    //The batch for rendering most of the game.
 	public static SpriteBatch batch;
+	
+	//The asset manager, for loading most assets.
 	public static AssetManager assetManager;
+	
+	//The engine, for handling most portions of the game.
 	public static Engine engine;
+	
+	//The camera, for rendering most parts of in-game;
 	public static OrthographicCamera camera;
 	
+	//The inputHandler, with the Input event already registered.
+	public static InputMultiplexer inputHandler;
+	
+	//The eventbus that this is all posted to.
+	public static EventBus bus;
+	
+	//Stage, for guis.
+	public static Stage stage;
+	
+	//Json, for reading and writing to disk. We don't even have to worry about where.
+	public static Json json;
+	
+	//The FPS logger
 	public FPSLogger log;
 	
 	/**
@@ -44,11 +68,11 @@ public class PrimalJourney extends Game{
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 
-
 		camera = new OrthographicCamera(100, 100 * (h/w));
 		camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);    
 		camera.update(); 
-
+		
+		//Setup the engine
 		engine = new Engine();
 		
 		//Setup the assetManager, and add the GifLoader
@@ -57,14 +81,25 @@ public class PrimalJourney extends Game{
 		assetManager.load("data/pack/pack.atlas", TextureAtlas.class);
 		assetManager.finishLoading();
 		
+		//Setup the InputHandlers
+		inputHandler = new InputMultiplexer();
+		Gdx.input.setInputProcessor(inputHandler);
+		inputHandler.addProcessor(new InputHandler());
+		
 		//Setup the SpriteBatch
 		batch = new SpriteBatch();
 		
 		//Setup the FPS Tracker
 		log = new FPSLogger();
 		
-		//Init the InputHandler
-		InputHandler.init();
+		//Setup the eventbus.
+		bus = new EventBus();
+		
+		//Setup the Json Serializer
+		json = new Json();
+		
+		//Setup the stage, for gui work.
+		stage = new Stage();
 		
 		this.setScreen(new MapScreen());
 	}
@@ -79,7 +114,17 @@ public class PrimalJourney extends Game{
 		log.log();
 		assetManager.update();
 		engine.update(Gdx.graphics.getDeltaTime());
+		stage.draw();
 
+	}
+	
+	@Override
+	public void dispose(){
+		super.dispose();
+		
+		stage.dispose();
+		assetManager.dispose();
+		batch.dispose();
 	}
 	
 }

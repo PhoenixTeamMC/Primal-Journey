@@ -20,8 +20,6 @@ public class MapGenerator {
 
 	Random random = new Random();
 
-	
-	
 	public MapGenerator(TiledMapTileLayer layer){
 		this.layer = layer;
 

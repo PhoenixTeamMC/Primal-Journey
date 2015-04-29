@@ -1,8 +1,7 @@
 package phoenixTeam.event.input;
 
-import phoenixTeam.event.Event;
 
-public class InputEvent extends Event {
+public class InputEvent{
 
 	public static class KeyDownEvent extends InputEvent{
 

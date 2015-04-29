@@ -18,6 +18,7 @@ public class AnimationSystem extends IteratingSystem{
 		super(Family.all(RenderComponent.class, AnimationComponent.class, StateComponent.class).get());
 	}
 	
+	@Override
 	public void processEntity(Entity entity, float deltaTime) {
         AnimationComponent anim = ComponentMappers.animation.get(entity);
         
