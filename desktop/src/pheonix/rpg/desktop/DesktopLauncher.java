@@ -1,5 +1,6 @@
 package pheonix.rpg.desktop;
 
+import java.io.File;
 import java.util.Arrays;
 
 import phoenixTeam.PrimalJourney;
@@ -12,8 +13,10 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		System.out.println(Arrays.toString(arg));
 		
+		String location = new File(System.getProperty("user.dir")).getParent() + "/core/assets/data";
+		
 		if(arg.length != 0 && arg[0].equals("pack")){
-			TexturePacker.processIfModified("../core/assets/data", "../core/assets/data/pack", "pack");
+			TexturePacker.processIfModified(location, location + "/pack", "pack");
 		}
 		
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
