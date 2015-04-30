@@ -4,15 +4,30 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.5'
-        classpath "edu.sc.seis.gradle:macappbundle:2.1.0"
+        classpath 'edu.sc.seis.gradle:macappbundle:2.1.0'
+        classpath 'edu.sc.seis.gradle:launch4j:1.0.6'
     }
+}
+
+//apply plugin: "eclipse"
+//apply plugin: "idea"
+apply plugin: "edu.sc.seis.macAppBundle"
+apply plugin: "launch4j"
+
+launch4j {
+    mainClassName = "$mainClass"
+    //icon = "icons/myApp.ico"
+}
+
+macAppBundle {
+    mainClassName = "$mainClass"
+    //icon = "myIcon.icns"
 }
 
 allprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
-    apply plugin: "edu.sc.seis.macAppBundle"
+
 
     version = '1.0'
 
@@ -21,6 +36,9 @@ allprojects {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
     }
+
+
+
 }
 
 project(":desktop") {
@@ -30,7 +48,7 @@ project(":desktop") {
     dependencies {
         compile project(":core")
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
-	compile "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
+	      compile "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
     }
 }
@@ -40,8 +58,8 @@ project(":core") {
 
 
     dependencies {
-	compile "com.badlogicgames.ashley:ashley:1.3.2"
-	compile "com.google.guava:guava:18.0"
+	      compile "com.badlogicgames.ashley:ashley:$ashleyVersion"
+	      compile "com.google.guava:guava:18.0"
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
     }
 }

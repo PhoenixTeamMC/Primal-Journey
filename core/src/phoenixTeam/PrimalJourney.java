@@ -1,7 +1,6 @@
 package phoenixTeam;
 
 import phoenixTeam.event.input.InputHandler;
-import phoenixTeam.gui.GuiBase;
 import phoenixTeam.map.MapScreen;
 import phoenixTeam.util.GifLoader;
 
