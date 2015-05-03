@@ -1,9 +1,9 @@
-package phoenixTeam.system;
+package phoenixTeam.system.render;
 
-import phoenixTeam.component.AnimationComponent;
 import phoenixTeam.component.ComponentMappers;
-import phoenixTeam.component.RenderComponent;
 import phoenixTeam.component.StateComponent;
+import phoenixTeam.component.render.AnimationComponent;
+import phoenixTeam.component.render.RenderComponent;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;

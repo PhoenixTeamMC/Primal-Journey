@@ -1,9 +1,15 @@
 package phoenixTeam.event.input;
 
 import phoenixTeam.PrimalJourney;
-import phoenixTeam.event.input.InputEvent.*;
+import phoenixTeam.event.input.InputEvent.KeyDownEvent;
+import phoenixTeam.event.input.InputEvent.KeyTypedEvent;
+import phoenixTeam.event.input.InputEvent.KeyUpEvent;
+import phoenixTeam.event.input.InputEvent.MouseDownEvent;
+import phoenixTeam.event.input.InputEvent.MouseDraggedEvent;
+import phoenixTeam.event.input.InputEvent.MouseMovedEvent;
+import phoenixTeam.event.input.InputEvent.MouseUpEvent;
+import phoenixTeam.event.input.InputEvent.ScrolledEvent;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 
 public class InputHandler implements InputProcessor {

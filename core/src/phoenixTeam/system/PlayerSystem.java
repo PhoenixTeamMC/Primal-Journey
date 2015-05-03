@@ -2,10 +2,10 @@ package phoenixTeam.system;
 
 import static phoenixTeam.PrimalJourney.camera;
 import phoenixTeam.PrimalJourney;
-import phoenixTeam.component.BoundingBoxComponent;
 import phoenixTeam.component.ComponentMappers;
 import phoenixTeam.component.PlayerComponent;
-import phoenixTeam.component.PositionComponent;
+import phoenixTeam.component.movement.BoundingBoxComponent;
+import phoenixTeam.component.movement.PositionComponent;
 import phoenixTeam.map.MapScreen;
 
 import com.badlogic.ashley.core.Entity;
@@ -14,7 +14,6 @@ import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Vector2;
 
 public class PlayerSystem extends IteratingSystem{
 	
@@ -25,12 +24,9 @@ public class PlayerSystem extends IteratingSystem{
 
 	@Override
 	protected void processEntity(Entity entity, float deltaTime) {
+		
 		PositionComponent pos = ComponentMappers.position.get(entity);
 		
-		Vector2 velocity = getAngle();
-		
-		pos.x += velocity.x;
-		pos.y += velocity.y;
         
         if(Gdx.input.isKeyPressed(Input.Keys.O)){
         	camera.zoom += .02;
@@ -67,30 +63,6 @@ public class PlayerSystem extends IteratingSystem{
         camera.position.y = MathUtils.clamp(camera.position.y, effectiveViewportHeight / 2f, 400 - effectiveViewportHeight / 2f);
         
         camera.update();
-	}
-	
-	private Vector2 getAngle(){
-        
-		Vector2 movement = new Vector2();
-		
-		
-        if(Gdx.input.isKeyPressed(Input.Keys.UP)){
-        	movement.y++;
-        }
-        
-        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-        	movement.y--;
-        }
-        
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-        	movement.x--;
-        }
-        
-        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-        	movement.x++;
-        }
-        
-        return movement;
 	}
 
 }

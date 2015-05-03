@@ -1,7 +1,7 @@
 package phoenixTeam.system;
 
 import phoenixTeam.component.FamiliarComponent;
-import phoenixTeam.component.PositionComponent;
+import phoenixTeam.component.movement.PositionComponent;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;

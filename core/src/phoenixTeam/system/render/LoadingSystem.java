@@ -1,11 +1,11 @@
-package phoenixTeam.system;
+package phoenixTeam.system.render;
 
 import static phoenixTeam.PrimalJourney.assetManager;
-import phoenixTeam.component.AnimationComponent;
-import phoenixTeam.component.AnimationLoaderComponent;
 import phoenixTeam.component.ComponentMappers;
-import phoenixTeam.component.LoaderComponent;
-import phoenixTeam.component.RenderComponent;
+import phoenixTeam.component.render.AnimationComponent;
+import phoenixTeam.component.render.AnimationLoaderComponent;
+import phoenixTeam.component.render.LoaderComponent;
+import phoenixTeam.component.render.RenderComponent;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
@@ -21,6 +21,8 @@ public class LoadingSystem extends IteratingSystem{
 
 	@Override
 	protected void processEntity(Entity entity, float deltaTime) {
+		
+		assetManager.update();
 		
 		if(ComponentMappers.animationloader.has(entity)){
 			AnimationLoaderComponent a = ComponentMappers.animationloader.get(entity);

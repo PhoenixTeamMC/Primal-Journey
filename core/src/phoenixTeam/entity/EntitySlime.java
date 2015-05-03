@@ -3,7 +3,7 @@ package phoenixTeam.entity;
 import java.util.List;
 
 import phoenixTeam.component.EnemyComponent;
-import phoenixTeam.component.PositionComponent;
+import phoenixTeam.component.movement.PositionComponent;
 
 import com.badlogic.ashley.core.Component;
 

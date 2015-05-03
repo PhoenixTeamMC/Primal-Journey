@@ -2,7 +2,6 @@ package phoenixTeam.component;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.Entity;
-import phoenixTeam.component.constants.StatsComponent;
 
 public class EnemyComponent extends Component{
 

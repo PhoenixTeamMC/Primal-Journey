@@ -1,8 +1,8 @@
-package phoenixTeam.system;
+package phoenixTeam.system.movement;
 
 import phoenixTeam.component.ComponentMappers;
-import phoenixTeam.component.PositionComponent;
-import phoenixTeam.component.VelocityComponent;
+import phoenixTeam.component.movement.PositionComponent;
+import phoenixTeam.component.movement.VelocityComponent;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;

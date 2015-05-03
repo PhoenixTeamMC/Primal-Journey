@@ -1,12 +1,12 @@
-package phoenixTeam.system;
+package phoenixTeam.system.render;
 
 import static phoenixTeam.PrimalJourney.camera;
 
 import java.util.Comparator;
 
 import phoenixTeam.component.ComponentMappers;
-import phoenixTeam.component.PositionComponent;
-import phoenixTeam.component.RenderComponent;
+import phoenixTeam.component.movement.PositionComponent;
+import phoenixTeam.component.render.RenderComponent;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;

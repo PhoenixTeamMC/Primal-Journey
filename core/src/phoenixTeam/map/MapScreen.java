@@ -1,17 +1,17 @@
 package phoenixTeam.map;
 
 import static phoenixTeam.PrimalJourney.engine;
-import phoenixTeam.PrimalJourney;
 import phoenixTeam.entity.EntityPlayer;
-import phoenixTeam.system.AnimationSystem;
-import phoenixTeam.system.BoundsSystem;
-import phoenixTeam.system.LoadingSystem;
 import phoenixTeam.system.PlayerSystem;
-import phoenixTeam.system.RenderingSystem;
+import phoenixTeam.system.movement.BoundsSystem;
+import phoenixTeam.system.movement.ControlSystem;
+import phoenixTeam.system.movement.FrictionSystem;
+import phoenixTeam.system.movement.VelocitySystem;
+import phoenixTeam.system.render.AnimationSystem;
+import phoenixTeam.system.render.LoadingSystem;
+import phoenixTeam.system.render.RenderingSystem;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.files.FileHandle;
 
 public class MapScreen extends ScreenAdapter{
 	
@@ -22,13 +22,13 @@ public class MapScreen extends ScreenAdapter{
 	
 	public MapScreen(){
 
-		FileHandle handle = Gdx.files.local("worldMap.json");
+		//FileHandle handle = Gdx.files.local("worldMap.json");
 		
-		if(!handle.exists()){
+		//if(!handle.exists()){
 			map = new WorldMap(width, height);
-		}else{
-			map = PrimalJourney.json.fromJson(WorldMap.class, handle);
-		}
+		//}else{
+		//	map = PrimalJourney.json.fromJson(WorldMap.class, handle);
+		//}
 		
 		
 		
@@ -37,6 +37,9 @@ public class MapScreen extends ScreenAdapter{
 		engine.addSystem(new AnimationSystem());
 		engine.addSystem(new LoadingSystem());
 		engine.addSystem(new BoundsSystem());
+		engine.addSystem(new ControlSystem());
+		engine.addSystem(new VelocitySystem());
+		engine.addSystem(new FrictionSystem());
 		
 		engine.addEntity(new EntityPlayer());
 		
@@ -55,8 +58,7 @@ public class MapScreen extends ScreenAdapter{
 	@Override
 	public void dispose(){
 		
-		PrimalJourney.json.toJson(map, WorldMap.class, Gdx.files.local("worldMap.json"));
-		
+		//PrimalJourney.json.toJson(map, WorldMap.class, Gdx.files.local("worldMap.json"));
 		map.map.dispose();
 	}
 

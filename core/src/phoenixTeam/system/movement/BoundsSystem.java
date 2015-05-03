@@ -1,8 +1,8 @@
-package phoenixTeam.system;
+package phoenixTeam.system.movement;
 
-import phoenixTeam.component.BoundingBoxComponent;
 import phoenixTeam.component.ComponentMappers;
-import phoenixTeam.component.PositionComponent;
+import phoenixTeam.component.movement.BoundingBoxComponent;
+import phoenixTeam.component.movement.PositionComponent;
 import phoenixTeam.map.MapScreen;
 
 import com.badlogic.ashley.core.Entity;

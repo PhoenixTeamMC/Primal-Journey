@@ -1,4 +1,4 @@
-package phoenixTeam.component;
+package phoenixTeam.component.render;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;

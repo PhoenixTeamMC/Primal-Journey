@@ -3,7 +3,7 @@ package phoenixTeam.system;
 import phoenixTeam.component.ComponentMappers;
 import phoenixTeam.component.EnemyComponent;
 import phoenixTeam.component.HealthComponent;
-import phoenixTeam.component.PositionComponent;
+import phoenixTeam.component.movement.PositionComponent;
 import phoenixTeam.util.EntityUtil;
 
 import com.badlogic.ashley.core.Engine;
@@ -28,7 +28,6 @@ public class EnemySystem extends IteratingSystem{
 	protected void processEntity(Entity entity, float deltaTime) {
 		
 		EnemyComponent enemy = ComponentMappers.enemy.get(entity);
-		PositionComponent position = ComponentMappers.position.get(entity);
 
 		Entity target = enemy.target;
 		

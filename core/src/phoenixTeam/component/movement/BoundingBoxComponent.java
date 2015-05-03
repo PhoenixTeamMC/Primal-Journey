@@ -1,4 +1,4 @@
-package phoenixTeam.component;
+package phoenixTeam.component.movement;
 
 import com.badlogic.ashley.core.Component;
 

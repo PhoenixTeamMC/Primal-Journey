@@ -2,6 +2,7 @@ package phoenixTeam;
 
 import phoenixTeam.event.input.InputHandler;
 import phoenixTeam.map.MapScreen;
+import phoenixTeam.screen.LoadingScreen;
 import phoenixTeam.util.GifLoader;
 
 import com.badlogic.ashley.core.Engine;
@@ -77,8 +78,8 @@ public class PrimalJourney extends Game{
 		//Setup the assetManager, and add the GifLoader
 		assetManager = new AssetManager();
 		assetManager.setLoader(Animation.class, new GifLoader(new InternalFileHandleResolver()));
-		assetManager.load("data/pack/pack.atlas", TextureAtlas.class);
-		assetManager.finishLoading();
+		
+		this.setScreen(new LoadingScreen());
 		
 		//Setup the InputHandlers
 		inputHandler = new InputMultiplexer();
@@ -100,7 +101,7 @@ public class PrimalJourney extends Game{
 		//Setup the stage, for gui work.
 		stage = new Stage();
 		
-		this.setScreen(new MapScreen());
+		//this.setScreen(new MapScreen());
 	}
 
 	/**
@@ -111,7 +112,7 @@ public class PrimalJourney extends Game{
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		super.render();
 		log.log();
-		assetManager.update();
+		//assetManager.update();
 		engine.update(Gdx.graphics.getDeltaTime());
 		stage.draw();
 
