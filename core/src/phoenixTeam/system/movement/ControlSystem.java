@@ -40,7 +40,7 @@ public class ControlSystem extends IteratingSystem{
 			movement.x++;
 		}
 		
-		v.velocity.add(movement);
+		v.velocity.add(movement.scl(deltaTime));
 	}
 
 }

@@ -7,6 +7,7 @@ import phoenixTeam.component.PlayerComponent;
 import phoenixTeam.component.movement.BoundingBoxComponent;
 import phoenixTeam.component.movement.PositionComponent;
 import phoenixTeam.map.MapScreen;
+import phoenixTeam.util.SecondUtil;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
@@ -22,12 +23,28 @@ public class PlayerSystem extends IteratingSystem{
 		super(Family.all(PlayerComponent.class, PositionComponent.class).get());
 	}
 
+	private boolean wasPressed = false;
+	
 	@Override
 	protected void processEntity(Entity entity, float deltaTime) {
 		
 		PositionComponent pos = ComponentMappers.position.get(entity);
 		
+		if(SecondUtil.isSecond())
+			System.out.println("X: " + pos.x + " Y: " + pos.y);
         
+		if(Gdx.input.isKeyPressed(Input.Keys.W)){
+			
+			if(!wasPressed){
+				pos.x++;
+			}
+			
+
+			wasPressed = true;
+		}else{
+			wasPressed = false;
+		}
+		
         if(Gdx.input.isKeyPressed(Input.Keys.O)){
         	camera.zoom += .02;
         }

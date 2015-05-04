@@ -18,7 +18,12 @@ public class VelocitySystem extends IteratingSystem{
 	protected void processEntity(Entity entity, float deltaTime) {
 		
 		PositionComponent pos = ComponentMappers.position.get(entity);
+		
 		VelocityComponent velocity = ComponentMappers.velocity.get(entity);
+		
+		if(velocity.limit != null){
+			velocity.velocity.clamp(velocity.limit.x, velocity.limit.y);
+		}
 		
 		pos.x += velocity.velocity.x;
 		pos.y += velocity.velocity.y;

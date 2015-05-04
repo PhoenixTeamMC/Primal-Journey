@@ -2,6 +2,7 @@ package phoenixTeam.system.render;
 
 import static phoenixTeam.PrimalJourney.assetManager;
 import phoenixTeam.component.ComponentMappers;
+import phoenixTeam.component.movement.BoundingBoxComponent;
 import phoenixTeam.component.render.AnimationComponent;
 import phoenixTeam.component.render.AnimationLoaderComponent;
 import phoenixTeam.component.render.LoaderComponent;
@@ -12,6 +13,7 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class LoadingSystem extends IteratingSystem{
 
@@ -36,8 +38,10 @@ public class LoadingSystem extends IteratingSystem{
 				AnimationComponent c = new AnimationComponent(assetManager.get(a.toLoad, Animation.class), a.mode);
 				
 				entity.add(c);
-				entity.add(new RenderComponent(c.animation.getKeyFrame(0), 10, 10));
+				
 				entity.remove(AnimationLoaderComponent.class);
+				
+				addRenderComponent(entity, c.animation.getKeyFrame(0));
 			}
 		} else {
 			LoaderComponent l = ComponentMappers.loader.get(entity);
@@ -48,11 +52,22 @@ public class LoadingSystem extends IteratingSystem{
 			}
 			
 			if(assetManager.isLoaded(l.toLoad, Texture.class)){
-				entity.add(new RenderComponent(assetManager.get(l.toLoad, Texture.class)));
+				addRenderComponent(entity, assetManager.get(l.toLoad, TextureRegion.class));
 				entity.remove(LoaderComponent.class);
 			}
 		}
 		
+	}
+	
+	private void addRenderComponent(Entity entity, TextureRegion t){
+		if(ComponentMappers.boundingBox.has(entity)){
+			
+			BoundingBoxComponent box = ComponentMappers.boundingBox.get(entity);
+			
+			entity.add(new RenderComponent(t, box.width, box.height));
+		}else{
+			entity.add(new RenderComponent(t));
+		}
 	}
 
 }

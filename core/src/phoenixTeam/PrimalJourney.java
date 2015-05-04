@@ -1,7 +1,6 @@
 package phoenixTeam;
 
 import phoenixTeam.event.input.InputHandler;
-import phoenixTeam.map.MapScreen;
 import phoenixTeam.screen.LoadingScreen;
 import phoenixTeam.util.GifLoader;
 
@@ -16,7 +15,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Json;
 import com.google.common.eventbus.EventBus;
@@ -68,7 +66,7 @@ public class PrimalJourney extends Game{
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 
-		camera = new OrthographicCamera(100, 100 * (h/w));
+		camera = new OrthographicCamera(400, 400 * (h/w));
 		camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);    
 		camera.update(); 
 		
@@ -111,7 +109,7 @@ public class PrimalJourney extends Game{
 	public void render () {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		super.render();
-		log.log();
+		//log.log();
 		//assetManager.update();
 		engine.update(Gdx.graphics.getDeltaTime());
 		stage.draw();

@@ -22,7 +22,7 @@ public class WorldMap{
 	
 	public WorldMap(int width, int height){
 		map = new TiledMap();
-		renderer = new OrthogonalTiledMapRenderer(map, 1 / 16f);
+		renderer = new OrthogonalTiledMapRenderer(map, 1F/16);
 		
 		map.getLayers().add(new TiledMapTileLayer(width, height, 16, 16));
 		

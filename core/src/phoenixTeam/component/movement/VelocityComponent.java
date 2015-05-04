@@ -10,6 +10,8 @@ public class VelocityComponent extends Component {
 	
 	public Vector2 velocity = Vector2.Zero.cpy();
 	
+	public Vector2 limit;
+	
 	public boolean isFrictonless = false;
 
 }

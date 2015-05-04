@@ -24,7 +24,7 @@ public class FrictionSystem extends IteratingSystem{
 		}
 		
 		if(!velocity.isFrictonless){
-			velocity.velocity.scl(.99F);
+			velocity.velocity.scl(.80F);
 		}
 	}
 

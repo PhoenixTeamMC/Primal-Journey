@@ -1,10 +1,8 @@
 package phoenixTeam.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.Entity;
+import com.badlogic.gdx.utils.Array;
 
 /**
  * Ok, so. This is my solution to the individual behaviour. Subclasses should use this to declare thier components, and implement the interfaces that let them react to certain events. 
@@ -15,7 +13,7 @@ public abstract class EntityBase extends Entity {
 	
 	public EntityBase(Component... components){
 		
-		List<Component> list = new ArrayList<Component>();
+		Array<Component> list = new Array<Component>();
 		
 		registerComponents(list);
 		
@@ -24,7 +22,7 @@ public abstract class EntityBase extends Entity {
 		}
 	}
 	
-	public abstract void registerComponents(List<Component> list);
+	public abstract void registerComponents(Array<Component> list);
 	
 	
 	
