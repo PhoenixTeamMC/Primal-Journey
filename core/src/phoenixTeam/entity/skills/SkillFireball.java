@@ -1,36 +1,35 @@
 package phoenixTeam.entity.skills;
 
 import com.badlogic.ashley.core.Entity;
+import com.badlogic.gdx.Input;
+
+import java.util.ArrayList;
 
 /**
  * @author Strikingwolf, chbachman
  */
-public class SkillFireball extends Skill
+public class SkillFireball implements Skill
 {
-    public SkillFireball() {
-    	super("Fireball");
-    }
+	@Override
+	public String getName() {
+		return "Fireball";
+	}
 
-    @Override
+	@Override
+	public ArrayList<Integer> keyCombo() {
+		ArrayList<Integer> keys = new ArrayList<Integer>();
+		keys.add(Input.Keys.F);
+		return keys;
+	}
+
+	@Override
+	public boolean check(Entity entity) {
+		// TODO implement something here
+		return true;
+	}
+
+	@Override
     public void doSkill(Entity entity) {
-    	
-    	//TODO: Striking, fix this.
-    	
-    	/*
-        if (entity.mana >= 20) {
-            if (entity instanceof EntityPlayer) {
-                EntityPlayer player = (EntityPlayer) entity;
-                if (player.primaryClass == PrimaryClasses.MAGE) {
-                    if (checkIfEntityHasSkill(entity, this)) {
-                        Map.entityList.add(new EntityFireball(player.x, player.y, player.facing));
-                        player.mana -= 20;
-                    }
-                }
-            } else if (checkIfEntityHasSkill(entity, this)) {
-                entity.map.spawnEntity(new EntityFireball(entity.x, entity.y, entity.facing));
-                entity.mana -= 20;
-            }
-        }
-        */
+		// TODO implement fireball
     }
 }

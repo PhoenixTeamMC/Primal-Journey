@@ -2,12 +2,14 @@ package phoenixTeam.entity.skills;
 
 import com.badlogic.ashley.core.Entity;
 
-public abstract class Skill {
-	
-	public Skill(String name){
-		
-	}
-	
-	public abstract void doSkill(Entity entity);
+import java.util.ArrayList;
 
+public interface Skill {
+	public String getName();
+
+	public ArrayList<Integer> keyCombo();
+
+	public boolean check(Entity entity);
+
+	public void doSkill(Entity entity);
 }
