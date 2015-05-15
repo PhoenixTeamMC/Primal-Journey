@@ -3,10 +3,8 @@ package phoenixTeam.system;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
-import com.badlogic.gdx.Gdx;
 import phoenixTeam.component.ComponentMappers;
 import phoenixTeam.component.SkillComponent;
-import phoenixTeam.entity.skills.Skill;
 import phoenixTeam.util.KeysUtil;
 
 import java.util.ArrayList;

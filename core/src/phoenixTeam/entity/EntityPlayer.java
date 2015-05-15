@@ -1,5 +1,8 @@
 package phoenixTeam.entity;
 
+import com.badlogic.ashley.core.Component;
+import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
+import com.badlogic.gdx.utils.Array;
 import phoenixTeam.component.PlayerComponent;
 import phoenixTeam.component.StateComponent;
 import phoenixTeam.component.movement.BoundingBoxComponent;
@@ -7,10 +10,6 @@ import phoenixTeam.component.movement.ControlComponent;
 import phoenixTeam.component.movement.PositionComponent;
 import phoenixTeam.component.movement.VelocityComponent;
 import phoenixTeam.component.render.AnimationLoaderComponent;
-
-import com.badlogic.ashley.core.Component;
-import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
-import com.badlogic.gdx.utils.Array;
 
 public class EntityPlayer extends EntityBase {
 

@@ -1,12 +1,11 @@
 package phoenixTeam.system;
 
-import phoenixTeam.PrimalJourney;
-import phoenixTeam.component.ComponentMappers;
-import phoenixTeam.component.HealthComponent;
-
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
+import phoenixTeam.PrimalJourney;
+import phoenixTeam.component.ComponentMappers;
+import phoenixTeam.component.HealthComponent;
 
 public class HealthSystem extends IteratingSystem{
 	

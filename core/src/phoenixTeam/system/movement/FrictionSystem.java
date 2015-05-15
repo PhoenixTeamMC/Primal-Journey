@@ -1,12 +1,11 @@
 package phoenixTeam.system.movement;
 
-import phoenixTeam.component.ComponentMappers;
-import phoenixTeam.component.movement.VelocityComponent;
-
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.math.Vector2;
+import phoenixTeam.component.ComponentMappers;
+import phoenixTeam.component.movement.VelocityComponent;
 
 public class FrictionSystem extends IteratingSystem{
 	

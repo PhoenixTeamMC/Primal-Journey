@@ -1,5 +1,6 @@
 package phoenixTeam.component;
 
+import com.badlogic.ashley.core.ComponentMapper;
 import phoenixTeam.component.movement.BoundingBoxComponent;
 import phoenixTeam.component.movement.PositionComponent;
 import phoenixTeam.component.movement.VelocityComponent;
@@ -8,8 +9,6 @@ import phoenixTeam.component.render.AnimationDirectionComponent;
 import phoenixTeam.component.render.AnimationLoaderComponent;
 import phoenixTeam.component.render.LoaderComponent;
 import phoenixTeam.component.render.RenderComponent;
-
-import com.badlogic.ashley.core.ComponentMapper;
 
 public final class ComponentMappers {
 	

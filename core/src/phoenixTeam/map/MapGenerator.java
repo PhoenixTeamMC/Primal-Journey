@@ -1,9 +1,7 @@
 package phoenixTeam.map;
 
-
-import phoenixTeam.util.Random;
-
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import phoenixTeam.util.Random;
 
 public class MapGenerator {
 

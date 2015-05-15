@@ -1,9 +1,9 @@
 package phoenixTeam.map;
 
-import java.util.Iterator;
-
 import phoenixTeam.util.PerlinNoiseGenerator;
 import phoenixTeam.util.Random;
+
+import java.util.Iterator;
 
 public class Layer implements Iterable<Integer>{
 	

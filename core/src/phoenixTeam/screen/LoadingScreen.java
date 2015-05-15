@@ -1,10 +1,9 @@
 package phoenixTeam.screen;
 
-import phoenixTeam.PrimalJourney;
-import phoenixTeam.map.MapScreen;
-
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import phoenixTeam.PrimalJourney;
+import phoenixTeam.map.MapScreen;
 
 public class LoadingScreen extends ScreenAdapter{
 

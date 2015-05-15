@@ -1,13 +1,12 @@
 package phoenixTeam.system.render;
 
+import com.badlogic.ashley.core.Entity;
+import com.badlogic.ashley.core.Family;
+import com.badlogic.ashley.systems.IteratingSystem;
 import phoenixTeam.component.ComponentMappers;
 import phoenixTeam.component.movement.VelocityComponent;
 import phoenixTeam.component.render.AnimationComponent;
 import phoenixTeam.component.render.AnimationDirectionComponent;
-
-import com.badlogic.ashley.core.Entity;
-import com.badlogic.ashley.core.Family;
-import com.badlogic.ashley.systems.IteratingSystem;
 
 public class AnimationDirectionSystem extends IteratingSystem{
 

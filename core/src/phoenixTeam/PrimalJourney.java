@@ -1,9 +1,5 @@
 package phoenixTeam;
 
-import phoenixTeam.event.input.InputHandler;
-import phoenixTeam.screen.LoadingScreen;
-import phoenixTeam.util.GifLoader;
-
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -18,6 +14,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Json;
 import com.google.common.eventbus.EventBus;
+import phoenixTeam.event.input.InputHandler;
+import phoenixTeam.screen.LoadingScreen;
+import phoenixTeam.util.GifLoader;
 
 /**
  * @author chbachman

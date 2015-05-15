@@ -5,9 +5,6 @@
 
 package phoenixTeam.util;
 
-import java.io.InputStream;
-import java.util.Vector;
-
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetLoaderParameters;
 import com.badlogic.gdx.assets.AssetManager;
@@ -19,6 +16,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
+
+import java.io.InputStream;
+import java.util.Vector;
 
 public class GifLoader extends SynchronousAssetLoader<Animation, GifLoader.GifParameters>{
 	

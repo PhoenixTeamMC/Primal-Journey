@@ -1,6 +1,7 @@
 package phoenixTeam.map;
 
-import static phoenixTeam.PrimalJourney.engine;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.ScreenAdapter;
 import phoenixTeam.PrimalJourney;
 import phoenixTeam.entity.EntityPlayer;
 import phoenixTeam.system.PlayerSystem;
@@ -12,8 +13,7 @@ import phoenixTeam.system.render.AnimationSystem;
 import phoenixTeam.system.render.LoadingSystem;
 import phoenixTeam.system.render.RenderingSystem;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.ScreenAdapter;
+import static phoenixTeam.PrimalJourney.engine;
 
 public class MapScreen extends ScreenAdapter{
 	

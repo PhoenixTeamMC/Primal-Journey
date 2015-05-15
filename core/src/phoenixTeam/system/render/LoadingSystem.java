@@ -1,6 +1,11 @@
 package phoenixTeam.system.render;
 
-import static phoenixTeam.PrimalJourney.assetManager;
+import com.badlogic.ashley.core.Entity;
+import com.badlogic.ashley.core.Family;
+import com.badlogic.ashley.systems.IteratingSystem;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import phoenixTeam.component.ComponentMappers;
 import phoenixTeam.component.movement.BoundingBoxComponent;
 import phoenixTeam.component.render.AnimationComponent;
@@ -8,12 +13,7 @@ import phoenixTeam.component.render.AnimationLoaderComponent;
 import phoenixTeam.component.render.LoaderComponent;
 import phoenixTeam.component.render.RenderComponent;
 
-import com.badlogic.ashley.core.Entity;
-import com.badlogic.ashley.core.Family;
-import com.badlogic.ashley.systems.IteratingSystem;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import static phoenixTeam.PrimalJourney.assetManager;
 
 public class LoadingSystem extends IteratingSystem{
 

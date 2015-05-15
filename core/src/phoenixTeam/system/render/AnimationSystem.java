@@ -1,14 +1,13 @@
 package phoenixTeam.system.render;
 
-import phoenixTeam.component.ComponentMappers;
-import phoenixTeam.component.StateComponent;
-import phoenixTeam.component.render.AnimationComponent;
-import phoenixTeam.component.render.RenderComponent;
-
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import phoenixTeam.component.ComponentMappers;
+import phoenixTeam.component.StateComponent;
+import phoenixTeam.component.render.AnimationComponent;
+import phoenixTeam.component.render.RenderComponent;
 
 public class AnimationSystem extends IteratingSystem{
 	

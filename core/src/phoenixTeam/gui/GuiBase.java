@@ -1,9 +1,8 @@
 package phoenixTeam.gui;
 
-import phoenixTeam.PrimalJourney;
-
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.utils.Array;
+import phoenixTeam.PrimalJourney;
 
 public abstract class GuiBase implements InputProcessor{
 	
