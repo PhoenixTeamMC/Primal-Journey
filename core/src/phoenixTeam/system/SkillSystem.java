@@ -4,9 +4,9 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import phoenixTeam.component.ComponentMappers;
-import phoenixTeam.component.SkillComponent;
-import phoenixTeam.entity.skills.Skill;
-import phoenixTeam.entity.skills.hidden.HiddenSkill;
+import phoenixTeam.component.ActionComponent;
+import phoenixTeam.entity.actions.Action;
+import phoenixTeam.entity.actions.hidden.HiddenAction;
 import phoenixTeam.util.KeysUtil;
 
 import java.util.ArrayList;
@@ -18,23 +18,23 @@ public class SkillSystem extends IteratingSystem {
 
 	@SuppressWarnings("unchecked")
 	public SkillSystem() {
-		super(Family.all(SkillComponent.class).get());
+		super(Family.all(ActionComponent.class).get());
 	}
 
 	@Override
 	protected void processEntity(Entity entity, float deltaTime) {
-		SkillComponent skillC = ComponentMappers.skill.get(entity);
+		ActionComponent actionC = ComponentMappers.action.get(entity);
 
 		// TODO This form should be generified somehow (take a list and get a certain instance group)
-		for (Skill s : skillC.skills.values()) {
-			if (s instanceof HiddenSkill && ((HiddenSkill) s).willUnlock(entity)) {
-				skillC.skills.put(s.keyCombo(), s);
+		for (Action a : actionC.actions.values()) {
+			if (a instanceof HiddenAction && ((HiddenAction) a).willUnlock(entity)) {
+				actionC.actions.put(a.keyCombo(), a);
 			}
 		}
 
-		for (ArrayList<Integer> keys : skillC.skills.keySet()) {
+		for (ArrayList<Integer> keys : actionC.actions.keySet()) {
 			if (KeysUtil.allPressed(keys)) {
-				skillC.skills.get(keys).doSkill(entity);
+				actionC.actions.get(keys).doAction(entity);
 			}
 		}
 	}

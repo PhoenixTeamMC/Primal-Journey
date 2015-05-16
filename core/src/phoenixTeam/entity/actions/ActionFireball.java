@@ -1,4 +1,4 @@
-package phoenixTeam.entity.skills;
+package phoenixTeam.entity.actions;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.Input;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * @author Strikingwolf, chbachman
  */
-public class SkillFireball implements Skill
+public class ActionFireball implements Action
 {
 	@Override
 	public String getName() {
@@ -29,7 +29,7 @@ public class SkillFireball implements Skill
 	}
 
 	@Override
-    public void doSkill(Entity entity) {
+    public void doAction(Entity entity) {
 		// TODO implement fireball
     }
 }
