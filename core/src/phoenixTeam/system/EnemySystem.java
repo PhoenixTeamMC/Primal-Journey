@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.Array;
 import phoenixTeam.component.ComponentMappers;
 import phoenixTeam.component.EnemyComponent;
 import phoenixTeam.component.HealthComponent;
+import phoenixTeam.component.TargeterComponent;
 import phoenixTeam.component.movement.PositionComponent;
 import phoenixTeam.util.EntityUtil;
 
@@ -19,7 +20,7 @@ public class EnemySystem extends IteratingSystem{
 	private ImmutableArray<Entity> targets;
 	
 	public EnemySystem() {
-		super(Family.all(EnemyComponent.class, PositionComponent.class).get());
+		super(Family.all(EnemyComponent.class, PositionComponent.class, TargeterComponent.class).get());
 	}
 	
 	
@@ -28,9 +29,9 @@ public class EnemySystem extends IteratingSystem{
 		
 		EnemyComponent enemy = ComponentMappers.enemy.get(entity);
 
-		Entity target = enemy.target;
+		TargeterComponent targeter = ComponentMappers.targeter.get(entity);
 		
-		if(target == null || !targets.contains(target, true)){
+		if(targeter.target == null || !targets.contains(targeter.target, true)){
 			
 			PositionComponent pos = ComponentMappers.position.get(entity);
 			
@@ -41,16 +42,16 @@ public class EnemySystem extends IteratingSystem{
                     validTargets.add(ent);
                 }
             }
-            target = EntityUtil.INSTANCE.getClosestEntityOutOf(pos.x, pos.y, validTargets);
+            targeter.target = EntityUtil.INSTANCE.getClosestEntityOutOf(pos.x, pos.y, validTargets);
     	}
     	
-        if(target == null){
+        if(targeter.target == null){
         	return;
         }
 
-		EntityUtil.INSTANCE.goToPoint(entity, ComponentMappers.position.get(target));
+		EntityUtil.INSTANCE.goToPoint(entity, ComponentMappers.position.get(targeter.target));
 
-		if(EntityUtil.INSTANCE.isWithin(entity, target, enemy.attackRange)){
+		if(EntityUtil.INSTANCE.isWithin(entity, targeter.target, enemy.attackRange)){
 			HealthComponent health = ComponentMappers.health.get(entity);
 
 			health.health -= enemy.damage;
