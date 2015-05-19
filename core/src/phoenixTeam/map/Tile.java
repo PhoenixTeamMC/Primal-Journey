@@ -20,7 +20,7 @@ public class Tile{
 	//Moisture goes from 0 to 100
 	//Constructor goes height, temp, moisture
 	
-	//Height -> Temp -> MoistureO
+	//Height -> Temp -> Moisture
 	
 	//Height 90-100 - Ice Cap 
 	public static final Tile ICE_CAP = new Tile("ice", 90, 100, -25, 100, 0, 100);
@@ -73,8 +73,12 @@ public class Tile{
 	int temperatureMin;
 	int moistureMin;
 	
+	String location;
+	
 	public Tile(String location, int heightMin, int heightMax, int temperatureMin, int temperatureMax, int moistureMin, int moistureMax){
-		tile = new StaticTiledMapTile(PrimalJourney.assetManager.get("data/pack/pack.atlas", TextureAtlas.class).findRegion(location));
+		tile = new StaticTiledMapTile(PrimalJourney.assetManager.get("data/terrain/pack/terrain.atlas", TextureAtlas.class).findRegion(location));
+		
+		this.location = location;
 		
 		this.heightMax = heightMax;
 		this.heightMin = heightMin;
@@ -88,10 +92,11 @@ public class Tile{
 		tileList.add(this);
 	}
 	
-	public Tile setTile(int x, int y, TiledMapTileLayer layer){
-		Cell cell = new Cell();
+	public Tile setTile(int x, int y, TiledMapTileLayer layer, Biome biome){
+		CellStorage cell = new CellStorage();
 		
 		cell.setTile(this.tile);
+		cell.biome = biome;
 		
 		layer.setCell(x, y, cell);
 		
@@ -122,6 +127,11 @@ public class Tile{
 		}
 		
 		return DEFAULT;
+	}
+	
+	@Override
+	public String toString(){
+		return location;
 	}
 
 }

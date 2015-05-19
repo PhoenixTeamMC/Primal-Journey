@@ -27,11 +27,9 @@ public class AnimationSystem extends IteratingSystem{
         
         Animation animation = anim.animation;
         
-        if(animation != null){
-        	texture.region = animation.getKeyFrame(state.state);
-        }
+        texture.region = animation.getKeyFrame(state.state);
         
-        state.state += deltaTime;
+        state.state += deltaTime; 
     }
 
 }

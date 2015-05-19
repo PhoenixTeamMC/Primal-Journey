@@ -1,8 +1,8 @@
 package phoenixTeam;
 
 import phoenixTeam.event.input.InputHandler;
-import phoenixTeam.screen.LoadingScreen;
-import phoenixTeam.util.GifLoader;
+import phoenixTeam.map.simplex.TestScreen;
+import phoenixTeam.util.AnimationLoader;
 
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.gdx.Game;
@@ -15,8 +15,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.google.common.eventbus.EventBus;
 
 /**
@@ -46,11 +48,16 @@ public class PrimalJourney extends Game{
 	//The eventbus that this is all posted to.
 	public static EventBus bus;
 	
+	//The viewport for the game.
+	public static ScreenViewport viewport;
+	
 	//Stage, for guis.
 	public static Stage stage;
 	
 	//Json, for reading and writing to disk. We don't even have to worry about where.
 	public static Json json;
+	
+	public static final String PACK_LOCATION = "data/pack/pack.atlas";
 	
 	//The FPS logger
 	public FPSLogger log;
@@ -73,11 +80,11 @@ public class PrimalJourney extends Game{
 		//Setup the engine
 		engine = new Engine();
 		
-		//Setup the assetManager, and add the GifLoader
+		//Setup the assetManager, and add the Animation Loader
 		assetManager = new AssetManager();
-		assetManager.setLoader(Animation.class, new GifLoader(new InternalFileHandleResolver()));
+		assetManager.setLoader(Animation.class, new AnimationLoader(new InternalFileHandleResolver()));
 		
-		this.setScreen(new LoadingScreen());
+		
 		
 		//Setup the InputHandlers
 		inputHandler = new InputMultiplexer();
@@ -99,6 +106,13 @@ public class PrimalJourney extends Game{
 		//Setup the stage, for gui work.
 		stage = new Stage();
 		
+		viewport = new ScreenViewport(camera);
+		
+		assetManager.load("data/terrain/pack/terrain.atlas", TextureAtlas.class);
+		assetManager.finishLoading();
+		
+		this.setScreen(new TestScreen());
+		
 		//this.setScreen(new MapScreen());
 	}
 
@@ -114,6 +128,12 @@ public class PrimalJourney extends Game{
 		engine.update(Gdx.graphics.getDeltaTime());
 		stage.draw();
 
+	}
+	
+	@Override
+	public void resize(int width, int height){
+		viewport.setUnitsPerPixel(camera.viewportWidth / Gdx.graphics.getWidth());
+		viewport.update(width, height);
 	}
 	
 	@Override

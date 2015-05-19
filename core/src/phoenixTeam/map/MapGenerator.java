@@ -1,69 +1,60 @@
 package phoenixTeam.map;
 
+import phoenixTeam.map.simplex.SimplexNoise;
 
-import phoenixTeam.util.Random;
+import com.badlogic.gdx.graphics.Color;
 
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+public class MapGenerator{
 
-public class MapGenerator {
+	public double[][] toRender;
 
-	private static final int chunkSize = 16;
-	
-	private TiledMapTileLayer layer;
+	int maxHeight = 300;
 
-	private final int xSize;
-	private final int ySize;
-
-	Layer height;
-	Layer moisture;
-	Layer temperature;
-
-	Random random = new Random();
-
-	public MapGenerator(TiledMapTileLayer layer){
-		this.layer = layer;
-
+	public MapGenerator() {
 		
+		SimplexNoise s = new SimplexNoise();
 		
-		this.xSize = layer.getWidth();
-		this.ySize = layer.getHeight();
+		int xResolution = 1000;
+		int yResolution = 1000;
 
-		if(this.xSize % chunkSize != 0){
-			throw new IllegalArgumentException("X Size must divisible by the chunk size:" + chunkSize);
-		}
-		
-		if(this.ySize % chunkSize != 0){
-			throw new IllegalArgumentException("Y Size must divisible by the chunk size:" + chunkSize);
-		}
-		
-		height = new Layer(xSize,ySize).setMin(-50).setMax(100).setChange(5);
-		moisture = new Layer(xSize, ySize).setMin(0).setMax(100).setChange(5);
-		temperature = new Layer(xSize, ySize).setMin(-25).setMax(100).setChange(5);
-	}
+		double[][] result = new double[xResolution][yResolution];
 
-	public TiledMapTileLayer generate(){
-
-		height.generate();
-		moisture.generate();
-		temperature.generate();
-
-		for(int i = 0; i < xSize; i++){
-			for(int g = 0; g < ySize; g++){
-				getTile(i,g).setTile(g, i, layer);
+		for (int x = 0; x < xResolution; x++){
+			for (int y = 0; y < yResolution; y++){
+				result[x][y] = transformPoint(x, y, xResolution, yResolution, s.noise(x * .007, y * .007));
 			}
 		}
 
-		return layer;
+		
+		
+		toRender = result;
+
+	}
+
+	public Color colorPoints(int x, int y, int xSize, int ySize, double point){
+		Color color = new Color((float) point, (float) point, (float) point, 1);
+		
+		if(point < .5){
+			color = Color.BLUE;
+		}
+		
+		return color;
+		
 	}
 	
-	private Tile getTile(int x, int y){
+	private double transformPoint(int x, int y, int xSize, int ySize, double point){
+		
+		point += 3 * Math.sin(x * Math.PI / xSize);
+		
+		point += 3 * Math.sin(y * Math.PI / ySize);
 
-		int height = this.height.get(x, y);
-		int moisture = this.moisture.get(x, y);
-		int temperature = this.temperature.get(x, y);
-
-
-		return Tile.getTile(height, moisture, temperature);
+		return point;
+	}
+	
+	private double[][] transformGraph(double[][] points){
+		
+		
+		return points;
 	}
 
 }

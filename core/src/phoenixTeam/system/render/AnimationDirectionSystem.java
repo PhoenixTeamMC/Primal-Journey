@@ -22,13 +22,13 @@ public class AnimationDirectionSystem extends IteratingSystem{
 		VelocityComponent v = ComponentMappers.velocity.get(entity);
 		
 		if(v.velocity.angle() < 135 && v.velocity.angle() > 45){
-			a.animation = d.up;
+			//a.animation = d.up;
 		}else if(v.velocity.angle() < 225){
-			a.animation = d.left;
+			//a.animation = d.left;
 		}else if(v.velocity.angle() < 315){
-			a.animation = d.down;
+			//a.animation = d.down;
 		}else{
-			a.animation = d.right;
+			//a.animation = d.right;
 		}
 	}
 	

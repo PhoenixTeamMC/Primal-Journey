@@ -1,19 +1,13 @@
 package phoenixTeam.map;
 
+import static phoenixTeam.PrimalJourney.assetManager;
 import static phoenixTeam.PrimalJourney.engine;
 import phoenixTeam.PrimalJourney;
-import phoenixTeam.entity.EntityPlayer;
 import phoenixTeam.system.PlayerSystem;
-import phoenixTeam.system.movement.BoundsSystem;
-import phoenixTeam.system.movement.ControlSystem;
-import phoenixTeam.system.movement.FrictionSystem;
-import phoenixTeam.system.movement.VelocitySystem;
-import phoenixTeam.system.render.AnimationSystem;
-import phoenixTeam.system.render.LoadingSystem;
-import phoenixTeam.system.render.RenderingSystem;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.graphics.Texture;
 
 public class MapScreen extends ScreenAdapter{
 	
@@ -23,6 +17,7 @@ public class MapScreen extends ScreenAdapter{
 	public static int width = 128;
 	public static int height = 128;
 	
+	Texture toDisplay;
 	
 	public MapScreen(){
 
@@ -35,30 +30,35 @@ public class MapScreen extends ScreenAdapter{
 		//FileHandle handle = Gdx.files.local("worldMap.json");
 		
 		//if(!handle.exists()){
-			map = new WorldMap(width, height);
+			//map = new WorldMap(width, height);
 		//}else{
 		//	map = PrimalJourney.json.fromJson(WorldMap.class, handle);
 		//}
 		
-		
+		MapGenerator g = new MapGenerator();
 		
 		engine.addSystem(new PlayerSystem());
-		engine.addSystem(new RenderingSystem());
-		engine.addSystem(new AnimationSystem());
-		engine.addSystem(new LoadingSystem());
-		engine.addSystem(new BoundsSystem());
-		engine.addSystem(new ControlSystem());
-		engine.addSystem(new VelocitySystem());
-		engine.addSystem(new FrictionSystem());
+		//engine.addSystem(new RenderingSystem());
+		//engine.addSystem(new AnimationSystem());
+		//engine.addSystem(new BoundsSystem());
+		//engine.addSystem(new ControlSystem());
+		//engine.addSystem(new VelocitySystem());
+		//engine.addSystem(new FrictionSystem());
+		//engine.addSystem(new AnimationDirectionSystem());
 		
-		engine.addEntity(new EntityPlayer());
+		//engine.addEntity(new EntityPlayer());
+		
+		
 		
 	}
 
 	@Override
 	public void render(float delta) {
-		map.display();
-		
+		//map.display();
+		assetManager.update();
+		PrimalJourney.batch.begin();
+		PrimalJourney.batch.draw(toDisplay, 0, 0, 10, 10);
+		PrimalJourney.batch.end();
 	}
 	
 	@Override
@@ -70,7 +70,7 @@ public class MapScreen extends ScreenAdapter{
 	public void dispose(){
 		
 		//PrimalJourney.json.toJson(map, WorldMap.class, Gdx.files.local("worldMap.json"));
-		map.map.dispose();
+		//map.map.dispose();
 	}
 
 }

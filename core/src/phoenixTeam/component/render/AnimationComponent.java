@@ -1,9 +1,12 @@
 package phoenixTeam.component.render;
 
 
+import phoenixTeam.util.LoadableComponent;
+
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
+import com.badlogic.gdx.utils.Array;
 
 public class AnimationComponent extends Component{
 	
@@ -15,6 +18,8 @@ public class AnimationComponent extends Component{
 		this.animation = animation;
 		this.animation.setPlayMode(mode);
 	}
+	
+	public Array<LoadableComponent<Animation>> toLoad = new Array<LoadableComponent<Animation>>(false, 4);
 	
 	public Animation animation;
 }

@@ -5,8 +5,6 @@ import phoenixTeam.component.movement.PositionComponent;
 import phoenixTeam.component.movement.VelocityComponent;
 import phoenixTeam.component.render.AnimationComponent;
 import phoenixTeam.component.render.AnimationDirectionComponent;
-import phoenixTeam.component.render.AnimationLoaderComponent;
-import phoenixTeam.component.render.LoaderComponent;
 import phoenixTeam.component.render.RenderComponent;
 
 import com.badlogic.ashley.core.ComponentMapper;
@@ -26,8 +24,6 @@ public final class ComponentMappers {
 	public static final ComponentMapper<SkillComponent> skill = ComponentMapper.getFor(SkillComponent.class);
 	public static final ComponentMapper<StateComponent> state = ComponentMapper.getFor(StateComponent.class);
 	public static final ComponentMapper<VelocityComponent> velocity = ComponentMapper.getFor(VelocityComponent.class);
-	public static final ComponentMapper<AnimationLoaderComponent> animationloader = ComponentMapper.getFor(AnimationLoaderComponent.class);
-	public static final ComponentMapper<LoaderComponent> loader = ComponentMapper.getFor(LoaderComponent.class);
 	public static final ComponentMapper<AnimationDirectionComponent> animationDirection = ComponentMapper.getFor(AnimationDirectionComponent.class);
 
 }

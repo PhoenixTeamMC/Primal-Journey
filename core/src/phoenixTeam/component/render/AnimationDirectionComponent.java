@@ -5,9 +5,9 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 
 public class AnimationDirectionComponent extends Component{
 	
-	public Animation left;
-	public Animation right;
-	public Animation up;
-	public Animation down;
+	public String left;
+	public String right;
+	public String up;
+	public String down;
 
 }

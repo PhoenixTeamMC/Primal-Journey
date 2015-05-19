@@ -16,7 +16,7 @@ public class DesktopLauncher {
 		String location = new File(System.getProperty("user.dir")).getParent() + "/core/assets/data";
 		//test
 		if(arg.length != 0 && arg[0].equals("pack")){
-			TexturePacker.processIfModified(location, location + "/pack", "pack");
+			//TexturePacker.pr
 		}
 		
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();

@@ -26,7 +26,7 @@ public class WorldMap{
 		
 		map.getLayers().add(new TiledMapTileLayer(width, height, 16, 16));
 		
-		new MapGenerator((TiledMapTileLayer)map.getLayers().get(0)).generate();
+		new MapGenerator();
 		
 		this.width = width;
 		this.height = height;
