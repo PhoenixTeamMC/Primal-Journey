@@ -1,6 +1,11 @@
 package phoenixTeam.system;
 
-import static phoenixTeam.PrimalJourney.camera;
+import com.badlogic.ashley.core.Entity;
+import com.badlogic.ashley.core.Family;
+import com.badlogic.ashley.systems.IteratingSystem;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.math.MathUtils;
 import phoenixTeam.PrimalJourney;
 import phoenixTeam.component.ComponentMappers;
 import phoenixTeam.component.PlayerComponent;
@@ -8,12 +13,7 @@ import phoenixTeam.component.movement.BoundingBoxComponent;
 import phoenixTeam.component.movement.PositionComponent;
 import phoenixTeam.map.MapScreen;
 
-import com.badlogic.ashley.core.Entity;
-import com.badlogic.ashley.core.Family;
-import com.badlogic.ashley.systems.IteratingSystem;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.math.MathUtils;
+import static phoenixTeam.PrimalJourney.camera;
 
 public class PlayerSystem extends IteratingSystem{
 	

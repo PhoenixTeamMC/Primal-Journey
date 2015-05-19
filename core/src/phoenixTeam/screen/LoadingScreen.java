@@ -1,5 +1,6 @@
 package phoenixTeam.screen;
 
+
 import static phoenixTeam.PrimalJourney.assetManager;
 import phoenixTeam.PrimalJourney;
 import phoenixTeam.map.MapScreen;
@@ -16,6 +17,7 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+
 
 public class LoadingScreen implements Screen {
 

@@ -1,13 +1,12 @@
 package phoenixTeam.component;
 
+import com.badlogic.ashley.core.ComponentMapper;
 import phoenixTeam.component.movement.BoundingBoxComponent;
 import phoenixTeam.component.movement.PositionComponent;
 import phoenixTeam.component.movement.VelocityComponent;
 import phoenixTeam.component.render.AnimationComponent;
 import phoenixTeam.component.render.AnimationDirectionComponent;
 import phoenixTeam.component.render.RenderComponent;
-
-import com.badlogic.ashley.core.ComponentMapper;
 
 public final class ComponentMappers {
 	
@@ -21,9 +20,9 @@ public final class ComponentMappers {
 	public static final ComponentMapper<PlayerComponent> player = ComponentMapper.getFor(PlayerComponent.class);
 	public static final ComponentMapper<PositionComponent> position = ComponentMapper.getFor(PositionComponent.class);
 	public static final ComponentMapper<RenderComponent> render = ComponentMapper.getFor(RenderComponent.class);
-	public static final ComponentMapper<SkillComponent> skill = ComponentMapper.getFor(SkillComponent.class);
+	public static final ComponentMapper<ActionComponent> action = ComponentMapper.getFor(ActionComponent.class);
 	public static final ComponentMapper<StateComponent> state = ComponentMapper.getFor(StateComponent.class);
 	public static final ComponentMapper<VelocityComponent> velocity = ComponentMapper.getFor(VelocityComponent.class);
 	public static final ComponentMapper<AnimationDirectionComponent> animationDirection = ComponentMapper.getFor(AnimationDirectionComponent.class);
-
+	public static final ComponentMapper<TargeterComponent> targeter = ComponentMapper.getFor(TargeterComponent.class);
 }

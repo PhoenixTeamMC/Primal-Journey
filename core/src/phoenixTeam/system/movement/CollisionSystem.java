@@ -1,10 +1,9 @@
 package phoenixTeam.system.movement;
 
-import phoenixTeam.component.movement.BoundingBoxComponent;
-
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
+import phoenixTeam.component.movement.BoundingBoxComponent;
 
 public class CollisionSystem extends IteratingSystem{
 
