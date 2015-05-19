@@ -1,8 +1,7 @@
 package phoenixTeam.map;
 
-import phoenixTeam.map.simplex.SimplexNoise;
-
 import com.badlogic.gdx.graphics.Color;
+import phoenixTeam.map.simplex.SimplexNoise;
 
 public class MapGenerator{
 

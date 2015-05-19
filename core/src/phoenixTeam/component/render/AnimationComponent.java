@@ -1,12 +1,10 @@
 package phoenixTeam.component.render;
 
-
-import phoenixTeam.util.LoadableComponent;
-
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
 import com.badlogic.gdx.utils.Array;
+import phoenixTeam.util.LoadableComponent;
 
 public class AnimationComponent extends Component{
 	

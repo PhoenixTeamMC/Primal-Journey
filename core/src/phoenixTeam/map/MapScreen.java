@@ -1,13 +1,13 @@
 package phoenixTeam.map;
 
-import static phoenixTeam.PrimalJourney.assetManager;
-import static phoenixTeam.PrimalJourney.engine;
-import phoenixTeam.PrimalJourney;
-import phoenixTeam.system.PlayerSystem;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
+import phoenixTeam.PrimalJourney;
+import phoenixTeam.system.PlayerSystem;
+
+import static phoenixTeam.PrimalJourney.assetManager;
+import static phoenixTeam.PrimalJourney.engine;
 
 public class MapScreen extends ScreenAdapter{
 	

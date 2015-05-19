@@ -1,10 +1,10 @@
 package phoenixTeam.util;
 
-import static phoenixTeam.PrimalJourney.assetManager;
-import phoenixTeam.util.AnimationLoader.AnimationParameters;
-
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import phoenixTeam.util.AnimationLoader.AnimationParameters;
+
+import static phoenixTeam.PrimalJourney.assetManager;
 
 public class LoadableComponent<T>{
 	

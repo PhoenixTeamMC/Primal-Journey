@@ -1,18 +1,17 @@
 package phoenixTeam.system.render;
 
-import static phoenixTeam.PrimalJourney.camera;
-
-import java.util.Comparator;
-
-import phoenixTeam.component.ComponentMappers;
-import phoenixTeam.component.movement.PositionComponent;
-import phoenixTeam.component.render.RenderComponent;
-
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
+import phoenixTeam.component.ComponentMappers;
+import phoenixTeam.component.movement.PositionComponent;
+import phoenixTeam.component.render.RenderComponent;
+
+import java.util.Comparator;
+
+import static phoenixTeam.PrimalJourney.camera;
 
 public class RenderingSystem extends IteratingSystem{
 

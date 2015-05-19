@@ -1,9 +1,9 @@
 package phoenixTeam.util;
 
-import static phoenixTeam.PrimalJourney.assetManager;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import static phoenixTeam.PrimalJourney.assetManager;
 
 public class LoadingUtil{
 	

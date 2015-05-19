@@ -1,11 +1,10 @@
 package phoenixTeam.component.render;
 
-import phoenixTeam.util.LoadableComponent;
-
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
+import phoenixTeam.util.LoadableComponent;
 
 public class RenderComponent extends Component{
 	
