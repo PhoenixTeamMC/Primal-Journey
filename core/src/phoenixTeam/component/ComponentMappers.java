@@ -25,4 +25,5 @@ public final class ComponentMappers {
 	public static final ComponentMapper<VelocityComponent> velocity = ComponentMapper.getFor(VelocityComponent.class);
 	public static final ComponentMapper<AnimationDirectionComponent> animationDirection = ComponentMapper.getFor(AnimationDirectionComponent.class);
 	public static final ComponentMapper<TargeterComponent> targeter = ComponentMapper.getFor(TargeterComponent.class);
+	public static final ComponentMapper<ItemComponent> item = ComponentMapper.getFor(ItemComponent.class);
 }

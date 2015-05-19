@@ -23,11 +23,11 @@ public class AnimationDirectionSystem extends IteratingSystem{
 		if(v.velocity.angle() < 135 && v.velocity.angle() > 45){
 			//a.animation = d.up;
 		}else if(v.velocity.angle() < 225){
-			//a.animation = d.left;
+			//a.animation = d.right;
 		}else if(v.velocity.angle() < 315){
 			//a.animation = d.down;
 		}else{
-			//a.animation = d.right;
+			//a.animation = d.leftt;
 		}
 	}
 	
