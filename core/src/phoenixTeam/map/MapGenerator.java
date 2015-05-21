@@ -1,11 +1,13 @@
 package phoenixTeam.map;
 
-import com.badlogic.gdx.graphics.Color;
 import phoenixTeam.map.simplex.SimplexNoise;
+
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.MathUtils;
 
 public class MapGenerator{
 
-	public double[][] toRender;
+	public float[][] toRender;
 
 	int maxHeight = 300;
 
@@ -16,20 +18,20 @@ public class MapGenerator{
 		int xResolution = 1000;
 		int yResolution = 1000;
 
-		double[][] result = new double[xResolution][yResolution];
+		float[][] result = new float[xResolution][yResolution];
 
 		for (int x = 0; x < xResolution; x++){
 			for (int y = 0; y < yResolution; y++){
-				result[x][y] = transformPoint(x, y, xResolution, yResolution, s.noise(x * .007, y * .007));
+				result[x][y] = transformPoint(x, y, xResolution, yResolution, s.noise(x * .007F, y * .007F));
 			}
 		}
 
-		toRender = result;
+		toRender = transformGraph(result);
 
 	}
 
-	public Color colorPoints(int x, int y, int xSize, int ySize, double point){
-		Color color = new Color((float) point, (float) point, (float) point, 1);
+	public Color colorPoints(int x, int y, int xSize, int ySize, float point){
+		Color color = new Color(point, point, point, 1);
 
 		if (point < .5){
 			color = Color.BLUE;
@@ -39,16 +41,20 @@ public class MapGenerator{
 
 	}
 
-	private double transformPoint(int x, int y, int xSize, int ySize, double point){
+	private float transformPoint(int x, int y, int xSize, int ySize, float point){
 
-		point += 3 * Math.sin(x * Math.PI / xSize);
+		int barrier = 20;
+		
+		//point *= 2;
+		
+		point += 3 * MathUtils.clamp(MathUtils.sin( (x - barrier) * MathUtils.PI / (xSize - (2 * barrier))), 0, 1);
 
-		point += 3 * Math.sin(y * Math.PI / ySize);
+		point += 3 * MathUtils.clamp(MathUtils.sin( (y - barrier) * MathUtils.PI / (ySize - (2 * barrier))), 0, 1);
 
 		return point;
 	}
 
-	private double[][] transformGraph(double[][] points){
+	private float[][] transformGraph(float[][] points){
 
 		return points;
 	}

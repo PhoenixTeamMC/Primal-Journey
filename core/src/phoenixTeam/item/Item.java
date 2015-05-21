@@ -1,29 +1,25 @@
 package phoenixTeam.item;
 
-import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.Entity;
-import com.badlogic.ashley.utils.ImmutableArray;
-import com.google.common.base.Optional;
-import phoenixTeam.util.Reference;
+import com.badlogic.ashley.core.Family;
 
 /**
- * @author Strikingwolf
+ * @author Strikingwolf, chbachman
  */
 public abstract class Item<T extends Entity> {
 	private String uName;
 	private int rank;
 	private int value;
-	private Optional<Double> weightKg = Optional.absent();
-	private Optional<Double> weightLb = Optional.absent();
+	private double weight; //Weight in kilograms
 
-	private Optional<ImmutableArray<Class<Component>>> componentsNeeded;
+	private Family componentsNeeded;
 
-	public Item(String uName, int rank, int value, Double weightKg, ImmutableArray<Class<Component>> componentsNeeded) {
+	public Item(String uName, int rank, int value, double weightKg, Family componentsNeeded) {
 		this.uName = uName;
 		this.rank = rank;
 		this.value = value;
-		this.componentsNeeded = Optional.fromNullable(componentsNeeded);
-		this.weightKg = Optional.fromNullable(weightKg);
+		this.componentsNeeded = componentsNeeded;
+		this.weight = weightKg;
 	}
 
 	/**
@@ -82,32 +78,19 @@ public abstract class Item<T extends Entity> {
 	 * @return weightKg
 	 */
 	public double getWeightKg() {
-		if (!weightKg.isPresent()) {
-			if (weightLb.isPresent()) {
-				this.weightKg = Optional.of(Reference.lbToKg * weightLb.get());
-			} else {
-				return 0;
-			}
-		}
-		return weightKg.get();
+		return weight;
 	}
 
 	/**
-	 * Gets the weight in pounds of the item
+	 * Gets the weight in pounds of the item. 
+	 * Only use for displaying, use kg for calculations. 
 	 * @return weight in pounds
 	 */
 	public double getWeightLb() {
-		if (!weightLb.isPresent()) {
-			if (weightKg.isPresent()) {
-				this.weightLb = Optional.of(Reference.kgToLb * weightKg.get());
-			} else {
-				return 0;
-			}
-		}
-		return weightKg.get();
+		return weight * 2.2;
 	}
 
-	public Optional<ImmutableArray<Class<Component>>> getComponents() {
+	public Family getFamily() {
 		return componentsNeeded;
 	}
 }

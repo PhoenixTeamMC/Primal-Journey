@@ -13,7 +13,7 @@ public class TestScreen implements Screen{
 	private ShapeRenderer sr;
 
 	MapGenerator m = new MapGenerator();
-	private double[][] map;
+	private float[][] map;
 	private float tileSize = 1;
 	boolean drawGrid;
 
@@ -43,7 +43,7 @@ public class TestScreen implements Screen{
 		}
 	}
 
-	public void drawMap(ShapeRenderer sr, double[][] map2, float x, float y){
+	public void drawMap(ShapeRenderer sr, float[][] map2, float x, float y){
 		if (sr.getCurrentType() != ShapeType.Filled){
 			sr.end();
 			sr.begin(ShapeType.Filled);
@@ -65,8 +65,8 @@ public class TestScreen implements Screen{
 	public void show(){
 		sr = new ShapeRenderer();
 
-		double min = min(map);
-		double max = max(map);
+		float min = min(map);
+		float max = max(map);
 
 		System.out.println("min: " + min + ", max: " + max);
 
@@ -91,10 +91,10 @@ public class TestScreen implements Screen{
 		sr.dispose();
 	}
 
-	public static double[][] scale(double[][] items, double min, double max){
-		double tmp = amplitude2(items) / (max - min);
+	public static float[][] scale(float[][] items, float min, float max){
+		float tmp = amplitude2(items) / (max - min);
 
-		for (double[] item : items){
+		for (float[] item : items){
 			for (int i = 0; i < item.length; i++){
 				item[i] /= tmp;
 			}
@@ -102,7 +102,7 @@ public class TestScreen implements Screen{
 
 		tmp = min - min(items);
 		
-		for (double[] item : items){
+		for (float[] item : items){
 			for (int i = 0; i < item.length; i++){
 				item[i] += tmp;
 			}
@@ -111,15 +111,15 @@ public class TestScreen implements Screen{
 		return items;
 	}
 
-	public static double amplitude2(double[][] items){
+	public static float amplitude2(float[][] items){
 		return max(items) - min(items);
 	}
 
-	public static double max(double[][] items){
-		double max = Float.NEGATIVE_INFINITY;
+	public static float max(float[][] items){
+		float max = Float.NEGATIVE_INFINITY;
 
-		for (double[] item : items){
-			for (double f : item){
+		for (float[] item : items){
+			for (float f : item){
 				if (f > max)
 					max = f;
 			}
@@ -127,11 +127,11 @@ public class TestScreen implements Screen{
 		return max;
 	}
 
-	public static double min(double[][] items){
-		double min = Float.POSITIVE_INFINITY;
+	public static float min(float[][] items){
+		float min = Float.POSITIVE_INFINITY;
 
-		for (double[] item : items){
-			for (double f : item){
+		for (float[] item : items){
+			for (float f : item){
 				if (f < min)
 					min = f;
 			}

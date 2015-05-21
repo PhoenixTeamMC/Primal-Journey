@@ -1,12 +1,12 @@
 package phoenixTeam.component;
 
-import com.badlogic.ashley.core.Component;
-import com.google.common.base.Optional;
 import phoenixTeam.item.Item;
+
+import com.badlogic.ashley.core.Component;
 
 /**
  * @author Strikingwolf
  */
 public class ItemComponent extends Component {
-	public Optional<Item> item;
+	public Item item;
 }
