@@ -6,6 +6,8 @@ import com.badlogic.ashley.systems.IteratingSystem;
 import phoenixTeam.PrimalJourney;
 import phoenixTeam.component.ComponentMappers;
 import phoenixTeam.component.HealthComponent;
+import phoenixTeam.component.KillableComponent;
+import phoenixTeam.util.specific.ComponentHelper;
 
 public class HealthSystem extends IteratingSystem{
 	
@@ -18,9 +20,13 @@ public class HealthSystem extends IteratingSystem{
 	protected void processEntity(Entity entity, float deltaTime) {
 		HealthComponent health = ComponentMappers.health.get(entity);
 		
-		if(health.health <= 0){
-			PrimalJourney.engine.removeEntity(entity);
+		if(health.health <= 0 && ComponentHelper.matches(entity, KillableComponent.class)){
+			KillableComponent killable = ComponentMappers.killable.get(entity);
+			if (killable.die(entity)) {
+				PrimalJourney.engine.removeEntity(entity);
+				killable.afterDeath(entity);
+			}
+
 		}
 	}
-
 }

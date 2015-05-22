@@ -1,12 +1,13 @@
 package phoenixTeam.item;
 
+import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 
 /**
  * @author Strikingwolf, chbachman
  */
-public abstract class Item<T extends Entity> {
+public abstract class Item {
 	private String uName;
 	private int rank;
 	private int value;
@@ -14,11 +15,11 @@ public abstract class Item<T extends Entity> {
 
 	private Family componentsNeeded;
 
-	public Item(String uName, int rank, int value, double weightKg, Family componentsNeeded) {
+	public Item(String uName, int rank, int value, double weightKg, Class<? extends Component>... componentsNeeded) {
 		this.uName = uName;
 		this.rank = rank;
 		this.value = value;
-		this.componentsNeeded = componentsNeeded;
+		this.componentsNeeded = Family.all(componentsNeeded).get();
 		this.weight = weightKg;
 	}
 
@@ -26,28 +27,28 @@ public abstract class Item<T extends Entity> {
 	 * Called every tick for the entity. Will conform to components
 	 * @param entity entity with components
 	 */
-	public abstract void tick(T entity);
+	public abstract void tick(Entity entity);
 
 	/**
 	 * What happens when the entity uses the item
 	 * @param entity entity using item
 	 * @return whether the use of the item was successful
 	 */
-	public abstract boolean onUse(T entity);
+	public abstract boolean onUse(Entity entity);
 
 	/**
 	 * What happens when the entity swings the item
 	 * @param entity entity swinging item
 	 * @return whether the swing was successful
 	 */
-	public abstract boolean onSwing(T entity);
+	public abstract boolean onSwing(Entity entity);
 
 	/**
 	 * What happens when the entity picks an item up
 	 * @param entity entity picking up item
 	 * @return whether the entity succeeded in picking the item up
 	 */
-	public abstract boolean onPickup(T entity);
+	public abstract boolean onPickup(Entity entity);
 
 	/**
 	 * Gets the display name

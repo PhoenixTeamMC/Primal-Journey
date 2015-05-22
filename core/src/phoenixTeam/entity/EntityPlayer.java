@@ -1,7 +1,11 @@
 package phoenixTeam.entity;
 
 import com.badlogic.ashley.core.Component;
+import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.utils.Array;
+import phoenixTeam.PrimalJourney;
+import phoenixTeam.component.HealthComponent;
+import phoenixTeam.component.KillableComponent;
 import phoenixTeam.component.PlayerComponent;
 import phoenixTeam.component.StateComponent;
 import phoenixTeam.component.movement.BoundingBoxComponent;
@@ -10,6 +14,7 @@ import phoenixTeam.component.movement.PositionComponent;
 import phoenixTeam.component.movement.VelocityComponent;
 import phoenixTeam.component.render.AnimationDirectionComponent;
 import phoenixTeam.component.render.RenderComponent;
+import phoenixTeam.map.MapScreen;
 
 public class EntityPlayer extends EntityBase {
 
@@ -33,5 +38,19 @@ public class EntityPlayer extends EntityBase {
 		list.add(new BoundingBoxComponent(1, 1));
 		list.add(new ControlComponent());
 		list.add(new VelocityComponent());
+
+		list.add(new KillableComponent() {
+			@Override
+			public boolean die(Entity entity) {
+				return true;
+			}
+
+			@Override
+			public void afterDeath(Entity entity) {
+				PrimalJourney.INSTANCE.setScreen(new MapScreen());
+			}
+		});
+
+		list.add(new HealthComponent());
 	}
 }
