@@ -3,15 +3,17 @@ package phoenixTeam.system;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.MathUtils;
 import phoenixTeam.PrimalJourney;
 import phoenixTeam.component.ComponentMappers;
+import phoenixTeam.component.ItemComponent;
 import phoenixTeam.component.PlayerComponent;
 import phoenixTeam.component.movement.BoundingBoxComponent;
 import phoenixTeam.component.movement.PositionComponent;
 import phoenixTeam.map.MapScreen;
+import phoenixTeam.util.specific.KeysUtil;
+import phoenixTeam.util.Util;
 
 import static phoenixTeam.PrimalJourney.camera;
 
@@ -22,36 +24,33 @@ public class PlayerSystem extends IteratingSystem{
 		super(Family.all(PlayerComponent.class, PositionComponent.class).get());
 	}
 
-	private boolean wasPressed = false;
-	
 	@Override
 	protected void processEntity(Entity entity, float deltaTime) {
-		
 		PositionComponent pos = ComponentMappers.position.get(entity);
-        
-		if(Gdx.input.isKeyPressed(Input.Keys.W)){
-			
-			if(!wasPressed){
+		PlayerComponent player = ComponentMappers.player.get(entity);
+		player.setPressed(KeysUtil.keyPressed());
+
+		if (player.getPressed().isPresent()) {
+			Integer pressed = player.getPressed().get();
+
+			if (pressed == Input.Keys.W && Util.optionalEquals(player.getLastPressed(), Input.Keys.W)) {
 				pos.x++;
+			} else if (pressed == Input.Keys.O) {
+				camera.zoom += .02;
+			} else if (pressed == Input.Keys.L) {
+				camera.zoom -= .02;
+			} else if (pressed == Input.Keys.BACKSLASH) {
+				PrimalJourney.INSTANCE.setScreen(new MapScreen());
 			}
-			
 
-			wasPressed = true;
-		}else{
-			wasPressed = false;
+			if (Family.one(ItemComponent.class).get().matches(entity)) {
+				if (pressed == Input.Keys.RIGHT) {
+					ComponentMappers.item.get(entity).item.onUse(entity);
+				} else if (pressed == Input.Keys.LEFT) {
+					ComponentMappers.item.get(entity).item.onSwing(entity);
+				}
+			}
 		}
-		
-        if(Gdx.input.isKeyPressed(Input.Keys.O)){
-        	camera.zoom += .02;
-        }
-        
-        if(Gdx.input.isKeyPressed(Input.Keys.L)){
-        	camera.zoom -= .02;
-        }
-
-        if(Gdx.input.isKeyPressed(Input.Keys.BACKSLASH)) {
-            PrimalJourney.INSTANCE.setScreen(new MapScreen());
-        }
         
         if(ComponentMappers.boundingBox.has(entity)){
         	

@@ -1,4 +1,4 @@
-package phoenixTeam.util;
+package phoenixTeam.util.specific;
 
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Engine;
@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.Array;
 import phoenixTeam.component.constants.StatsComponent;
 import phoenixTeam.component.movement.PositionComponent;
 import phoenixTeam.component.movement.VelocityComponent;
+import phoenixTeam.util.MathUtil;
 
 public class EntityUtil {
 	

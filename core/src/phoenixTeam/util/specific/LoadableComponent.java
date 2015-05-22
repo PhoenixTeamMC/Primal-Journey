@@ -1,8 +1,8 @@
-package phoenixTeam.util;
+package phoenixTeam.util.specific;
 
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.graphics.g2d.Animation;
-import phoenixTeam.util.AnimationLoader.AnimationParameters;
+import phoenixTeam.util.specific.AnimationLoader.AnimationParameters;
 
 import static phoenixTeam.PrimalJourney.assetManager;
 

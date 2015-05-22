@@ -4,7 +4,7 @@ import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
 import com.badlogic.gdx.utils.Array;
-import phoenixTeam.util.LoadableComponent;
+import phoenixTeam.util.specific.LoadableComponent;
 
 public class AnimationComponent extends Component{
 	

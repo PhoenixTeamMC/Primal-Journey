@@ -1,8 +1,9 @@
 package phoenixTeam.util;
 
 import com.badlogic.gdx.utils.TimeUtils;
+import com.google.common.base.Optional;
 
-public class SecondUtil{
+public class Util {
 	
 	static long startTime = TimeUtils.nanoTime();
 
@@ -15,5 +16,8 @@ public class SecondUtil{
 		
 		return false;
 	}
-	
+
+	public static <T> boolean optionalEquals(Optional<T> optional, T t) {
+		return optional.isPresent() && optional.get().equals(t);
+	}
 }

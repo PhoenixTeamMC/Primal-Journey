@@ -18,7 +18,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.google.common.eventbus.EventBus;
 import phoenixTeam.event.input.InputHandler;
 import phoenixTeam.map.simplex.TestScreen;
-import phoenixTeam.util.AnimationLoader;
+import phoenixTeam.util.specific.AnimationLoader;
 
 /**
  * @author chbachman

@@ -7,7 +7,7 @@ import phoenixTeam.component.ActionComponent;
 import phoenixTeam.component.ComponentMappers;
 import phoenixTeam.entity.actions.Action;
 import phoenixTeam.entity.actions.hidden.HiddenAction;
-import phoenixTeam.util.KeysUtil;
+import phoenixTeam.util.specific.KeysUtil;
 
 import java.util.ArrayList;
 

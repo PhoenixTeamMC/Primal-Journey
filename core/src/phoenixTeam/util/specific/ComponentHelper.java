@@ -1,4 +1,4 @@
-package phoenixTeam.util;
+package phoenixTeam.util.specific;
 
 public class ComponentHelper{
 	

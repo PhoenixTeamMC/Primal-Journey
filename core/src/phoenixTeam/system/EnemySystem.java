@@ -11,7 +11,7 @@ import phoenixTeam.component.EnemyComponent;
 import phoenixTeam.component.HealthComponent;
 import phoenixTeam.component.TargeterComponent;
 import phoenixTeam.component.movement.PositionComponent;
-import phoenixTeam.util.EntityUtil;
+import phoenixTeam.util.specific.EntityUtil;
 
 public class EnemySystem extends IteratingSystem{
 
