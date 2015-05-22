@@ -11,9 +11,10 @@ import phoenixTeam.component.ItemComponent;
 import phoenixTeam.component.PlayerComponent;
 import phoenixTeam.component.movement.BoundingBoxComponent;
 import phoenixTeam.component.movement.PositionComponent;
+import phoenixTeam.item.Item;
 import phoenixTeam.map.MapScreen;
-import phoenixTeam.util.specific.KeysUtil;
 import phoenixTeam.util.Util;
+import phoenixTeam.util.specific.KeysUtil;
 
 import static phoenixTeam.PrimalJourney.camera;
 
@@ -44,10 +45,12 @@ public class PlayerSystem extends IteratingSystem{
 			}
 
 			if (Family.one(ItemComponent.class).get().matches(entity)) {
+				Item item = ComponentMappers.item.get(entity).item;
+
 				if (pressed == Input.Keys.RIGHT) {
-					ComponentMappers.item.get(entity).item.onUse(entity);
+					item.onUse(entity);
 				} else if (pressed == Input.Keys.LEFT) {
-					ComponentMappers.item.get(entity).item.onSwing(entity);
+					item.onSwing(entity);
 				}
 			}
 		}

@@ -1,12 +1,11 @@
 package phoenixTeam.system;
 
-import phoenixTeam.component.ComponentMappers;
-import phoenixTeam.component.ItemComponent;
-import phoenixTeam.item.Item;
-
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
+import phoenixTeam.component.ComponentMappers;
+import phoenixTeam.component.ItemComponent;
+import phoenixTeam.item.Item;
 
 /**
  * @author Strikingwolf

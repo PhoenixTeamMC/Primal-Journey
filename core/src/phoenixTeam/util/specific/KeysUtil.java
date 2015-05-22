@@ -1,7 +1,6 @@
 package phoenixTeam.util.specific;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.google.common.base.Optional;
 
 /**

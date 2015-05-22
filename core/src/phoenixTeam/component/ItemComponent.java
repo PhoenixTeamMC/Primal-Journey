@@ -1,8 +1,7 @@
 package phoenixTeam.component;
 
-import phoenixTeam.item.Item;
-
 import com.badlogic.ashley.core.Component;
+import phoenixTeam.item.Item;
 
 /**
  * @author Strikingwolf
