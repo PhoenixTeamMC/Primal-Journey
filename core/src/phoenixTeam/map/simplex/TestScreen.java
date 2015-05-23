@@ -48,37 +48,22 @@ public class TestScreen implements Screen, InputProcessor{
 		
 		System.out.println("Creating Map.");
 		long time = System.currentTimeMillis();
-		MapGenerator m = new MapGenerator(); //Generate Map
+		MapGenerator m = new MapGenerator(5000); //Generate Map
 		System.out.println(String.format("Done Creating Map. Took %s seconds.", (System.currentTimeMillis() - time) / 1000F));
 		
 		
 		float[][] map = m.toRender;
-		
-		float min = min(map);
-		float max = max(map);
-
-		//System.out.println("min: " + min + ", max: " + max); //Get map max and min
-
-		scale(map, 0, 1); //Scale the map to 0 and 1
-
-		min = min(map);
-		max = max(map);
-		//System.out.println("min: " + min + ", max: " + max); //Get map max and min
 		
 		System.out.println("Creating Picture of Map.");
 		time = System.currentTimeMillis();
 		
 		Pixmap pixmap = new Pixmap(map.length, map[0].length, Format.RGBA8888);
 		
-		pixmap.setColor(Color.RED);
-		
-		
-		
 		float v;
 		for (int x = 0; x < map.length; x++){
 			for (int y = 0; y < map[x].length; y++){
 				v = (float) map[x][y];
-				pixmap.setColor(m.colorPoints(x, y, map.length, map[x].length, v));
+				pixmap.setColor(m.colorPoints(x, y, map.length, map[x].length, v, map));
 				pixmap.drawPixel(x, y);
 			}
 		}
@@ -106,53 +91,7 @@ public class TestScreen implements Screen, InputProcessor{
 		map.dispose();
 	}
 
-	public static float[][] scale(float[][] items, float min, float max){
-		float tmp = amplitude2(items) / (max - min);
 
-		for (float[] item : items){
-			for (int i = 0; i < item.length; i++){
-				item[i] /= tmp;
-			}
-		}
-
-		tmp = min - min(items);
-
-		for (float[] item : items){
-			for (int i = 0; i < item.length; i++){
-				item[i] += tmp;
-			}
-		}
-
-		return items;
-	}
-
-	public static float amplitude2(float[][] items){
-		return max(items) - min(items);
-	}
-
-	public static float max(float[][] items){
-		float max = Float.NEGATIVE_INFINITY;
-
-		for (float[] item : items){
-			for (float f : item){
-				if (f > max)
-					max = f;
-			}
-		}
-		return max;
-	}
-
-	public static float min(float[][] items){
-		float min = Float.POSITIVE_INFINITY;
-
-		for (float[] item : items){
-			for (float f : item){
-				if (f < min)
-					min = f;
-			}
-		}
-		return min;
-	}
 
 	@Override
 	public boolean keyDown(int keycode){
