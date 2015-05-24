@@ -107,8 +107,8 @@ public class PrimalJourney extends Game{
 
 		viewport = new ScreenViewport(camera);
 
-		assetManager.load("data/terrain/pack/terrain.atlas", TextureAtlas.class);
-		assetManager.finishLoading();
+		//assetManager.load("data/terrain/pack/terrain.atlas", TextureAtlas.class);
+		//assetManager.finishLoading();
 
 		this.setScreen(new TestScreen());
 
