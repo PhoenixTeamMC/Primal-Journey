@@ -47,4 +47,9 @@ public class HeightLayer implements ILayer{
 		return points;
 	}
 
+	@Override
+	public Class<? extends ILayer>[] getDependencies(){
+		return new Class[0];
+	}
+
 }
