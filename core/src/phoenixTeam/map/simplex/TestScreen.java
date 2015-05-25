@@ -65,7 +65,7 @@ public class TestScreen implements Screen, InputProcessor{
 				pixmap.drawRectangle(x, y, 1, 1);
 			}
 		}
-
+		
 		this.map = new Texture(pixmap);
 
 		Timer.stop();

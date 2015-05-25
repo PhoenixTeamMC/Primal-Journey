@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.Engine;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.Version;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.FPSLogger;
@@ -13,9 +14,11 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.GdxBuild;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.google.common.eventbus.EventBus;
+
 import phoenixTeam.event.input.InputHandler;
 import phoenixTeam.map.simplex.TestScreen;
 import phoenixTeam.util.specific.AnimationLoader;
@@ -68,8 +71,11 @@ public class PrimalJourney extends Game{
 	 */
 	@Override
 	public void create(){
+		
+		System.out.println("Running libGDX version " + Version.VERSION);
+		
 		INSTANCE = this;
-
+		
 		// Setup the camera
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
