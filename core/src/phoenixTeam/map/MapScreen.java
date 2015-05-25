@@ -35,7 +35,6 @@ public class MapScreen extends ScreenAdapter{
 		//	map = PrimalJourney.json.fromJson(WorldMap.class, handle);
 		//}
 		
-		MapGenerator g = new MapGenerator(1000);
 		
 		engine.addSystem(new PlayerSystem());
 		//engine.addSystem(new RenderingSystem());

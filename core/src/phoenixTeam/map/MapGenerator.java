@@ -3,104 +3,75 @@ package phoenixTeam.map;
 import phoenixTeam.map.simplex.SimplexNoise;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.utils.Array;
 
 public class MapGenerator{
-
-	public float[][] toRender; 
+	
+	private final Array<ILayer> generators;
+	private final Array<float[][]> map;
 
 	private final SimplexNoise s;
-	private final int size;
+	public final int size;
 	
 	public MapGenerator(int size) {
-		
+
 		s = new SimplexNoise();
 		this.size = size;
 
-		toRender = new float[size][size];
-
-		for (int x = 0; x < size; x++){
-			for (int y = 0; y < size; y++){
-				toRender[x][y] = getPoint(x, y);
-			}
-		}
+		map = new Array<float[][]>();
+		generators = new Array<ILayer>();
 		
-		
-		
-		scale(0, 1);
-		
-		//while(true){
-		//	for(int i = 0; i < size; i++){
-		//		if(result[i][0] < .5){
-					
-		//		}
-		//	}
-		//}
-		
-		
-
-		toRender = transformGraph(toRender);
-
-	}
-
-	public Color colorPoints(int x, int y, int xSize, int ySize, float point, float[][] maps){
-		Color color = new Color(point, point, point, 1).clamp();
-		
-		if (point < .5){
-			return Color.BLUE;
-		}
-		
-		if(point > .9){
-			return Color.WHITE;
-		}
-		
-		if(point < .6){
-			return Color.YELLOW;
-		}
-		
-		color.lerp(Color.GREEN, .5F);
-		
-		return color;
-
-	}
-
-	private float getPoint(int x, int y){
-		
-		float point = s.noise(x * 10F/size, y * 10F/size);
-		
-		point += 10 * s.noise(x * 5F/size, y * 5F/size);
-		
-		point += 20 * Math.min(MathUtils.clamp(MathUtils.sin(x * MathUtils.PI / (size - 100)), 0, 1),  MathUtils.clamp(MathUtils.sin(y * MathUtils.PI / (size - 100)), 0, 1));
-		
-		point += 15 * MathUtils.clamp(MathUtils.sin(x * MathUtils.PI / (size - 100)), 0, 1); 
-		point += 15 * MathUtils.clamp(MathUtils.sin(y * MathUtils.PI / (size - 100)), 0, 1);
-		
-		return point;
-	}
-
-	private float[][] transformGraph(float[][] points){
-		
-		return points;
 	}
 	
-	private float[][] scale(float min, float max){
-		float tmp = amplitude2(toRender) / (max - min);
-
-		for (float[] item : toRender){
-			for (int i = 0; i < item.length; i++){
-				item[i] /= tmp;
+	public void addLayer(ILayer layer){
+		map.add(new float[size][size]);
+		generators.add(layer);
+	}
+	
+	public void generate(){
+		for (int i = 0; i < generators.size; i++){
+			for (int x = 0; x < size; x++){
+				for (int y = 0; y < size; y++){
+					map.get(i)[x][y] = generators.get(i).getPoint(s, x, y, size);
+				}
 			}
 		}
 
-		tmp = min - min(toRender);
+		scale(0, 1);
+		
+		for (int i = 0; i < map.size; i++){
+			map.set(i, generators.get(i).transformGraph(map.get(i)));
+		}
+	}
 
-		for (float[] item : toRender){
-			for (int i = 0; i < item.length; i++){
-				item[i] += tmp;
+	public Color getColor(int x, int y){
+		Color color = generators.get(0).colorPoints(x, y, size, map.get(0)[x][y], map.get(0));
+
+		for (int i = 1; i < generators.size; i++){
+			color.lerp(generators.get(i).colorPoints(x, y, size, map.get(i)[x][y], map.get(i)), 1);
+		}
+		
+		return color;
+	}
+
+	private void scale(float min, float max){
+		for (int g = 0; g < map.size; g++){
+
+			float[][] toScale = map.get(g);
+
+			float tmp = amplitude2(toScale) / (max - min);
+			for (float[] item : toScale){
+				for (int i = 0; i < item.length; i++){
+					item[i] /= tmp;
+				}
+			}
+			tmp = min - min(toScale);
+			for (float[] item : toScale){
+				for (int i = 0; i < item.length; i++){
+					item[i] += tmp;
+				}
 			}
 		}
-
-		return toRender;
 	}
 
 	private static float amplitude2(float[][] items){

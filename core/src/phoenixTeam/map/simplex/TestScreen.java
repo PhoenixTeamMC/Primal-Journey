@@ -1,12 +1,13 @@
 package phoenixTeam.map.simplex;
 
 import phoenixTeam.PrimalJourney;
+import phoenixTeam.map.HeightLayer;
 import phoenixTeam.map.MapGenerator;
+import phoenixTeam.util.Timer;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -18,9 +19,10 @@ import com.badlogic.gdx.math.MathUtils;
 public class TestScreen implements Screen, InputProcessor{
 
 	private Texture map;
+	Pixmap pixmap;
 	OrthographicCamera camera;
 	SpriteBatch batch = new SpriteBatch();
-	
+
 	@Override
 	public void render(float delta){
 		Gdx.gl.glClearColor(1, 0, 0, 1);
@@ -31,7 +33,7 @@ public class TestScreen implements Screen, InputProcessor{
 		batch.begin();
 		batch.draw(map, 0, 0);
 		batch.end();
-	}	
+	}
 
 	@Override
 	public void resize(int width, int height){}
@@ -43,38 +45,30 @@ public class TestScreen implements Screen, InputProcessor{
 
 		PrimalJourney.inputHandler.addProcessor(0, this);
 
-		camera = new OrthographicCamera(1000, 1000 * (h / w)); //Setup Camera
+		camera = new OrthographicCamera(1000, 1000 * (h / w)); // Setup Camera
 
+		MapGenerator m = new MapGenerator(5000);
+
+		m.addLayer(new HeightLayer());
 		
-		System.out.println("Creating Map.");
-		long time = System.currentTimeMillis();
-		MapGenerator m = new MapGenerator(5000); //Generate Map
-		System.out.println(String.format("Done Creating Map. Took %s seconds.", (System.currentTimeMillis() - time) / 1000F));
-		
-		
-		float[][] map = m.toRender;
-		
-		System.out.println("Creating Picture of Map.");
-		time = System.currentTimeMillis();
-		
-		Pixmap pixmap = new Pixmap(map.length, map[0].length, Format.RGBA8888);
-		
-		float v;
-		for (int x = 0; x < map.length; x++){
-			for (int y = 0; y < map[x].length; y++){
-				v = (float) map[x][y];
-				pixmap.setColor(m.colorPoints(x, y, map.length, map[x].length, v, map));
-				pixmap.drawPixel(x, y);
+		Timer.start("Creating Map");
+		m.generate();  // Generate Map
+		Timer.stop();
+
+		Timer.start("Creating Picture of Map");
+
+		pixmap = new Pixmap(m.size, m.size, Format.RGBA8888);
+
+		for (int x = 0; x < m.size; x++){
+			for (int y = 0; y < m.size; y++){
+				pixmap.setColor(m.getColor(x, y));
+				pixmap.drawRectangle(x, y, 1, 1);
 			}
 		}
-		
-		//pixmap.fillRectangle(0, 0, map.length, map[0].length);
-		
-		
+
 		this.map = new Texture(pixmap);
-		pixmap.dispose();
-		
-		System.out.println(String.format("Done Creating Picture of Map. Took %s seconds.", (System.currentTimeMillis() - time) / 1000F));
+
+		Timer.stop();
 	}
 
 	@Override
@@ -89,9 +83,8 @@ public class TestScreen implements Screen, InputProcessor{
 	@Override
 	public void dispose(){
 		map.dispose();
+		pixmap.dispose();
 	}
-
-
 
 	@Override
 	public boolean keyDown(int keycode){
@@ -132,8 +125,8 @@ public class TestScreen implements Screen, InputProcessor{
 
 	@Override
 	public boolean scrolled(int amount){
-		this.camera.zoom += amount;
-		this.camera.zoom = MathUtils.clamp(this.camera.zoom, 0.01F, 100);
+		this.camera.zoom += amount / 4F;
+		this.camera.zoom = MathUtils.clamp(this.camera.zoom, .25F, 100);
 		this.camera.update();
 		return true;
 	}
