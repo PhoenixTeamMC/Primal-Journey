@@ -15,6 +15,6 @@ public class KillableComponent extends Component {
 	}
 
 	public void afterDeath(Entity entity) {
-		return new SignalBase<AfterDeath>().dispatch(new AfterDeath(entity));
+		new SignalBase<AfterDeath>().dispatch(new AfterDeath(entity));
 	}
 }

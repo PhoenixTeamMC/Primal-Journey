@@ -1,10 +1,5 @@
 package phoenixTeam.map.simplex;
 
-import phoenixTeam.PrimalJourney;
-import phoenixTeam.map.HeightLayer;
-import phoenixTeam.map.MapGenerator;
-import phoenixTeam.util.Timer;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
@@ -15,6 +10,10 @@ import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import phoenixTeam.PrimalJourney;
+import phoenixTeam.map.HeightLayer;
+import phoenixTeam.map.MapGenerator;
+import phoenixTeam.util.Timer;
 
 public class TestScreen implements Screen, InputProcessor{
 

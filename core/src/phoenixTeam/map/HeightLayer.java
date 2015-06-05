@@ -1,9 +1,8 @@
 package phoenixTeam.map;
 
-import phoenixTeam.map.simplex.SimplexNoise;
-
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
+import phoenixTeam.map.simplex.SimplexNoise;
 
 public class HeightLayer implements ILayer{
 

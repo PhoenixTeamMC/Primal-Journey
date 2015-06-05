@@ -12,13 +12,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.utils.GdxBuild;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.google.common.eventbus.EventBus;
-
 import phoenixTeam.event.input.InputHandler;
 import phoenixTeam.map.simplex.TestScreen;
 import phoenixTeam.util.specific.AnimationLoader;

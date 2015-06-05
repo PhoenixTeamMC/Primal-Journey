@@ -1,11 +1,12 @@
 package phoenixTeam.event.entity;
 
-import phoenixTeam.event.Cancellable;
-import phoenixTeam.event.CancellableBase;
-import phoenixTeam.event.SignalBase;
+import com.badlogic.ashley.core.Entity;
 
 /**
  * @author Strikingwolf
  */
-public class AfterDeath extends CancellableBase {
+public class AfterDeath extends EntityEvent {
+	public AfterDeath(Entity entity) {
+		super(entity);
+	}
 }

@@ -12,6 +12,4 @@ public class EntityEvent extends CancellableBase {
 	EntityEvent(Entity entity) {
 		this.entity = entity;
 	}
-
-	defau
 }

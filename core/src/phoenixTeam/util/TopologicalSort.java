@@ -1,8 +1,7 @@
 package phoenixTeam.util;
 
-import phoenixTeam.util.TopologicalSort.Dependent;
-
 import com.badlogic.gdx.utils.Array;
+import phoenixTeam.util.TopologicalSort.Dependent;
 
 
 public class TopologicalSort<E extends Dependent>{
