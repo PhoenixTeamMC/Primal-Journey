@@ -1,5 +1,6 @@
 package phoenixTeam.event;
 
-public interface Event {
-	public SignalBase<Event> signal();
-}
+/**
+ * @author Strikingwolf
+ */
+public class Event {}

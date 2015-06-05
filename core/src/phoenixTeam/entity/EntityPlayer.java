@@ -2,7 +2,10 @@ package phoenixTeam.entity;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.Entity;
+import com.badlogic.ashley.signals.Listener;
+import com.badlogic.ashley.signals.Signal;
 import com.badlogic.gdx.utils.Array;
+import com.google.common.eventbus.Subscribe;
 import phoenixTeam.PrimalJourney;
 import phoenixTeam.component.HealthComponent;
 import phoenixTeam.component.KillableComponent;
@@ -14,6 +17,8 @@ import phoenixTeam.component.movement.PositionComponent;
 import phoenixTeam.component.movement.VelocityComponent;
 import phoenixTeam.component.render.AnimationDirectionComponent;
 import phoenixTeam.component.render.RenderComponent;
+import phoenixTeam.event.entity.AfterDeath;
+import phoenixTeam.event.entity.Death;
 import phoenixTeam.map.MapScreen;
 
 public class EntityPlayer extends EntityBase {
@@ -39,18 +44,24 @@ public class EntityPlayer extends EntityBase {
 		list.add(new ControlComponent());
 		list.add(new VelocityComponent());
 
-		list.add(new KillableComponent() {
-			@Override
-			public boolean die(Entity entity) {
-				return true;
-			}
-
-			@Override
-			public void afterDeath(Entity entity) {
-				PrimalJourney.INSTANCE.setScreen(new MapScreen());
-			}
-		});
+		list.add(new KillableComponent());
 
 		list.add(new HealthComponent());
+	}
+
+	private class PlayerDeathHandler {
+		@Subscribe
+		public void playerDeath(Death death) {
+			if (death.entity instanceof EntityPlayer) {
+				// TODO, Drops? Anything player death related
+			}
+		}
+
+		@Subscribe
+		public void playerRespawn(AfterDeath after) {
+			if (after.entity instanceof EntityPlayer) {
+				PrimalJourney.INSTANCE.setScreen(new MapScreen());
+			}
+		}
 	}
 }

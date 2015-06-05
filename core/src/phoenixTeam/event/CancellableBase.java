@@ -3,9 +3,7 @@ package phoenixTeam.event;
 /**
  * @author Strikingwolf
  */
-public class CancellableBase implements Cancellable{
-	public static final SignalBase<CancellableBase> signal = new SignalBase<CancellableBase>();
-
+public class CancellableBase extends Event implements Cancellable {
 	protected boolean cancelled;
 
 	@Override
@@ -18,5 +16,4 @@ public class CancellableBase implements Cancellable{
 		this.cancelled = true;
 		return true;
 	}
-
 }
