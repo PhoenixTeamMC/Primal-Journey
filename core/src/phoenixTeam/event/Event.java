@@ -3,4 +3,4 @@ package phoenixTeam.event;
 /**
  * @author Strikingwolf
  */
-public class Event {}
+public interface Event {}

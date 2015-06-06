@@ -3,7 +3,7 @@ package phoenixTeam.event;
 /**
  * @author Strikingwolf
  */
-public class CancellableBase extends Event implements Cancellable {
+public class CancellableBase implements Cancellable {
 	protected boolean cancelled;
 
 	@Override
