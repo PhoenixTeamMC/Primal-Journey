@@ -23,12 +23,16 @@ import phoenixTeam.map.MapScreen;
 
 public class EntityPlayer extends EntityBase {
 
+	static {
+		PrimalJourney.bus.register(new PlayerDeathHandler());
+	}
+
 	@Override
 	public void registerComponents(Array<Component> list) {	
 		list.add(new PositionComponent());
 		list.add(new PlayerComponent());
 		list.add(new StateComponent());
-		
+
 		AnimationDirectionComponent d = new AnimationDirectionComponent();
 		
 		d.down = "data/player/down.gif";
@@ -49,7 +53,7 @@ public class EntityPlayer extends EntityBase {
 		list.add(new HealthComponent());
 	}
 
-	private class PlayerDeathHandler {
+	private static class PlayerDeathHandler {
 		@Subscribe
 		public void playerDeath(Death death) {
 			if (death.entity instanceof EntityPlayer) {

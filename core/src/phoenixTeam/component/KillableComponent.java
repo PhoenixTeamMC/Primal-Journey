@@ -15,7 +15,7 @@ public class KillableComponent extends Component {
 	public boolean die(Entity entity) {
 		Death death = new Death(entity);
 		PrimalJourney.bus.post(death);
-		if (death.cancelled()) {
+		if (!death.cancelled()) {
 			deathCount++;
 			return true;
 		}

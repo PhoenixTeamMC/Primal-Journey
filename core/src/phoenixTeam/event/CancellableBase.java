@@ -4,7 +4,7 @@ package phoenixTeam.event;
  * @author Strikingwolf
  */
 public class CancellableBase implements Cancellable {
-	protected boolean cancelled;
+	protected boolean cancelled = false;
 
 	@Override
 	public boolean cancelled() {
