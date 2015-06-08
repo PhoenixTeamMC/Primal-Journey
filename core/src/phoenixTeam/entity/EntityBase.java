@@ -23,9 +23,4 @@ public abstract class EntityBase extends Entity {
 	}
 	
 	public abstract void registerComponents(Array<Component> list);
-	
-	
-	
-	
-
 }

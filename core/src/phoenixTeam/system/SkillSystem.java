@@ -7,6 +7,7 @@ import phoenixTeam.component.ActionComponent;
 import phoenixTeam.component.ComponentMappers;
 import phoenixTeam.entity.actions.Action;
 import phoenixTeam.entity.actions.hidden.HiddenAction;
+import phoenixTeam.util.IterableUtil;
 import phoenixTeam.util.specific.KeysUtil;
 
 import java.util.ArrayList;
@@ -26,9 +27,9 @@ public class SkillSystem extends IteratingSystem {
 		ActionComponent actionC = ComponentMappers.action.get(entity);
 
 		// TODO This form should be generified somehow (take a list and get a certain instance group)
-		for (Action a : actionC.actions.values()) {
-			if (a instanceof HiddenAction && ((HiddenAction) a).willUnlock(entity)) {
-				actionC.actions.put(a.keyCombo(), a);
+		for (HiddenAction hidden : IterableUtil.getInstances(actionC.actions.values(), HiddenAction.class)) {
+			if (hidden.willUnlock(entity)) {
+				actionC.actions.put(hidden.keyCombo(), hidden);
 			}
 		}
 
