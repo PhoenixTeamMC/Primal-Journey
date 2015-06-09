@@ -25,17 +25,16 @@ public class IterableUtil {
 
 	/**
 	 * Gets the instances of Class c in iterable
-	 * @param iterable list of T
+	 * @param iterable iterable with instances
 	 * @param c class of generic type E
-	 * @param <T> Generic Type of the list
 	 * @param <E> Type of the list to return and the generic of c
-	 * @return List\<E> where t is an instanceof class c of generic type E
+	 * @return List\<E> where object in list is an instanceof class c of generic type E
 	 */
-	public static <T, E> List<E> getInstances(Iterable<T> iterable, Class<E> c) {
+	public static <E> List<E> getInstances(Iterable iterable, Class<E> c) 			{
 		ArrayList<E> result = new ArrayList<E>();
-		for (T t : iterable) {
-			if (c.isInstance(t)) {
-				result.add(c.cast(t));
+		for (Object obj : iterable) {
+			if (c.isInstance(obj)) {
+				result.add(c.cast(obj));
 			}
 		}
 		return result;
