@@ -30,7 +30,7 @@ public class IterableUtil {
 	 * @param <E> Type of the list to return and the generic of c
 	 * @return List\<E> where object in list is an instanceof class c of generic type E
 	 */
-	public static <E> List<E> getInstances(Iterable iterable, Class<E> c) 			{
+	public static <E> List<E> getInstances(Iterable iterable, Class<E> c) {
 		ArrayList<E> result = new ArrayList<E>();
 		for (Object obj : iterable) {
 			if (c.isInstance(obj)) {
